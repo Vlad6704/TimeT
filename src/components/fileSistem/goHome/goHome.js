@@ -2,12 +2,12 @@ import React from 'react'
 import {connect} from "react-redux";
 import * as actions from "../../../redux_components/actions";
 
-const GoToPrev = ({onGoToPrev}) =>{
+const GoToHome = ({onGoToHome}) =>{
     return (
-        <div className={"GoToPrev"}
-            onClick={onGoToPrev}
+        <div className={"GoToHome"}
+             onClick={onGoToHome}
         >
-            GoToPrev >
+            GoToHome >
         </div>
     )
 }
@@ -18,4 +18,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps,actions)(GoToPrev);
+export default connect(mapStateToProps,actions)(GoToHome);
