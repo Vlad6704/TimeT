@@ -1,11 +1,26 @@
 export const initialState = {
-    tasks:[],
+    tasks:[
+        {
+            id:0,
+            name: 'testTask 1',
+            description: 'description description description',
+            stages:[
+                {
+                    name:'stage 1'
+                },
+                {
+                    name:'stage 2'
+                }
+            ],
+            folderId:1
+        }
+    ],
     fileSistem:{
         items:  [
             {
-                id:1,
+                id:0,
                 name:"work",
-                children:[{id:2},],
+                children:[{id:1},],
                 parentsId:-1,
                 tasks:[
                     {},
@@ -15,9 +30,21 @@ export const initialState = {
 
             },
             {
-                id:2,
+                id:1,
                 name:"site",
-                children:[{id:3},],
+                children:[{id:2},],
+                parentsId:0,
+                tasks:[
+                    {},
+                    {}
+                ],
+
+
+            },
+            {
+                id:2,
+                name:"sinerg",
+                children:[],
                 parentsId:1,
                 tasks:[
                     {},
@@ -28,18 +55,6 @@ export const initialState = {
             },
             {
                 id:3,
-                name:"sinerg",
-                children:[],
-                parentsId:2,
-                tasks:[
-                    {},
-                    {}
-                ],
-
-
-            },
-            {
-                id:4,
                 name:"food",
                 children:[],
                 parentsId:-1,
@@ -53,9 +68,12 @@ export const initialState = {
 
         ],
         currentItemId:-1,
-        isCreateFolderFormOpen:false,
         homeLevelId:-1,
-    }
+        isOpenCreateFolderForm:false,
+        isOpenCreateTaskForm:false,
+    },
+
+
 
 }
 

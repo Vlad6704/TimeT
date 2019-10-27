@@ -3,46 +3,38 @@ import './fileSistem.css';
 import  GoToPrev from './goToPrev/goToPrev';
 import  GoToHome from './goHome/goHome';
 import  Folders from './folders/folders';
-import  OpenCreateFolderForm from './createFolder/openCreateFolderForm/openCreateFolderForm';
-import  CreateFolderForm from './createFolder/createFolderForm/createFolderForm';
+import  Tasks from './tasks/tasks';
+import  CreateFolderForm from './createFolder/CreateFolderForm/CreateFolderForm';
+import  CreateFolderFormButton from './createFolder/createFolderFormButton/createFolderFormButton';
+import  CreateNewTaskButton from './createNewTask/createNewTaskButton/createNewTaskButton';
+import  CreateNewTaskForm from './createNewTask/createNewTaskForm/createNewTaskForm';
+import {connect} from "react-redux";
+import * as actions from "../../redux_components/actions";
 
-export default class FileSistem extends React.Component{
+class FileSistem extends React.Component{
 
 
-// getPrevId = ()=>{
-//     let prevId = -1;
-//     this.props.fileSistemObj.items.forEach((item)=> {
-//         if(item.id === this.props.fileSistemObj.currentItemId) prevId = item.parentsId
-//     });
-//     return prevId;
-// }
 
 
     render() {
-        console.log(this.props.fileSistemObj);
+        const {isOpenCreateFolderForm,isOpenCreateTaskForm} = this.props;
         return(
                 <div className="fileSistem">
                     <GoToPrev
-                    //     onGoToPrev = {
-                    //
-                    //     ()=> this.props.onSerfing(this.getPrevId())
-                    // }
                     />
                     <GoToHome
-                        // onGoToHome = {
-                        //     ()=> this.props.onSerfing(this.props.settings.fileSistem.homeLevelId)
-                        //  }
                     />
-                    <OpenCreateFolderForm onCreateFolder = {
-                            ()=> this.props.onSerfing(this.props.settings.fileSistem.homeLevelId)
-                         }
-                    />
-                    < CreateFolderForm />
-                    <Folders
-                        //fileSistemObj = {this.props.fileSistemObj}
-                        //currentItemId = {this.props.fileSistemObj.currentItemId}
-                        //onSerfing = {this.props.onSerfing}
-                    />
+                    <CreateFolderFormButton />
+                    {isOpenCreateFolderForm &&
+                        <CreateFolderForm  />
+                    }
+                    <CreateNewTaskButton />
+                    {isOpenCreateTaskForm &&
+                    <CreateNewTaskForm  />
+                    }
+
+                    <Folders />
+                    <Tasks />
                 </div>
             )
 
@@ -50,3 +42,12 @@ export default class FileSistem extends React.Component{
     }
 
 }
+
+const mapStateToProps = (state) =>{
+    return {
+        isOpenCreateFolderForm: state.fileSistem.isOpenCreateFolderForm,
+        isOpenCreateTaskForm: state.fileSistem.isOpenCreateTaskForm
+    }
+}
+
+export default connect(mapStateToProps,actions)(FileSistem);
