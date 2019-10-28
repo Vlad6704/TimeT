@@ -10,10 +10,13 @@ import  CreateNewTaskButton from './createNewTask/createNewTaskButton/createNewT
 import  CreateNewTaskForm from './createNewTask/createNewTaskForm/createNewTaskForm';
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
+import WithService from '../hoc/with-service/with-service'
 
 class FileSistem extends React.Component{
 
-
+    componentDidMount() {
+        console.log(this.props.service.getData());
+    }
 
 
     render() {
@@ -50,4 +53,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps,actions)(FileSistem);
+export default WithService()(connect(mapStateToProps,actions)(FileSistem));
