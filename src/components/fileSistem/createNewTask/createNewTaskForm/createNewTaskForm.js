@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import * as actions from "../../../../redux_components/actions";
+import WithService from "../../../hoc/with-service/with-service";
 
 const getInputVal = () =>{
     return document.getElementById("nameNewFolder").value;
@@ -24,20 +25,51 @@ const getInputVal = () =>{
         const objFormVal = {};
         const items = list.getElementsByTagName('li');
         let stageItems = [];
-        objFormVal.titleNewTask = document.getElementById('titleNewTask').value;
-        objFormVal.descriptionNewTask = document.getElementById('descriptionNewTask').value;
+        let stageItemIdx = -1;
+        objFormVal.name = document.getElementById('titleNewTask').value;
+        objFormVal.description = document.getElementById('descriptionNewTask').value;
+
+        //list to array
         for (var j = 0; j < items.length; j++) {
             let str = items[j].innerHTML;
+            stageItemIdx++;
             if (stageItems.indexOf(str) == -1) {
-                stageItems.push({name:str});
+                stageItems.push(
+                    {
+                        id:stageItemIdx,
+                        name:str
+                    }
+                    );
             }
         }
-        objFormVal.stageItems = stageItems;
+        objFormVal.stages = stageItems;
+        objFormVal.stageItemIdx = stageItemIdx;
+
         return objFormVal;
 }
 
 
-const CreateNewTaskForm = ({CreateNewTask}) =>{
+
+
+const CreateNewTaskForm = ({CreateNewTask,service,temporaryId,increaseTemporaryIdForTask, folderId,changeStatusAndSetIdForTaskByTemporaryId}) =>{
+    const GetNewIdAndCreateNewTask = ()=>{
+        const ObjFormVal = getObjFormVal();
+        ObjFormVal.folderId = folderId;
+        CreateNewTask({
+            getObjFormVal: ObjFormVal,
+            temporaryId
+        });
+        increaseTemporaryIdForTask();
+        service.createNewTask(ObjFormVal).
+            then((response) =>{
+               console.log(response.data);
+                if(response.data.status === "success") changeStatusAndSetIdForTaskByTemporaryId({temporaryId:temporaryId, status: 'created', id:response.data.idNewTask});
+
+            },
+            (error) =>{       console.log(error)    });
+
+    };
+
     return (
         <div
 
@@ -53,15 +85,18 @@ const CreateNewTaskForm = ({CreateNewTask}) =>{
                 <input id="InputNewStageTitle" />
                 <button id="buttonAddNewStage" onClick={addNewStage}> Add </button>
             </div>
-            <button onClick={()=> CreateNewTask(getObjFormVal())}>Submit</button>
+            <button onClick={()=> GetNewIdAndCreateNewTask()}>
+                Submit
+            </button>
         </div>
     )
 }
 
 const mapStateToProps = (state) =>{
     return {
-
+        temporaryId: state.other_inf.newTemporaryIdForNewTask,
+        folderId: state.fileSistem.currentItemId,
     }
 }
 
-export default connect(mapStateToProps,actions)(CreateNewTaskForm);
+export default WithService()(connect(mapStateToProps,actions)(CreateNewTaskForm));

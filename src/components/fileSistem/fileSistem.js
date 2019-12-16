@@ -14,9 +14,7 @@ import WithService from '../hoc/with-service/with-service'
 
 class FileSistem extends React.Component{
 
-    componentDidMount() {
-        console.log(this.props.service.getData());
-    }
+
 
 
     render() {
@@ -33,7 +31,7 @@ class FileSistem extends React.Component{
                     }
                     <CreateNewTaskButton />
                     {isOpenCreateTaskForm &&
-                    <CreateNewTaskForm  />
+                        <CreateNewTaskForm  />
                     }
 
                     <Folders />

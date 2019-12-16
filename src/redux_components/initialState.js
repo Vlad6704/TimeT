@@ -1,70 +1,70 @@
 export const initialState = {
     tasks:[
-        {
-            id:0,
-            name: 'testTask 1',
-            description: 'description description description',
-            stages:[
-                {
-                    name:'stage 1'
-                },
-                {
-                    name:'stage 2'
-                }
-            ],
-            folderId:1
-        }
+        // {
+        //     id:0,
+        //     name: 'testTask 1',
+        //     description: 'description description description',
+        //     stages:[
+        //         {
+         //            id:1,
+        //             name:'stages 1',
+        //s
+        //         },
+        //         {
+        //             id:2,
+        //             name:'stages 2'
+        //         }
+        //     ],
+        //     folderId:1,
+        //      stageLastId:2
+        // }
     ],
     fileSistem:{
         items:  [
-            {
-                id:0,
-                name:"work",
-                children:[{id:1},],
-                parentsId:-1,
-                tasks:[
-                    {},
-                    {}
-                ],
-
-
-            },
-            {
-                id:1,
-                name:"site",
-                children:[{id:2},],
-                parentsId:0,
-                tasks:[
-                    {},
-                    {}
-                ],
-
-
-            },
-            {
-                id:2,
-                name:"sinerg",
-                children:[],
-                parentsId:1,
-                tasks:[
-                    {},
-                    {}
-                ],
-
-
-            },
-            {
-                id:3,
-                name:"food",
-                children:[],
-                parentsId:-1,
-                tasks:[
-                    {},
-                    {}
-                ],
-
-
-            },
+            // {
+            //     id:0,
+            //     name:"work",
+            //     parentsId:-1,
+            //     tasks:[
+            //         {},
+            //         {}
+            //     ],
+            //
+            //
+            // },
+            // {
+            //     id:1,
+            //     name:"site",
+            //     parentsId:0,
+            //     tasks:[
+            //         {},
+            //         {}
+            //     ],
+            //
+            //
+            // },
+            // {
+            //     id:2,
+            //     name:"sinerg",
+            //     parentsId:1,
+            //     tasks:[
+            //         {},
+            //         {}
+            //     ],
+            //
+            //
+            // },
+            // {
+            //     id:3,
+            //     name:"food",
+            //     parentsId:-1,
+            //     tasks:[
+            //         {},
+            //         {}
+            //     ],
+            //
+            //
+            // },
 
         ],
         currentItemId:-1,
@@ -72,7 +72,17 @@ export const initialState = {
         isOpenCreateFolderForm:false,
         isOpenCreateTaskForm:false,
     },
+    ongoingTasksArr:[
+        // {
+        //     id: 2,
+        //     status: 'connecting',
+        //     ongoingTime: 0
+        // }
+    ],
+    other_inf:{
+        newTemporaryIdForNewTask:0,
 
+    }
 
 
 }
