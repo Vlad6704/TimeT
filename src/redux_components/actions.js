@@ -14,3 +14,4 @@ export const increaseTemporaryIdForTask = () => ({type:'increaseTemporaryIdForTa
 export const changeStatusAndSetIdForTaskByTemporaryId = (payload) => ({type:'changeStatusAndSetIdForTaskByTemporaryId',payload});
 export const setOngoingTasks = (payload) => ({type:'setOngoingTasks',payload});
 export const setTimeTask = (payload) => ({type:'setTimeTask',payload});
+export const setSwitchableOngoingTask = (payload) => ({type:'setSwitchableOngoingTask',payload});

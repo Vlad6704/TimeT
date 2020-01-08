@@ -4,7 +4,7 @@ import FileSistem from '../fileSistem/fileSistem'
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
-import OngoingTasks from "../ongoingTasks/ongoingTasts";
+import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import Statistic from "../statistic/statistic";
 
 

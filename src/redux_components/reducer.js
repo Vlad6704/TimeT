@@ -259,6 +259,16 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
+        case 'setSwitchableOngoingTask':{
+            const newState = {
+                ...state,
+                other_inf:{
+                    ...state.other_inf,
+                    switchableTaskId:action.payload,
+                }
+            }
+            return newState;
+        }
         default:
             return state;
     }

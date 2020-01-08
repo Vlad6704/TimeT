@@ -81,7 +81,10 @@ export const initialState = {
     ],
     other_inf:{
         newTemporaryIdForNewTask:0,
-
+        switchableTaskId:-1,
+    },
+    app_options:{
+        timeShift:7,
     }
 
 

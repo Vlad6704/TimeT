@@ -1,0 +1,7 @@
+.task:hover{
+    background-color: #61dafb;
+}
+
+.task{
+    cursor: pointer;
+}

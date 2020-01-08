@@ -2,8 +2,9 @@ import React from 'react'
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
 import WithService from "../hoc/with-service/with-service";
+import './ongoingTasks.css';
 
-const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks}) =>{
+const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks,setSwitchableOngoingTask, other_inf}) =>{
 
     const stopTaskHandler = (taskId)=>{
         service.stopTask(taskId).then((response)=>{
@@ -12,6 +13,14 @@ const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks}) =>{
         }, (error) => {
 
         });
+    }
+
+    const switchableHandler = (taskId) =>{
+        if(taskId === other_inf.switchableTaskId){
+            setSwitchableOngoingTask(-1);
+        }else{
+            setSwitchableOngoingTask(taskId);
+        }
     }
 
     function getTaskById(id){
@@ -32,15 +41,23 @@ const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks}) =>{
             const task = getTaskById(item.id);
             const stage =  getStageById(task, item.stageId);
             console.log(ongoingTasksArr);
+            let classList = 'ongoingTasksItem';
+            if(other_inf.switchableTaskId == item.id) classList +=' switchable';
             return (
 
-                <div className={'OngoingTasksItem'}>
+                <div className={classList}>
                     name: {task.name}
                     {item.status && `, status: ${item.status}`}
                     {stage && `, stage: ${stage.name} `}
                     <span className={"stopButton"} onClick={() => stopTaskHandler(item.id)}>
                         Stop
                     </span>
+                    <span className={'switchableButton'}
+                          onClick={() => switchableHandler(item.id)}
+                    >
+                        Switchable
+                    </span>
+
                 </div>
             )
         });
@@ -50,7 +67,7 @@ const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks}) =>{
     return (
 
 
-        <div className={'OngoingTasksItems'} >
+        <div className={'ongoingTasksItems'} >
             {tasksItems()}
         </div>
     )
@@ -59,7 +76,8 @@ const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks}) =>{
 const mapStateToProps = (state)=>{
     return {
         ongoingTasksArr:state.ongoingTasksArr,
-        tasks:state.tasks
+        tasks:state.tasks,
+        other_inf: state.other_inf
     }
 
 }

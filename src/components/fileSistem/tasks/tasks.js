@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import * as actions from '../../../redux_components/actions';
 import WithService from "../../hoc/with-service/with-service";
 import Stages from "../stages/stages";
+import './tasks.css';
 
-
-const Tasks = ({tasks ,startTask,currentItemId, service,setOngoingTasks}) => {
+const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTasks, setSwitchableOngoingTask}) => {
 
     const [openStageListById, setIdForOpenStageList] = useState(-1);
 
@@ -20,12 +20,27 @@ const Tasks = ({tasks ,startTask,currentItemId, service,setOngoingTasks}) => {
 
     const startTaskHandler = (taskId, stageId)=>{
         startTask(taskId);
-        service.startTask(taskId, stageId).then((response) => {
-            console.log(response.data);
-            setOngoingTasks(response.data);
-        }, (error) => {
+        if(other_inf.switchableTaskId !== -1){
+            service.stopTask(other_inf.switchableTaskId)
+                .then((response) => {
+                    setSwitchableOngoingTask(taskId);
+                    return service.startTask(taskId, stageId);
+                })
+                .then((response) => {
+                    console.log(response.data);
+                    setOngoingTasks(response.data);
+                }, (error) => {
 
-        });
+                });
+
+        }else{
+            service.startTask(taskId, stageId).then((response) => {
+                console.log(response.data);
+                setOngoingTasks(response.data);
+            }, (error) => {
+
+            });
+        }
     };
 
     const isHaveStages = (taskId) => {
@@ -65,6 +80,7 @@ const mapStateToProps = (state) =>{
     return {
         tasks: state.tasks,
         currentItemId: state.fileSistem.currentItemId,
+        other_inf: state.other_inf,
     }
 };
 
