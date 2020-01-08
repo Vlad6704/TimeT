@@ -41,13 +41,11 @@ class Statistic extends Component{
 
             if( Array.isArray(timeTaskArr) &&  Array.isArray(tasks) && tasks.length > 0){
                 const timeStat = new TimeStat(timeTaskArr,app_options.timeShift );
-                // const day = "30.12.2019";
-                let day = moment().format("DD.MM.YYYY");
-                if(isFirstTimeGreaterSecond(`0${app_options.timeShift}:00`, moment().format("HH:mm"))){
-                    //if current time lower time shift
-                    day = moment() .subtract(1, 'day').format("DD.MM.YYYY");
-                }
-                const arrTaskIdAndSumSorted = timeStat.getArrTaskIdAndSumSortedForDate(day);
+                // const date = "07.01.2020";
+                // const curTime = "08:00";
+                let date = moment().format("DD.MM.YYYY");
+                const curTime =  moment().format("HH:mm");
+                const arrTaskIdAndSumSorted = timeStat.getArrTaskIdAndSumSortedForDate(date,curTime);
                 if(!arrTaskIdAndSumSorted ) return false;
                 return arrTaskIdAndSumSorted.map((item, idx) => {
                     const task = this.getTaskById(item[0],tasks);

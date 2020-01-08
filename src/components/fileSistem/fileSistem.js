@@ -21,10 +21,8 @@ class FileSistem extends React.Component{
         const {isOpenCreateFolderForm,isOpenCreateTaskForm} = this.props;
         return(
                 <div className="fileSistem">
-                    <GoToPrev
-                    />
-                    <GoToHome
-                    />
+                    <GoToPrev    />
+                    <GoToHome  />
                     <CreateFolderFormButton />
                     {isOpenCreateFolderForm &&
                         <CreateFolderForm  />
@@ -33,7 +31,6 @@ class FileSistem extends React.Component{
                     {isOpenCreateTaskForm &&
                         <CreateNewTaskForm  />
                     }
-
                     <Folders />
                     <Tasks />
                 </div>

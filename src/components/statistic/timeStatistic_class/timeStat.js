@@ -10,11 +10,21 @@ export default class TimeStat {
         this.timeShift = timeShift;
     }
 
-    getArrTaskIdAndSumSortedForDate(date){
+    getArrTaskIdAndSumSortedForDate(date,curTime){
         //date = "30.12.2019";
+        let arrTaskIdForMainDate;
+        let arrTaskIdInTimeShift;
+        let arrTaskId =[];
+        if(isFirstTimeGreaterSecond(`0${this.timeShift}:00`, curTime)){
+            arrTaskIdInTimeShift = this.getArrAllTaskIdForDate(date);
+            //if current time lower time shift get prev day
+            date = moment(date, "DD-MM-YYYY") .subtract(1, 'day').format("DD.MM.YYYY");
 
-        const arrTaskId = this.getArrAllTaskIdForDate(date);
-        if(!arrTaskId) return false;
+        }
+        arrTaskIdForMainDate = this.getArrAllTaskIdForDate(date);
+        if(!arrTaskIdForMainDate && !arrTaskIdInTimeShift) return false;
+        if(arrTaskIdForMainDate)arrTaskId = [...arrTaskIdForMainDate];
+        if(arrTaskIdInTimeShift)arrTaskId = [...arrTaskId, ...arrTaskIdInTimeShift];
         let arrTaskIdAndSum = arrTaskId.map((taskId) => {
             return [taskId,this.getTaskSumTimeForDay(date, taskId, -1 )];
         });
@@ -66,13 +76,8 @@ export default class TimeStat {
     getSumTimeAfterTimeShiftForDay(date,taskId, stageId = -1){
         //if timeShift is 05:00, sum all time items between 05:00 and 23:59
         let sum = '00:00';
-        const dayObj = this.getDayObjByDate(date);
-        if(!dayObj) return sum;
-        const task = (this.getTaskObjById(taskId,dayObj));
-        if(!task) return sum;
-        const stage = (this.getStageObjById(stageId,task));
-        if(!stage) return sum;
-        let timeArr = this.getTimeArr(stage);
+        let timeArr = this.getTimeArr(date,taskId, stageId );
+        if(!timeArr) return sum;
         let arrTimeItemsOngoingInTimeShift = this.getArrTimeItemsThatOngoingInTime(timeArr, `0${this.timeShift}:00`);
         arrTimeItemsOngoingInTimeShift = this.getTimeArrWithSettedStartTimeForAllTimeItems(arrTimeItemsOngoingInTimeShift, `0${this.timeShift}:00`);
         const arrTimeItemsThatStartedAfterTimeShift = this.getArrTimeItemsThatStartedAfterTime(timeArr, `0${this.timeShift}:00`);
@@ -89,17 +94,13 @@ export default class TimeStat {
         return sum;
     }
 
+
     getSumTimeBeforeTimeShiftForDay(date,taskId, stageId = -1){
         //if timeShift is 05:00, sum all time items between 00:00 and 04:59
         let sum = '00:00';
         const timeShift = moment({ hour:this.timeShift}).subtract(1,'minute').format("HH:mm");
-        const dayObj = this.getDayObjByDate(date);
-        if(!dayObj) return sum;
-        const task = (this.getTaskObjById(taskId,dayObj));
-        if(!task) return sum;
-        const stage = (this.getStageObjById(stageId,task));
-        if(!stage) return sum;
-        let timeArr = this.getTimeArr(stage);
+        let timeArr = this.getTimeArr(date,taskId, stageId );
+        if(!timeArr) return sum;
         let arrTimeItemsOngoingInTimeShift = this.getArrTimeItemsThatOngoingInTime(timeArr, timeShift);
         arrTimeItemsOngoingInTimeShift = this.getTimeArrWithSettedStopTimeForAllTimeItems(arrTimeItemsOngoingInTimeShift, timeShift);
         const arrTimeItemsThatStoppedBeforeTime = this.getArrTimeItemsThatStoppedBeforeTime(timeArr, timeShift);
@@ -113,6 +114,16 @@ export default class TimeStat {
             sum = getTimeSum(sum , time);
         });
         return sum;
+    }
+
+    getTimeArr(date,taskId, stageId = -1){
+        const dayObj = this.getDayObjByDate(date);
+        if(!dayObj) return false;
+        const task = (this.getTaskObjById(taskId,dayObj));
+        if(!task) return false;
+        const stage = (this.getStageObjById(stageId,task));
+        if(!stage) return false;
+        return this.getTimeArrByStageId(stage);
     }
 
     getArrTimeItemsThatOngoingInTime(timeArr, time){
@@ -178,7 +189,7 @@ export default class TimeStat {
             });
         }
     }
-    getTimeArr(stage){
+    getTimeArrByStageId(stage){
         if(stage){
             return stage.time;
         }
