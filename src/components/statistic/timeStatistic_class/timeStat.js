@@ -1,6 +1,10 @@
-import moment from "moment";
+import Moment from "moment";
+import { extendMoment } from 'moment-range';
+
 import statistics_func from '../../../functions/statistic/statistics_func';
 const {isFirstTimeGreaterSecond,getTimeDifference,getTimeSum,getNextDayStr } = statistics_func;
+const moment = extendMoment(Moment);
+
 
 export default class TimeStat {
 
@@ -9,7 +13,26 @@ export default class TimeStat {
         this.timeTaskArr = timeTaskArr;
         this.timeShift = timeShift;
     }
+    getSumTaskTimeByDateIntervalAndTaskArr(startDate, endDate, arrTaskId, stageId){
+        const arrSumForTasks = arrTaskId.map(taskId => this.getSumTaskTimeByDateInterval(startDate, endDate, taskId, stageId));
+        const sum = this.getSumArrTime(arrSumForTasks);
+        return sum;
+    }
+    getSumTaskTimeByDateInterval(startDate, endDate, taskId, stageId){
+        if(endDate){
+            const start = moment(startDate, 'DD-MM-YYYY');
+            const end   = moment(endDate, 'DD-MM-YYYY');
+            const range = moment.range(start, end);
+            const acc = Array.from(range.by('days'));
+            const arrDateRange = acc.map(m => m.format("DD.MM.YYYY"));
+            const arrTimeTaskForDate = arrDateRange.map((date) => this.getSumTimeForTaskByDate(date,taskId,stageId));
+            const sum = this.getSumArrTime(arrTimeTaskForDate);
+            return sum;
+        }else{
+            return this.getSumTimeForTaskByDate(startDate,taskId,stageId);
+        }
 
+    }
     getArrTaskIdAndSumSortedForDate(date,curTime){
         //date = "30.12.2019";
         let arrTaskIdForMainDate;
@@ -25,8 +48,9 @@ export default class TimeStat {
         if(!arrTaskIdForMainDate && !arrTaskIdInTimeShift) return false;
         if(arrTaskIdForMainDate)arrTaskId = [...arrTaskIdForMainDate];
         if(arrTaskIdInTimeShift)arrTaskId = [...arrTaskId, ...arrTaskIdInTimeShift];
+        arrTaskId = [...new Set(arrTaskId)];
         let arrTaskIdAndSum = arrTaskId.map((taskId) => {
-            return [taskId,this.getTaskSumTimeForDay(date, taskId, -1 )];
+            return [taskId,this.getSumTimeForTaskByDate(date, taskId, -1 )];
         });
         return this.getSortArrIdAndSum(arrTaskIdAndSum);
     }
@@ -50,7 +74,9 @@ export default class TimeStat {
         return dayObj.tasks.map((task) => task.id);
     }
 
-    getTaskSumTimeForDay(date,taskId, stageId = -1){
+
+
+    getSumTimeForTaskByDate(date, taskId, stageId = -1){
         //work with timeShift
         let sum;
         if(this.timeShift > 0){

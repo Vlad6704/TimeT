@@ -79,6 +79,11 @@ export const initialState = {
         //     ongoingTime: 0
         // }
     ],
+    statistic:{
+        statFileSystem:{
+            arrOpenFolderIds:[-1],
+        }
+    },
     other_inf:{
         newTemporaryIdForNewTask:0,
         switchableTaskId:-1,

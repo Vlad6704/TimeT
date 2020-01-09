@@ -1,0 +1,31 @@
+
+p{
+    margin:0;
+}
+.statFileSystem .statFolder{
+     cursor: pointer;
+
+        margin-left:15px;
+        border-left:1px solid #000;
+        margin-top:5px;
+        margin-bottom:5px;
+ }
+
+.statFileSystem .statFolder .inner{
+    display:none;
+}
+.statFileSystem .statFolder.open > .inner{
+    display:block;
+}
+.statFileSystem .statFolder .statFolderTitle:hover{
+    background-color: #c7c7c8;
+}
+
+.statFileSystem .statFolder.level_id_0{
+    display:block;
+}
+
+.statFileSystem .statTask{
+    color:#f00;
+    margin-left:15px;
+}

@@ -2,11 +2,11 @@ import React,{Component} from 'react';
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
-import statistics_func from '../../functions/statistic/statistics_func';
 import moment from 'moment';
 import TimeStat from './timeStatistic_class/timeStat';
+import StatFileSystem from './statFileSystem/statFileSystem';
 
-const {isFirstTimeGreaterSecond,getTimeDifference,getTimeSum,getNextDayStr } = statistics_func;
+
 
 
 class Statistic extends Component{
@@ -16,11 +16,6 @@ class Statistic extends Component{
         service.getTimeTask().then((response) => {
             console.log(response.data);
             setTimeTask(response.data);
-
-
-
-
-
 
         },(error)=>{
 
@@ -54,7 +49,7 @@ class Statistic extends Component{
                         <div
                             key={idx}
                             className={'statistic_item'}
-                             style={{
+                            style={{
 
                                  border:'1px solid rgba(0,255,101,0.55)',
                              }}
@@ -72,7 +67,7 @@ class Statistic extends Component{
         return (
                 <div className={'statistic'}>
                     {tasksItems()}
-
+                    <StatFileSystem />
                 </div>
             )
 

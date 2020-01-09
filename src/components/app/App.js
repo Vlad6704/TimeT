@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import './App.css';
-import FileSistem from '../fileSistem/fileSistem'
+import FileSystem from '../fileSistem/fileSystem'
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
@@ -27,7 +27,7 @@ class App extends Component{
     return(
         <section>
             <OngoingTasks/>
-            <FileSistem />
+            <FileSystem />
             <Statistic />
         </section>
     )

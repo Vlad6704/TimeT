@@ -1,5 +1,5 @@
 import React from 'react';
-import './fileSistem.css';
+import './fileSystem.css';
 import  GoToPrev from './goToPrev/goToPrev';
 import  GoToHome from './goHome/goHome';
 import  Folders from './folders/folders';
@@ -12,7 +12,7 @@ import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
 import WithService from '../hoc/with-service/with-service'
 
-class FileSistem extends React.Component{
+class FileSystem extends React.Component{
 
 
 
@@ -48,4 +48,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default WithService()(connect(mapStateToProps,actions)(FileSistem));
+export default WithService()(connect(mapStateToProps,actions)(FileSystem));

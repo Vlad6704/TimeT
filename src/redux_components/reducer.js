@@ -269,6 +269,19 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
+        // case 'setArrStatOpenFolderIds':{
+        //     const newState = {
+        //         ...state,
+        //         statistic:{
+        //             ...state.statistic,
+        //             statFileSystem:{
+        //                 ...state.statistic.statFileSystem,
+        //                 arrOpenFolderIds:action.payload
+        //             }
+        //         }
+        //     }
+        //     return newState;
+        // }
         default:
             return state;
     }
