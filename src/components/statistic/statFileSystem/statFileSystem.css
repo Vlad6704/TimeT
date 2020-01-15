@@ -29,3 +29,10 @@ p{
     color:#f00;
     margin-left:15px;
 }
+.statFileSystem .statTask .addCharts{
+    margin-right:5px;
+}
+
+.statFileSystem .statTask .addCharts.active{
+    border:1px solid #000;
+}

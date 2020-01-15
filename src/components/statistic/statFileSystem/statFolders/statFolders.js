@@ -4,7 +4,7 @@ import * as actions from '../../../../redux_components/actions';
 import moment from 'moment';
 import TimeStat from '../../timeStatistic_class/timeStat';
 
-const StatFolders = ({startDate = "01.01.2020",endDate = "08.01.2020",tasks,fileSistemObj,timeTaskArr,app_options}) => {
+const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr}) => {
     const [arrStatOpenFolderIds, setArrStatOpenFolderIds] = useState([]);
     const timeStat = new TimeStat(timeTaskArr,app_options.timeShift);
     const folderClickHandler = (e,folderId) =>{
@@ -45,6 +45,9 @@ const StatFolders = ({startDate = "01.01.2020",endDate = "08.01.2020",tasks,file
 
                 return (
                     <div className={"statTask"}>
+                        <span className={`cursPointSelNon addCharts ${statChartsTasksArr.some(id => id === item.id)?'active':''}`} onClick={()=>pushOrRemIdForStatChartTaskArr(item.id)}>
+                            Charts
+                        </span>
                         TaskTitle: {item.name}
                         <span className={'sumTime'}>
                             {timeStat.getSumTaskTimeByDateInterval(startDate,endDate,item.id, -1)}
@@ -90,11 +93,14 @@ const StatFolders = ({startDate = "01.01.2020",endDate = "08.01.2020",tasks,file
 
 const mapStateToProps = (state) =>{
     return {
+        statChartsTasksArr:state.statistic.charts.tasksArr,
         tasks: state.tasks,
         fileSistemObj: state.fileSistem,
-        arrOpenFolderIds: state.statistic.statFileSystem.arrOpenFolderIds,
+        dateRange: state.statistic.dateRange,
         timeTaskArr:state.timeTaskArr,
         app_options:state.app_options,
+        startDate:state.statistic.dateRange.startDate,
+        endDate:state.statistic.dateRange.endDate,
     }
 }
 

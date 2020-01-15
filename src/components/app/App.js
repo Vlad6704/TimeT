@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import Statistic from "../statistic/statistic";
-
+import './App.css';
 
 class App extends Component{
 

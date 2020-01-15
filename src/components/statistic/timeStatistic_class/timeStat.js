@@ -18,10 +18,10 @@ export default class TimeStat {
         const sum = this.getSumArrTime(arrSumForTasks);
         return sum;
     }
-    getSumTaskTimeByDateInterval(startDate, endDate, taskId, stageId){
-        if(endDate){
-            const start = moment(startDate, 'DD-MM-YYYY');
-            const end   = moment(endDate, 'DD-MM-YYYY');
+    getSumTaskTimeByDateInterval(startDate, endDate, taskId, stageId = -1){
+        if(endDate && startDate !== endDate){
+            const start = moment(endDate, 'DD-MM-YYYY');
+            const end   = moment(startDate, 'DD-MM-YYYY');
             const range = moment.range(start, end);
             const acc = Array.from(range.by('days'));
             const arrDateRange = acc.map(m => m.format("DD.MM.YYYY"));
