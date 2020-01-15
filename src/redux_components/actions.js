@@ -15,4 +15,10 @@ export const changeStatusAndSetIdForTaskByTemporaryId = (payload) => ({type:'cha
 export const setOngoingTasks = (payload) => ({type:'setOngoingTasks',payload});
 export const setTimeTask = (payload) => ({type:'setTimeTask',payload});
 export const setSwitchableOngoingTask = (payload) => ({type:'setSwitchableOngoingTask',payload});
-// export const  setArrStatOpenFolderIds= (payload) => ({type:'setArrStatOpenFolderIds',payload});
+export const setDateRange = (payload) => ({type:'setDateRange',payload});
+export const setDateRangeStartDate = (payload) => ({type:'setDateRangeStartDate',payload});
+export const setDateRangeEndDate = (payload) => ({type:'setDateRangeEndDate',payload});
+export const setStatChartsTaskArr = (payload) => ({type:'setStatChartsTaskArr',payload});
+export const pushOrRemIdForStatChartTaskArr = (payload) => ({type:'pushOrRemIdForStatChartTaskArr',payload});
+
+

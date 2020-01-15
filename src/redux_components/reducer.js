@@ -269,19 +269,94 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        // case 'setArrStatOpenFolderIds':{
-        //     const newState = {
-        //         ...state,
-        //         statistic:{
-        //             ...state.statistic,
-        //             statFileSystem:{
-        //                 ...state.statistic.statFileSystem,
-        //                 arrOpenFolderIds:action.payload
-        //             }
-        //         }
-        //     }
-        //     return newState;
-        // }
+        case 'setDateRange':{
+                const newState = {
+                    ...state,
+                    statistic:{
+                        ...state.statistic,
+                        dateRange:action.payload
+
+                    }
+                }
+                return newState;
+        }
+        case 'setDateRangeStartDate':{
+                const newState = {
+                    ...state,
+                    statistic:{
+                        ...state.statistic,
+                        dateRange:{
+                            ...state.statistic.dateRange,
+                            startDate:action.payload
+                        }
+
+                    }
+                }
+                return newState;
+        }
+        case 'setDateRangeEndDate':{
+                const newState = {
+                    ...state,
+                    statistic:{
+                        ...state.statistic,
+                        dateRange:{
+                            ...state.statistic.dateRange,
+                            endDate:action.payload
+                        }
+
+                    }
+                }
+                return newState;
+        }
+        case 'setStatChartsTaskArr':{
+                const newState = {
+                    ...state,
+                    statistic:{
+                        ...state.statistic,
+                        charts:{
+                            ...state.statistic.charts,
+                            tasksArr:action.payload
+                        }
+
+                    }
+                }
+                return newState;
+        }
+        case 'pushOrRemIdForStatChartTaskArr':{
+                const newIdChartTask = action.payload;
+                const chartTaskArr = state.statistic.charts.tasksArr;
+                const idxNewId = chartTaskArr.indexOf(newIdChartTask);
+
+                if(idxNewId !== -1){
+                    const newState = {
+                        ...state,
+                        statistic:{
+                            ...state.statistic,
+                            charts:{
+                                ...state.statistic.charts,
+                                tasksArr:[...chartTaskArr.slice(0,idxNewId),...chartTaskArr.slice(idxNewId+1)],
+                            }
+
+                        }
+                    }
+                    return newState;
+                }else{
+                    const newState = {
+                        ...state,
+                        statistic:{
+                            ...state.statistic,
+                            charts:{
+                                ...state.statistic.charts,
+                                tasksArr:[...chartTaskArr,newIdChartTask],
+                            }
+
+                        }
+                    }
+                    return newState;
+                }
+                return state;
+        }
+
         default:
             return state;
     }

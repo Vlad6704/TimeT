@@ -80,8 +80,19 @@ export const initialState = {
         // }
     ],
     statistic:{
+        charts:{
+            foldersArr:[],
+            tasksArr:[99]
+        },
+        dateRange:{
+            startDate:null,
+            endDate:null,
+            currMeasure:'day',
+            isIntegerMeasure:false,
+
+        },
         statFileSystem:{
-            arrOpenFolderIds:[-1],
+
         }
     },
     other_inf:{
@@ -90,6 +101,7 @@ export const initialState = {
     },
     app_options:{
         timeShift:7,
+        firstDayOfTheWeek:1,
     }
 
 
