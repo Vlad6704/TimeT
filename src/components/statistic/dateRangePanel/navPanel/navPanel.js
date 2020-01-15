@@ -9,7 +9,7 @@ const NavPanel = ({startDate,endDate,isIntegerMeasure,currMeasure,setDateRangeSt
         let newStartDate = startDate;
         let newEndDate = endDate;
         if(currMeasure === 'day'){
-             newStartDate = moment(startDate,'DD-MM-YYYY').subtract(1, 'days').format('DD.MM.YYYY');
+            newEndDate = moment(endDate,'DD-MM-YYYY').subtract(1, 'days').format('DD.MM.YYYY');
 
         }
         if(currMeasure === 'week'){
@@ -20,13 +20,13 @@ const NavPanel = ({startDate,endDate,isIntegerMeasure,currMeasure,setDateRangeSt
         if(currMeasure === 'month'){
 
             if(isIntegerMeasure){
+                newEndDate = moment(endDate,'DD-MM-YYYY').subtract(1, 'month').format('DD.MM.YYYY');
+                const dayInCurrMonth = moment(newEndDate, 'DD-MM-YYYY').daysInMonth();
+                newEndDate = moment(newEndDate, 'DD-MM-YYYY').date(dayInCurrMonth).format("DD.MM.YYYY");
                 newStartDate = moment(startDate,'DD-MM-YYYY').subtract(1, 'month').format('DD.MM.YYYY');
-                const dayInCurrMonth = moment(newStartDate, 'DD-MM-YYYY').daysInMonth();
-                newStartDate = moment(newStartDate, 'DD-MM-YYYY').date(dayInCurrMonth).format("DD.MM.YYYY");
-                newEndDate = moment(endDate,'DD-MM-YYYY').subtract(1, 'month').format('DD.MM.YYYY');
             }else{
-                newStartDate = moment(newStartDate, 'DD-MM-YYYY').subtract(1,'month').format("DD.MM.YYYY");
-                newEndDate = moment(endDate,'DD-MM-YYYY').subtract(1, 'month').format('DD.MM.YYYY');
+                newEndDate = moment(newEndDate, 'DD-MM-YYYY').subtract(1,'month').format("DD.MM.YYYY");
+                newStartDate = moment(startDate,'DD-MM-YYYY').subtract(1, 'month').format('DD.MM.YYYY');
             }
         }
         setDateRangeStartDate(newStartDate);
@@ -36,7 +36,7 @@ const NavPanel = ({startDate,endDate,isIntegerMeasure,currMeasure,setDateRangeSt
         let newStartDate = startDate;
         let newEndDate = endDate;
         if(currMeasure === 'day'){
-            newStartDate = moment(startDate,'DD-MM-YYYY').add(1, 'days').format('DD.MM.YYYY');
+            newEndDate = moment(endDate,'DD-MM-YYYY').add(1, 'days').format('DD.MM.YYYY');
 
         }
         if(currMeasure === 'week'){
@@ -45,13 +45,13 @@ const NavPanel = ({startDate,endDate,isIntegerMeasure,currMeasure,setDateRangeSt
         }
         if(currMeasure === 'month'){
             if(isIntegerMeasure){
+                newEndDate = moment(endDate,'DD-MM-YYYY').add(1, 'month').format('DD.MM.YYYY');
+                const dayInCurrMonth = moment(newEndDate, 'DD-MM-YYYY').daysInMonth();
+                newEndDate = moment(newEndDate, 'DD-MM-YYYY').date(dayInCurrMonth).format("DD.MM.YYYY");
                 newStartDate = moment(startDate,'DD-MM-YYYY').add(1, 'month').format('DD.MM.YYYY');
-                const dayInCurrMonth = moment(newStartDate, 'DD-MM-YYYY').daysInMonth();
-                newStartDate = moment(newStartDate, 'DD-MM-YYYY').date(dayInCurrMonth).format("DD.MM.YYYY");
-                newEndDate = moment(endDate,'DD-MM-YYYY').add(1, 'month').format('DD.MM.YYYY');
             }else{
-                newStartDate = moment(newStartDate, 'DD-MM-YYYY').add(1,'month').format("DD.MM.YYYY");
-                newEndDate = moment(endDate,'DD-MM-YYYY').add(1, 'month').format('DD.MM.YYYY');
+                newEndDate = moment(endDate, 'DD-MM-YYYY').add(1,'month').format("DD.MM.YYYY");
+                newStartDate = moment(startDate,'DD-MM-YYYY').add(1, 'month').format('DD.MM.YYYY');
             }
 
         }

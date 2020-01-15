@@ -17,23 +17,23 @@ const MeasurePanel = ({currMeasure,dateRange,startDate,endDate,setDateRange,isIn
     const getEndDate = (measure)=>{
         let newStartDate = startDate;
         let newEndDate = endDate;
-        if(measure === 'day') newEndDate = null;
+        if(measure === 'day') newStartDate = null;
         if(measure === 'week') {
             if(isIntegerMeasure){
-                newStartDate = moment(startDate, 'DD-MM-YYYY').weekday(firstDayOfTheWeek + 6).format("DD.MM.YYYY");
-                newEndDate = moment(startDate, 'DD-MM-YYYY').weekday(firstDayOfTheWeek).format("DD.MM.YYYY");
+                newEndDate = moment(endDate, 'DD-MM-YYYY').weekday(firstDayOfTheWeek + 6).format("DD.MM.YYYY");
+                newStartDate = moment(endDate, 'DD-MM-YYYY').weekday(firstDayOfTheWeek).format("DD.MM.YYYY");
 
             }else{
-                newEndDate = moment(startDate, 'DD-MM-YYYY').subtract(6,'days').format("DD.MM.YYYY");
+                newStartDate = moment(endDate, 'DD-MM-YYYY').subtract(6,'days').format("DD.MM.YYYY");
             }
         }
         if(measure === 'month'){
             if(isIntegerMeasure){
-                const dayInCurrMonth = moment(startDate, 'DD-MM-YYYY').daysInMonth();
-                newStartDate = moment(startDate, 'DD-MM-YYYY').date(dayInCurrMonth).format("DD.MM.YYYY");
-                newEndDate = moment(startDate, 'DD-MM-YYYY').date(1).format("DD.MM.YYYY");
+                const dayInCurrMonth = moment(endDate, 'DD-MM-YYYY').daysInMonth();
+                newEndDate = moment(endDate, 'DD-MM-YYYY').date(dayInCurrMonth).format("DD.MM.YYYY");
+                newStartDate = moment(endDate, 'DD-MM-YYYY').date(1).format("DD.MM.YYYY");
             }else{
-                newEndDate = moment(startDate, 'DD-MM-YYYY').subtract(1,'month').format("DD.MM.YYYY");
+                newStartDate = moment(endDate, 'DD-MM-YYYY').subtract(1,'month').format("DD.MM.YYYY");
             }
         }
         setDateRangeStartDate(newStartDate);

@@ -15,11 +15,11 @@ const CurrentDateRangeSetUp = ({dateRange,currMeasure}) =>{
     );
     return (
         <div className={'currentDateRangeSetUp'}>
-            {dateRange.startDate &&
-                 startDate
+            {dateRange.endDate &&
+                endDate
             }
-            {dateRange.endDate && currMeasure !== 'day' &&
-                 endDate
+            {dateRange.startDate && currMeasure !== 'day' &&
+                startDate
             }
         </div>
     )

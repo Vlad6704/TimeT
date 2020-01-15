@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../../../redux_components/actions';
-import moment from 'moment';
 import TimeStat from '../../timeStatistic_class/timeStat';
 
 const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr}) => {

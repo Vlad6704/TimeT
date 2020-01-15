@@ -71,7 +71,7 @@ class Statistic extends Component{
                 <div className={'statistic'}>
                     {tasksItems()}
                     <div className={'chart'} style={{width:'700px', height:'350px'}}>
-                        {/*<LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />*/}
+                        <LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />
                     </div>
                     <DateRangePanel />
                     <StatFileSystem />

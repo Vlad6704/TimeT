@@ -11,8 +11,8 @@ class DateRangePanel extends React.Component {
     componentDidMount(){
         const {setDateRange} = this.props;
         const initialDateRange = {
-            startDate:moment().format("DD.MM.YYYY"),
-            endDate:null,
+            startDate:null,
+            endDate:moment().format("DD.MM.YYYY"),
             currMeasure:'day',
         }
         setDateRange(initialDateRange);

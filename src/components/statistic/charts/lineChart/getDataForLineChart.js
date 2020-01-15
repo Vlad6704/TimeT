@@ -37,10 +37,10 @@ export default class getDataForLineChart{
             PointDataArr = dateArr.map(date => {return {"x":date, "y":this.getConvertedTime(this.timeStat.getSumTimeForTaskByDate(date,taskId))}});
         }
         if(this.currMeasure === 'week') {
-            PointDataArr = dateArr.map(date => {return {"x":`${date.endDate}-${date.startDate}`, "y":this.getConvertedTime(this.timeStat.getSumTaskTimeByDateInterval(date.startDate, date.endDate, taskId))}});
+            PointDataArr = dateArr.map(date => {return {"x":`${date.startDate}-${date.endDate}`, "y":this.getConvertedTime(this.timeStat.getSumTaskTimeByDateInterval(date.startDate, date.endDate, taskId))}});
         }
         if(this.currMeasure === 'month') {
-            PointDataArr = dateArr.map(date => {return {"x":`${date.endDate}-${date.startDate}`, "y":this.getConvertedTime(this.timeStat.getSumTaskTimeByDateInterval(date.startDate, date.endDate, taskId))}});
+            PointDataArr = dateArr.map(date => {return {"x":`${date.startDate}-${date.endDate}`, "y":this.getConvertedTime(this.timeStat.getSumTaskTimeByDateInterval(date.startDate, date.endDate, taskId))}});
         }
 
 
@@ -58,8 +58,8 @@ export default class getDataForLineChart{
         let newEndDate = this.endDate;
         let arrDateRange = [];
         if(this.currMeasure === 'day') {
-            newStartDate = moment(this.startDate, 'DD-MM-YYYY').add(2, 'days').format("DD.MM.YYYY");
-            newEndDate = moment(this.startDate, 'DD-MM-YYYY').subtract(4, 'days').format("DD.MM.YYYY");
+            newStartDate = moment(this.endDate, 'DD-MM-YYYY').add(2, 'days').format("DD.MM.YYYY");
+            newEndDate = moment(this.endDate, 'DD-MM-YYYY').subtract(4, 'days').format("DD.MM.YYYY");
             const start = moment(newEndDate, 'DD-MM-YYYY');
             const end   = moment(newStartDate, 'DD-MM-YYYY');
             const range = moment.range(start, end);
