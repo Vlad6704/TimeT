@@ -29,6 +29,7 @@ const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks,setSwitchab
         })
     }
     function getStageById(task, stageId){
+        console.log(33);
         return task.stages.find((item) =>{
             return item.id == stageId
         })

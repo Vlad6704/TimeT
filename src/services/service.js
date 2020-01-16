@@ -29,6 +29,9 @@ export  default class DataStoreService {
     createNewTask(ObjFormVal){
         return this.doRequest('createNewTask',ObjFormVal);
     }
+    createNewFolder(Obj){
+        return this.doRequest('createNewFolder',Obj);
+    }
     startTask(taskId, stageId = -1){
         const payload = {taskId,stageId}
         return this.doRequest('startTask',payload);
