@@ -91,7 +91,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'CreateNewFolder':{
+        case 'createNewFolder':{
             const newFolderName = action.payload;
             if(isValidNewFolderName(newFolderName)){
                 const newtFolderId = state.fileSistem.items[state.fileSistem.items.length - 1].id + 1;

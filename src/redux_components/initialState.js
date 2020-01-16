@@ -25,43 +25,9 @@ export const initialState = {
             //     id:0,
             //     name:"work",
             //     parentsId:-1,
-            //     tasks:[
-            //         {},
-            //         {}
-            //     ],
             //
             //
             // },
-            // {
-            //     id:1,
-            //     name:"site",
-            //     parentsId:0,
-            //     tasks:[
-            //         {},
-            //         {}
-            //     ],
-            //
-            //
-            // },
-            // {
-            //     id:2,
-            //     name:"sinerg",
-            //     parentsId:1,
-            //     tasks:[
-            //         {},
-            //         {}
-            //     ],
-            //
-            //
-            // },
-            // {
-            //     id:3,
-            //     name:"food",
-            //     parentsId:-1,
-            //     tasks:[
-            //         {},
-            //         {}
-            //     ],
             //
             //
             // },
@@ -82,7 +48,7 @@ export const initialState = {
     statistic:{
         charts:{
             foldersArr:[],
-            tasksArr:[99]
+            tasksArr:[]
         },
         dateRange:{
             startDate:null,
