@@ -20,5 +20,9 @@ export const setDateRangeStartDate = (payload) => ({type:'setDateRangeStartDate'
 export const setDateRangeEndDate = (payload) => ({type:'setDateRangeEndDate',payload});
 export const setStatChartsTaskArr = (payload) => ({type:'setStatChartsTaskArr',payload});
 export const pushOrRemIdForStatChartTaskArr = (payload) => ({type:'pushOrRemIdForStatChartTaskArr',payload});
+export const openRenameFolderForm = () => ({type:'openRenameFolderForm'});
+export const setFolderNotAvailable = (folderId) => ({type:'setFolderNotAvailable',payload:folderId});
+export const setFolderAvailable = (folderId) => ({type:'setFolderAvailable',payload:folderId});
+export const setReplaceFolderId = (folderId) => ({type:'setReplaceFolderId',payload: folderId});
 
 

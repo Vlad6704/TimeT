@@ -35,8 +35,11 @@ export const initialState = {
         ],
         currentItemId:-1,
         homeLevelId:-1,
+        replaceFolderId:-1,
         isOpenCreateFolderForm:false,
         isOpenCreateTaskForm:false,
+        isOpenRenameFolderForm:false,
+
     },
     ongoingTasksArr:[
         // {

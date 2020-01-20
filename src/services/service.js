@@ -43,4 +43,13 @@ export  default class DataStoreService {
     getTimeTask(){
         return this.doRequest('getTimeTask');
     }
+    renameFolder(payload){
+        return this.doRequest('renameFolder',payload);
+    }
+    removeFolder(folderId){
+        return this.doRequest('removeFolder',{folderId});
+    }
+    replaceFolder(folderId,parentId){
+        return this.doRequest('replaceFolder',{folderId,parentId});
+    }
 }
