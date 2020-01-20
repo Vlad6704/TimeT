@@ -6,6 +6,7 @@ const getFileSistemWithCloseModalWindow = (state)=>{
         ...state.fileSistem,
         isOpenCreateFolderForm:false,
         isOpenCreateTaskForm: false,
+        isOpenRenameFolderForm:false,
     }
 }
 
@@ -356,7 +357,63 @@ const reducer = (state = initialState, action) =>{
                 }
                 return state;
         }
+        case 'openRenameFolderForm':{
+            const newState = {
+                ...state,
+                fileSistem:{
+                    ...state.fileSistem,
+                    isOpenRenameFolderForm:true,
+                }
+            }
+            return newState;
+        }
+        case 'setFolderNotAvailable':{
+            const folderId = action.payload;
+            const newFileSysItems = state.fileSistem.items.map((item) => Object.assign({}, item));
+            newFileSysItems.forEach((item) => {
+               if(item.id === folderId)item['isNotAvailable'] = true;
+            });
+            const newState = {
+                ...state,
+                fileSistem:{
+                    ...state.fileSistem,
+                    items:[
+                        ...newFileSysItems,
 
+                    ]
+                }
+            }
+            return newState;
+        }
+        case 'setFolderAvailable':{
+            const folderId = action.payload;
+            const newFileSysItems = state.fileSistem.items.map((item) => Object.assign({}, item));
+            newFileSysItems.forEach((item) => {
+               if(item.id === folderId)item['isNotAvailable'] = false;
+            });
+            const newState = {
+                ...state,
+                fileSistem:{
+                    ...state.fileSistem,
+                    items:[
+                        ...newFileSysItems,
+
+                    ]
+                }
+            }
+            return newState;
+        }
+        case 'setReplaceFolderId':{
+            // default: -1;
+            const newState = {
+                ...state,
+                fileSistem:{
+                    ...state.fileSistem,
+                    replaceFolderId:action.payload,
+                }
+            }
+            return newState;
+        }
         default:
             return state;
     }
