@@ -13,6 +13,7 @@ import  RenameFolderForm from './folderOptions/rename/renameFolderForm/RenameFol
 import  RemoveFolderButton from './folderOptions/remove/removeFolderButton/RemoveFolderButton';
 import  CutFolderButton from './folderOptions/replace/cutFolderButton/CutFolderButton';
 import  PasteFolderButton from './folderOptions/replace/pasteFolderButton/PasteFolderButton';
+import  TaskOptionsPanel from './taskOptions/TaskOptionsPanel';
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
 import WithService from '../hoc/with-service/with-service'
@@ -31,7 +32,7 @@ class FileSystem extends React.Component{
     </div>);
 
     render() {
-        const {isOpenCreateFolderForm,isOpenCreateTaskForm,isOpenRenameFolderForm,replaceFolderId} = this.props;
+        const {isOpenCreateFolderForm,isOpenCreateTaskForm,optionsPanelIsOpenForTask,replaceFolderId} = this.props;
         return(
                 <div className="fileSistem">
                     <GoToPrev    />
@@ -50,6 +51,9 @@ class FileSystem extends React.Component{
                     {replaceFolderId !== -1 &&
                         <PasteFolderButton/>
                     }
+                    {optionsPanelIsOpenForTask !== -1 &&
+                        <TaskOptionsPanel />
+                    }
                 </div>
             )
 
@@ -64,6 +68,7 @@ const mapStateToProps = (state) =>{
         isOpenCreateTaskForm: state.fileSistem.isOpenCreateTaskForm,
         isOpenRenameFolderForm: state.fileSistem.isOpenRenameFolderForm,
         replaceFolderId:state.fileSistem.replaceFolderId,
+        optionsPanelIsOpenForTask:state.fileSistem.taskOptionsPanel.optionsPanelIsOpenForTask,
     }
 }
 

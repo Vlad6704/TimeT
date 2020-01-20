@@ -52,4 +52,10 @@ export  default class DataStoreService {
     replaceFolder(folderId,parentId){
         return this.doRequest('replaceFolder',{folderId,parentId});
     }
+    renameTask(taskName,taskId){
+        return this.doRequest('renameTask',{taskName,taskId});
+    }
+    removeTask(taskId){
+        return this.doRequest('removeTask',{taskId});
+    }
 }

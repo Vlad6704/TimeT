@@ -39,6 +39,10 @@ export const initialState = {
         isOpenCreateFolderForm:false,
         isOpenCreateTaskForm:false,
         isOpenRenameFolderForm:false,
+        taskOptionsPanel:{
+            optionsPanelIsOpenForTask:-1,
+
+        }
 
     },
     ongoingTasksArr:[

@@ -24,5 +24,6 @@ export const openRenameFolderForm = () => ({type:'openRenameFolderForm'});
 export const setFolderNotAvailable = (folderId) => ({type:'setFolderNotAvailable',payload:folderId});
 export const setFolderAvailable = (folderId) => ({type:'setFolderAvailable',payload:folderId});
 export const setReplaceFolderId = (folderId) => ({type:'setReplaceFolderId',payload: folderId});
+export const openFiSyOptionsPanel = (taskId) => ({type:'openFiSyOptionsPanel',payload: taskId});
 
 
