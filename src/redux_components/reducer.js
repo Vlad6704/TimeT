@@ -7,6 +7,9 @@ const getFileSistemWithCloseModalWindow = (state)=>{
         isOpenCreateFolderForm:false,
         isOpenCreateTaskForm: false,
         isOpenRenameFolderForm:false,
+        taskOptionsPanel:{
+            optionsPanelIsOpenForTask:-1,
+        },
     }
 }
 
@@ -410,6 +413,21 @@ const reducer = (state = initialState, action) =>{
                 fileSistem:{
                     ...state.fileSistem,
                     replaceFolderId:action.payload,
+                }
+            }
+            return newState;
+        }
+        case 'openFiSyOptionsPanel':{
+            // default: -1;
+            const newState = {
+                ...state,
+                fileSistem:{
+                    ...state.fileSistem,
+                    taskOptionsPanel:{
+                        ...state.fileSistem.taskOptionsPanel,
+                        optionsPanelIsOpenForTask:action.payload,
+
+                    }
                 }
             }
             return newState;

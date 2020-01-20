@@ -5,7 +5,7 @@ import WithService from "../../hoc/with-service/with-service";
 import Stages from "../stages/stages";
 import './tasks.css';
 
-const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTasks, setSwitchableOngoingTask}) => {
+const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTasks, openFiSyOptionsPanel,setSwitchableOngoingTask}) => {
 
     const [openStageListById, setIdForOpenStageList] = useState(-1);
 
@@ -49,6 +49,10 @@ const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTask
 
     };
 
+    const openFiSyOptionsPanelHandler = (ev,taskId) => {
+        ev.stopPropagation();
+        openFiSyOptionsPanel(taskId);
+    }
 
     const getTasksArr =  tasks.map(item => {
             if(currentItemId === item.folderId){
@@ -61,7 +65,9 @@ const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTask
                         {openStageListById === item.id &&
                              <Stages task={item}  stageClickHandler={startTaskHandler} />
                         }
-
+                        <div className={'openOptionsButton'} onClick={(ev) => openFiSyOptionsPanelHandler(ev,item.id)}>
+                            Open options
+                        </div>
                     </div>
                 )
             }
