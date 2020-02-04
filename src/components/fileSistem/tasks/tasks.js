@@ -4,8 +4,6 @@ import * as actions from '../../../redux_components/actions';
 import WithService from "../../hoc/with-service/with-service";
 import Stages from "../stages/stages";
 import './tasks.css';
-import {faTasks} from "@fortawesome/free-solid-svg-icons/faTasks";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTasks, setSwitchableOngoingTask}) => {
 
@@ -58,10 +56,7 @@ const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTask
                     <div className={"task"}
                          onClick={()=>taskClickHandler(item.id)}
                     >
-                        <FontAwesomeIcon icon={faTasks} />
-                        <span className={'title'}>
-                            {item.name}
-                        </span>
+                        TaskTitle: {item.name}
                         {item.status == 'creating' && `, status: ${item.status}`}
                         {openStageListById === item.id &&
                              <Stages task={item}  stageClickHandler={startTaskHandler} />
