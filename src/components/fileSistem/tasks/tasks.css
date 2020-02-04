@@ -5,3 +5,7 @@
 .task{
     cursor: pointer;
 }
+
+.task .title {
+    margin-left: 5px;
+}
