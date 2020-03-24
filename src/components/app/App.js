@@ -11,15 +11,22 @@ import './App.css';
 class App extends Component{
 
     componentDidMount() {
-        const {service, setStore,setSwitchableOngoingTask,ongoingTasksArr} = this.props;
+        const {service,setTimeTask, setStore,setSwitchableOngoingTask,ongoingTasksArr} = this.props;
 
         service.getStore().then((response) =>{
             // console.log(response.data);
             setStore(response.data);
-            if(response.data.activeTask[0].id) setSwitchableOngoingTask(response.data.activeTask[0].id);
+            if(response.data.activeTask[0]) setSwitchableOngoingTask(response.data.activeTask[0].id);
         }, (error) =>{
             console.log(error)
         });
+        service.getTimeTask().then((response) => {
+
+            setTimeTask(response.data);
+
+        },(error)=>{
+
+        })
 
     }
 
