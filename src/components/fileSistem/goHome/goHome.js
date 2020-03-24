@@ -4,7 +4,8 @@ import * as actions from "../../../redux_components/actions";
 
 const GoToHome = ({onGoToHome}) =>{
     return (
-        <div className={"GoToHome"}
+        <div className={"GoToHome cursPointSelNon"}
+             style={{fontSize:"22px"}}
              onClick={onGoToHome}
         >
             GoToHome >

@@ -4,6 +4,8 @@ import * as actions from '../../../redux_components/actions';
 import WithService from "../../hoc/with-service/with-service";
 import Stages from "../stages/stages";
 import './tasks.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTasks, faPencilAlt} from '@fortawesome/free-solid-svg-icons'
 
 const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTasks, openFiSyOptionsPanel,setSwitchableOngoingTask}) => {
 
@@ -60,13 +62,16 @@ const Tasks = ({tasks,other_inf ,startTask,currentItemId, service,setOngoingTask
                     <div className={"task"}
                          onClick={()=>taskClickHandler(item.id)}
                     >
-                        TaskTitle: {item.name}
+                        <FontAwesomeIcon icon={faTasks} />
+                        <span className={'title'}>
+                            {item.name}
+                        </span>
                         {item.status == 'creating' && `, status: ${item.status}`}
                         {openStageListById === item.id &&
                              <Stages task={item}  stageClickHandler={startTaskHandler} />
                         }
                         <div className={'openOptionsButton'} onClick={(ev) => openFiSyOptionsPanelHandler(ev,item.id)}>
-                            Open options
+                            <FontAwesomeIcon icon={faPencilAlt} />
                         </div>
                     </div>
                 )

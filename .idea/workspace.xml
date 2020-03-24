@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/taskmanager.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/fileSystem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/fileSystem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/fileSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/fileSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/folders/folder.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/folders/folder.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/folders/folders.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/folders/folders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/folders/folders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/goHome/goHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/goHome/goHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/goToPrev/goToPrev.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/goToPrev/goToPrev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/tasks/tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/tasks/tasks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSistem/tasks/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSistem/tasks/tasks.js" afterDir="false" />
+    </list>
+    <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1WojQZ4olRgBFg07S3ypz2BwL0t" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="" />
+      <created>1579822825861</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579822825861</updated>
+      <workItem from="1579822829186" duration="40000" />
+      <workItem from="1580822064136" duration="2145000" />
+      <workItem from="1580826488390" duration="1281000" />
+      <workItem from="1580827792354" duration="128000" />
+      <workItem from="1580828030399" duration="731000" />
+      <workItem from="1580829292600" duration="1939000" />
+      <workItem from="1580850253738" duration="17000" />
+      <workItem from="1580866481216" duration="71000" />
+      <workItem from="1581096828887" duration="325000" />
+      <workItem from="1581170128926" duration="711000" />
+      <workItem from="1581269965678" duration="594000" />
+      <workItem from="1581270669117" duration="351000" />
+      <workItem from="1585055587679" duration="1101000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
+      <created>1580827618966</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580827618966</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat(fileSystem):add-styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(fileSystem):add-styling" />
+  </component>
+</project>

@@ -5,7 +5,8 @@ import {bindActionCreators} from "redux";
 
 const GoToPrev = ({onGoToPrev}) =>{
     return (
-        <div className={"GoToPrev"}
+        <div className={"GoToPrev cursPointSelNon"}
+             style={{fontSize:"22px"}}
             onClick={onGoToPrev}
         >
             GoToPrev >

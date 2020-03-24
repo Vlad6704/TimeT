@@ -37,16 +37,16 @@ class FileSystem extends React.Component{
                 <div className="fileSistem">
                     <GoToPrev    />
                     <GoToHome  />
+                    <Folders />
+                    <Tasks />
                     <CreateFolderFormButton />
                     {isOpenCreateFolderForm &&
-                        <CreateFolderForm  />
+                    <CreateFolderForm  />
                     }
                     <CreateNewTaskButton />
                     {isOpenCreateTaskForm &&
-                        <CreateNewTaskForm  />
+                    <CreateNewTaskForm  />
                     }
-                    <Folders />
-                    <Tasks />
                     {replaceFolderId === -1 && this.defaultFolderOptions}
                     {replaceFolderId !== -1 &&
                         <PasteFolderButton/>

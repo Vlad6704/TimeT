@@ -1,7 +1,22 @@
 .task:hover{
-    background-color: #61dafb;
+
 }
 
 .task{
     cursor: pointer;
+    display:flex;
+    align-items: center;
+    max-width: 600px;
+    padding: 5px 0;
+}
+
+.task .openOptionsButton{
+
+    margin-left: auto;
+
+}
+
+.task .title{
+margin-left: 7px;
+    font-size: 20px;
 }
