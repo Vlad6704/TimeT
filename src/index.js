@@ -10,12 +10,12 @@ import DataStoreService from './services/service'
 
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-const dataSroreService = new DataStoreService();
+const dataStoreService = new DataStoreService();
 
 ReactDOM.render(
     <Provider store = {store}>
         <ErrorBoundry>
-            <ProviderService value = {dataSroreService}>
+            <ProviderService value = {dataStoreService}>
                 <App />
             </ProviderService>
         </ErrorBoundry>

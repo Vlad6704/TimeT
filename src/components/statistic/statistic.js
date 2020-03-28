@@ -15,14 +15,8 @@ class Statistic extends Component{
         this.timeStat = new TimeStat(props.timeTaskArr,props.app_options.timeShift );
     }
     componentDidMount() {
-        const {service,setTimeTask, timeTaskArr,app_options} = this.props;
-        service.getTimeTask().then((response) => {
-            console.log(response.data);
-            setTimeTask(response.data);
 
-        },(error)=>{
 
-        })
     }
     getTaskById(id, tasks){
         return tasks.find((item) =>{
