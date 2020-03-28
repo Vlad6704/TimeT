@@ -74,7 +74,11 @@ export default class TimeStat {
         return dayObj.tasks.map((task) => task.id);
     }
 
-
+    getSumTimeForTaskForToday(taskId, stageId = -1){
+        // return sum time for task (by taskId and stageId) for current date
+        const date = this._getCurrentDate();
+        return this.getSumTimeForTaskByDate(date, taskId, stageId = -1);
+    }
 
     getSumTimeForTaskByDate(date, taskId, stageId = -1){
         //work with timeShift
@@ -221,6 +225,11 @@ export default class TimeStat {
         }
     }
 
+    _getCurrentDate() {
+        return  moment().format("DD.MM.YYYY");
+    }
 
-
+    _getCurrentTime() {
+        return moment().format("HH:mm");
+    }
 }
