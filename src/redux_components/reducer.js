@@ -36,7 +36,7 @@ const getIndexTaskByTemporaryId = (state,temporaryId) =>{
 
 const reducer = (state = initialState, action) =>{
     switch (action.type) {
-        case 'OnSerfing':{
+        case 'ON_SERFING':{
             let OldFileSistem = state.fileSistem;
             let id = action.payload;
 
@@ -49,7 +49,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'onGoToPrev':{
+        case 'ON_GO_TO_PREV':{
             let prevId = -1;
             state.fileSistem.items.forEach((item)=> {
                 if(item.id === state.fileSistem.currentItemId) prevId = item.parentsId
@@ -67,7 +67,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'onGoToHome':{
+        case 'ON_GO_TO_HOME':{
 
             let newState = {
                 ...state,
@@ -78,7 +78,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'openCreateFolderForm':{
+        case 'OPEN_CREATE_FOLDER_FORM':{
             let newState = {
                 ...state,
                 fileSistem: {
@@ -88,14 +88,14 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'closeAllModalWindow':{
+        case 'CLOSE_ALL_MODAL_WINDOW':{
             let newState = {
                 ...state,
                 fileSistem: getFileSistemWithCloseModalWindow(state)
             }
             return newState;
         }
-        case 'createNewFolder':{
+        case 'CREATE_NEW_FOLDER':{
             const newFolderName = action.payload;
             if(isValidNewFolderName(newFolderName)){
                 const newtFolderId = state.fileSistem.items[state.fileSistem.items.length - 1].id + 1;
@@ -122,7 +122,7 @@ const reducer = (state = initialState, action) =>{
             }
             return state;
         }
-        case 'openCreateNewTaskForm':{
+        case 'OPEN_CREATE_NEW_TASK_FORM':{
             let newState = {
                 ...state,
                 fileSistem: {
@@ -132,7 +132,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'CreateNewTask':{
+        case 'CREATE_NEW_TASK':{
             const ObjFormVal = action.payload.getObjFormVal;
             if(isValidFieldsNewTask){
                 const temporaryId = action.payload.temporaryId;
@@ -160,7 +160,7 @@ const reducer = (state = initialState, action) =>{
             }
             return state;
         }
-        case 'changeStatusAndSetIdForTaskByTemporaryId':{
+        case 'CHANGE_STATUS_AND_SET_ID_FOR_TASK_BY_TEMPORARY_ID':{
             const {temporaryId, status, id} = action.payload;
             const tasksArr = [...state.tasks];
             let taskIdx = getIndexTaskByTemporaryId(state, temporaryId);
@@ -181,7 +181,7 @@ const reducer = (state = initialState, action) =>{
             console.log(newState);
             return newState;
         }
-        case 'setTasks':{
+        case 'SET_TASKS':{
             const newState = {
                 ...state,
                 tasks:action.payload
@@ -189,7 +189,7 @@ const reducer = (state = initialState, action) =>{
             return newState;
 
         }
-        case 'setFileSystemItems':{
+        case 'SET_FILE_SYSTEM_ITEMS':{
             const newState = {
                 ...state,
                 fileSistem:{
@@ -200,7 +200,7 @@ const reducer = (state = initialState, action) =>{
             return newState;
 
         }
-        case 'setStore':{
+        case 'SET_STORE':{
             let tasks;
             let fileSystemItems;
             let ongoingTasksArr;
@@ -222,7 +222,7 @@ const reducer = (state = initialState, action) =>{
             return newState;
 
         }
-        case 'startTask':{
+        case 'START_TASK':{
             const newState = {
                 ...state,
                 ongoingTasksArr: [
@@ -236,7 +236,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'increaseTemporaryIdForTask': {
+        case 'INCREASE_TEMPORARY_ID_FOR_TASK': {
             const newState = {
                 ...state,
                 other_inf:{
@@ -246,7 +246,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'setOngoingTasks':{
+        case 'SET_ONGOING_TASKS':{
             const newState = {
                 ...state,
                 ongoingTasksArr:[
@@ -256,14 +256,14 @@ const reducer = (state = initialState, action) =>{
             return newState;
 
         }
-        case 'setTimeTask':{
+        case 'SET_TIME_TASK':{
             const newState = {
                 ...state,
                 timeTaskArr:action.payload
             }
             return newState;
         }
-        case 'setSwitchableOngoingTask':{
+        case 'SET_SWITCHABLE_ONGOING_TASK':{
             const newState = {
                 ...state,
                 other_inf:{
@@ -273,7 +273,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'setDateRange':{
+        case 'SET_DATE_RANGE':{
                 const newState = {
                     ...state,
                     statistic:{
@@ -284,7 +284,7 @@ const reducer = (state = initialState, action) =>{
                 }
                 return newState;
         }
-        case 'setDateRangeStartDate':{
+        case 'SET_DATE_RANGE_START_DATE':{
                 const newState = {
                     ...state,
                     statistic:{
@@ -298,7 +298,7 @@ const reducer = (state = initialState, action) =>{
                 }
                 return newState;
         }
-        case 'setDateRangeEndDate':{
+        case 'SET_DATE_RANGE_END_DATE':{
                 const newState = {
                     ...state,
                     statistic:{
@@ -312,7 +312,7 @@ const reducer = (state = initialState, action) =>{
                 }
                 return newState;
         }
-        case 'setStatChartsTaskArr':{
+        case 'SET_STAT_CHARTS_TASK_ARR':{
                 const newState = {
                     ...state,
                     statistic:{
@@ -326,7 +326,7 @@ const reducer = (state = initialState, action) =>{
                 }
                 return newState;
         }
-        case 'pushOrRemIdForStatChartTaskArr':{
+        case 'PUSH_OR_REM_ID_FOR_STAT_CHART_TASK_ARR':{
                 const newIdChartTask = action.payload;
                 const chartTaskArr = state.statistic.charts.tasksArr;
                 const idxNewId = chartTaskArr.indexOf(newIdChartTask);
@@ -360,7 +360,7 @@ const reducer = (state = initialState, action) =>{
                 }
                 return state;
         }
-        case 'openRenameFolderForm':{
+        case 'OPEN_RENAME_FOLDER_FORM':{
             const newState = {
                 ...state,
                 fileSistem:{
@@ -370,7 +370,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'setFolderNotAvailable':{
+        case 'SET_FOLDER_NOT_AVAILABLE':{
             const folderId = action.payload;
             const newFileSysItems = state.fileSistem.items.map((item) => Object.assign({}, item));
             newFileSysItems.forEach((item) => {
@@ -388,7 +388,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'setFolderAvailable':{
+        case 'SET_FOLDER_AVAILABLE':{
             const folderId = action.payload;
             const newFileSysItems = state.fileSistem.items.map((item) => Object.assign({}, item));
             newFileSysItems.forEach((item) => {
@@ -406,7 +406,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'setReplaceFolderId':{
+        case 'SET_REPLACE_FOLDER_ID':{
             // default: -1;
             const newState = {
                 ...state,
@@ -417,7 +417,7 @@ const reducer = (state = initialState, action) =>{
             }
             return newState;
         }
-        case 'openFiSyOptionsPanel':{
+        case 'OPEN_FI_SY_OPTIONS_PANEL':{
             // default: -1;
             const newState = {
                 ...state,

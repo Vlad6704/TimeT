@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
+      <change afterPath="$PROJECT_DIR$/src/redux_components/action_type.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemReduser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hoc/with-service/with-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hoc/with-service/with-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/statistic/statistic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/statistic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/statistic/timeStatistic_class/timeStat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/timeStatistic_class/timeStat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/reducer.js" afterDir="false" />
     </list>
     <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -86,6 +91,11 @@
       <workItem from="1585168258449" duration="5956000" />
       <workItem from="1585174931321" duration="859000" />
       <workItem from="1585327000083" duration="1561000" />
+      <workItem from="1585429441550" duration="1243000" />
+      <workItem from="1585498081540" duration="7653000" />
+      <workItem from="1585682633253" duration="668000" />
+      <workItem from="1585751067800" duration="9421000" />
+      <workItem from="1585857782589" duration="460000" />
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>
@@ -116,17 +126,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(fileSystem):add-styling" />
     <option name="LAST_COMMIT_MESSAGE" value="feat(fileSystem):add-styling" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js</url>
-          <line>116</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

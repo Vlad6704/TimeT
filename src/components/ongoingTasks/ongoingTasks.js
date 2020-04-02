@@ -13,7 +13,7 @@ const moment = extendMoment(Moment);
 class OngoingTasks extends React.Component {
 
 
-     getPassedTime(item, startTime = 0){
+    getPassedTime(item, startTime = 0){
         const timeStat = new TimeStat(this.props.timeTaskArr,this.props.app_options.timeShift);
         let totalSum = 0;
         const timeFromState = timeStat.getSumTimeForTaskForToday(item.id);
@@ -63,9 +63,6 @@ class OngoingTasks extends React.Component {
     render() {
         const {ongoingTasksArr,tasks,timeTaskArr,app_options, service,setOngoingTasks,setSwitchableOngoingTask, other_inf} = this.props;
 
-
-
-
         const stopTaskHandler = (taskId)=>{
             service.stopTask(taskId).then((response)=>{
                 // console.log(response.data);
@@ -74,7 +71,6 @@ class OngoingTasks extends React.Component {
 
             });
         }
-
         const switchableHandler = (taskId) =>{
             if(taskId === other_inf.switchableTaskId){
                 setSwitchableOngoingTask(-1);
@@ -82,7 +78,6 @@ class OngoingTasks extends React.Component {
                 setSwitchableOngoingTask(taskId);
             }
         }
-
         function getTaskById(id){
             return tasks.find((item) =>{
                 return item.id == id

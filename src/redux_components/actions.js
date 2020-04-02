@@ -1,29 +1,58 @@
-export const onSerfing = (payload) => ({type:'OnSerfing', payload});
-export const onGoToPrev = () => ({type:'onGoToPrev'});
-export const onGoToHome = () => ({type:'onGoToHome'});
-export const openCreateFolderForm = () => ({type:'openCreateFolderForm'});
-export const closeAllModalWindow = () => ({type:'closeAllModalWindow'});
-export const createNewFolder = (payload) => ({type:'createNewFolder',payload});
-export const openCreateNewTaskForm = () => ({type:'openCreateNewTaskForm'});
-export const CreateNewTask = (payload) => ({type:'CreateNewTask',payload});
-export const setTasks = (payload) => ({type:'setTasks',payload});
-export const setFileSystemItems = (payload) => ({type:'setFileSystemItems',payload});
-export const setStore = (payload) => ({type:'setStore',payload});
-export const startTask = (payload) => ({type:'startTask',payload});
-export const increaseTemporaryIdForTask = () => ({type:'increaseTemporaryIdForTask'});
-export const changeStatusAndSetIdForTaskByTemporaryId = (payload) => ({type:'changeStatusAndSetIdForTaskByTemporaryId',payload});
-export const setOngoingTasks = (payload) => ({type:'setOngoingTasks',payload});
-export const setTimeTask = (payload) => ({type:'setTimeTask',payload});
-export const setSwitchableOngoingTask = (payload) => ({type:'setSwitchableOngoingTask',payload});
-export const setDateRange = (payload) => ({type:'setDateRange',payload});
-export const setDateRangeStartDate = (payload) => ({type:'setDateRangeStartDate',payload});
-export const setDateRangeEndDate = (payload) => ({type:'setDateRangeEndDate',payload});
-export const setStatChartsTaskArr = (payload) => ({type:'setStatChartsTaskArr',payload});
-export const pushOrRemIdForStatChartTaskArr = (payload) => ({type:'pushOrRemIdForStatChartTaskArr',payload});
-export const openRenameFolderForm = () => ({type:'openRenameFolderForm'});
-export const setFolderNotAvailable = (folderId) => ({type:'setFolderNotAvailable',payload:folderId});
-export const setFolderAvailable = (folderId) => ({type:'setFolderAvailable',payload:folderId});
-export const setReplaceFolderId = (folderId) => ({type:'setReplaceFolderId',payload: folderId});
-export const openFiSyOptionsPanel = (taskId) => ({type:'openFiSyOptionsPanel',payload: taskId});
+import DataStoreService from "../services/service";
+import * as action_type from './action_type';
 
+const service = new DataStoreService();
+
+export const setTasks = (payload) => ({type: action_type.SET_TASKS,payload});
+export const setStore = (payload) => ({type:action_type.SET_STORE,payload});
+export const startTask = (payload) => ({type:action_type.START_TASK,payload});
+
+//fileSystemActions
+export const onSerfing = (payload) => ({type:action_type.ON_SERFING, payload});
+export const onGoToPrev = () => ({type:action_type.ON_GO_TO_PREV});
+export const onGoToHome = () => ({type:action_type.ON_GO_TO_HOME});
+export const openCreateFolderForm = () => ({type: action_type.OPEN_CREATE_FOLDER_FORM});
+export const closeAllModalWindow = () => ({type: action_type.CLOSE_ALL_MODAL_WINDOW});
+export const createNewFolder = (payload) => ({type:action_type.CREATE_NEW_FOLDER,payload});
+export const openCreateNewTaskForm = () => ({type:action_type.OPEN_CREATE_NEW_TASK_FORM});
+export const CreateNewTask = (payload) => ({type:action_type.CREATE_NEW_TASK,payload});
+export const setFileSystemItems = (payload) => ({type:action_type.SET_FILE_SYSTEM_ITEMS,payload});
+export const openRenameFolderForm = () => ({type:action_type.OPEN_RENAME_FOLDER_FORM});
+export const setFolderNotAvailable = (folderId) => ({type:action_type.SET_FOLDER_NOT_AVAILABLE,payload:folderId});
+export const setFolderAvailable = (folderId) => ({type:action_type.SET_FOLDER_AVAILABLE,payload:folderId});
+export const setReplaceFolderId = (folderId) => ({type:action_type.SET_REPLACE_FOLDER_ID,payload: folderId});
+export const openFiSyOptionsPanel = (taskId) => ({type:action_type.OPEN_FI_SY_OPTIONS_PANEL,payload: taskId});
+
+//tasksActions
+export const increaseTemporaryIdForTask = () => ({type:action_type.INCREASE_TEMPORARY_ID_FOR_TASK});
+export const changeStatusAndSetIdForTaskByTemporaryId = (payload) => ({type:action_type.CHANGE_STATUS_AND_SET_ID_FOR_TASK_BY_TEMPORARY_ID,payload});
+export const setOngoingTasks = (payload) => ({type:action_type.SET_ONGOING_TASKS,payload});
+export const setTimeTask = (payload) => ({type:action_type.SET_TIME_TASK,payload});
+export const setSwitchableOngoingTask = (payload) => ({type:action_type.SET_SWITCHABLE_ONGOING_TASK,payload});
+
+//statisticActions
+export const setDateRange = (payload) => ({type:action_type.SET_DATE_RANGE,payload});
+export const setDateRangeStartDate = (payload) => ({type:action_type.SET_DATE_RANGE_START_DATE,payload});
+export const setDateRangeEndDate = (payload) => ({type:action_type.SET_DATE_RANGE_END_DATE,payload});
+export const setStatChartsTaskArr = (payload) => ({type:action_type.SET_STAT_CHARTS_TASK_ARR,payload});
+export const pushOrRemIdForStatChartTaskArr = (payload) => ({type:action_type.PUSH_OR_REM_ID_FOR_STAT_CHART_TASK_ARR,payload});
+
+export const fetchStore = () => {
+    return (dispatch) => {
+        service.getStore().then((response) =>{
+            // console.log(response.data);
+            dispatch(setStore(response.data));
+            if(response.data.activeTask[0]) dispatch(setSwitchableOngoingTask(response.data.activeTask[0].id));
+        }, (error) =>{
+            console.log(error)
+        });
+        service.getTimeTask().then((response) => {
+
+            dispatch(setTimeTask(response.data));
+
+        },(error)=>{
+
+        })
+    }
+}
 
