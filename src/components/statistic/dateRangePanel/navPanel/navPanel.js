@@ -72,12 +72,12 @@ const NavPanel = ({startDate,endDate,isIntegerMeasure,currMeasure,setDateRangeSt
 
 const mapStateToProps = (state) =>{
     return{
-        firstDayOfTheWeek:state.app_options.firstDayOfTheWeek,
-        isIntegerMeasure:state.statistic.dateRange.isIntegerMeasure,
-        dateRange:state.statistic.dateRange,
-        startDate:state.statistic.dateRange.startDate,
-        endDate:state.statistic.dateRange.endDate,
-        currMeasure:state.statistic.dateRange.currMeasure,
+        firstDayOfTheWeek:state.appOptions.firstDayOfTheWeek,
+        isIntegerMeasure:state.statistics.dateRange.isIntegerMeasure,
+        dateRange:state.statistics.dateRange,
+        startDate:state.statistics.dateRange.startDate,
+        endDate:state.statistics.dateRange.endDate,
+        currMeasure:state.statistics.dateRange.currMeasure,
     }
 }
 export default connect(mapStateToProps,actions)(NavPanel);

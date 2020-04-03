@@ -69,12 +69,12 @@ const MeasurePanel = ({currMeasure,dateRange,startDate,endDate,setDateRange,isIn
 
 const mapStateToProps = (state) =>{
     return{
-        firstDayOfTheWeek:state.app_options.firstDayOfTheWeek,
-        startDate:state.statistic.dateRange.startDate,
-        endDate:state.statistic.dateRange.endDate,
-        isIntegerMeasure:state.statistic.dateRange.isIntegerMeasure,
-        dateRange:state.statistic.dateRange,
-        currMeasure:state.statistic.dateRange.currMeasure,
+        firstDayOfTheWeek:state.appOptions.firstDayOfTheWeek,
+        startDate:state.statistics.dateRange.startDate,
+        endDate:state.statistics.dateRange.endDate,
+        isIntegerMeasure:state.statistics.dateRange.isIntegerMeasure,
+        dateRange:state.statistics.dateRange,
+        currMeasure:state.statistics.dateRange.currMeasure,
     }
 }
 

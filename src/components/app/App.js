@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import './App.css';
-import FileSystem from '../fileSistem/fileSystem'
+import FileSystem from '../fileSystem/fileSystem'
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";

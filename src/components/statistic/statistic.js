@@ -85,10 +85,10 @@ class Statistic extends Component{
 const mapStateToProps = (state)=>{
 
     return {
-        statisticObj:state.statistic,
-        tasks:state.tasks,
-        timeTaskArr:state.timeTaskArr,
-        app_options:state.app_options,
+        statisticObj:state.statistics,
+        tasks:state.tasks.items,
+        timeTaskArr:state.statistics.timeTaskArr,
+        app_options:state.appOptions,
 
     }
 

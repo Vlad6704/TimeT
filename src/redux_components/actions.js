@@ -15,7 +15,16 @@ export const openCreateFolderForm = () => ({type: action_type.OPEN_CREATE_FOLDER
 export const closeAllModalWindow = () => ({type: action_type.CLOSE_ALL_MODAL_WINDOW});
 export const createNewFolder = (payload) => ({type:action_type.CREATE_NEW_FOLDER,payload});
 export const openCreateNewTaskForm = () => ({type:action_type.OPEN_CREATE_NEW_TASK_FORM});
-export const CreateNewTask = (payload) => ({type:action_type.CREATE_NEW_TASK,payload});
+export const setNewTask = (payload) => ({type:action_type.CREATE_NEW_TASK,payload});
+export const CreateNewTask = (payload) => {
+    return (dispatch,getState)  => {
+        const state = getState();
+        payload.folderId = state.fileSystem.currentItemId;
+        dispatch(setNewTask(payload));
+        dispatch(closeAllModalWindow());
+
+    }
+};
 export const setFileSystemItems = (payload) => ({type:action_type.SET_FILE_SYSTEM_ITEMS,payload});
 export const openRenameFolderForm = () => ({type:action_type.OPEN_RENAME_FOLDER_FORM});
 export const setFolderNotAvailable = (folderId) => ({type:action_type.SET_FOLDER_NOT_AVAILABLE,payload:folderId});
@@ -41,8 +50,21 @@ export const fetchStore = () => {
     return (dispatch) => {
         service.getStore().then((response) =>{
             // console.log(response.data);
-            dispatch(setStore(response.data));
-            if(response.data.activeTask[0]) dispatch(setSwitchableOngoingTask(response.data.activeTask[0].id));
+            const data = response.data;
+            let tasks;
+            let fileSystemItems;
+            let ongoingTasksArr;
+            if(data.tasks) tasks = JSON.parse(data.tasks);
+            else  tasks = [];
+            if(data.fileSystem) fileSystemItems = JSON.parse(data.fileSystem);
+            else fileSystemItems = [];
+            if(data.activeTask) ongoingTasksArr = data.activeTask;
+            else ongoingTasksArr = [];
+            dispatch(setTasks(tasks));
+            dispatch(setFileSystemItems(fileSystemItems));
+            dispatch(setOngoingTasks(ongoingTasksArr));
+
+            if(data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
         }, (error) =>{
             console.log(error)
         });

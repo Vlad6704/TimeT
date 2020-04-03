@@ -34,7 +34,7 @@ class DateRangePanel extends React.Component {
 
 const mapStateToProps = (state) =>{
     return {
-        dateRange: state.statistic.dateRange,
+        dateRange: state.statistics.dateRange,
 
     }
 }

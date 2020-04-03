@@ -61,7 +61,7 @@ class OngoingTasks extends React.Component {
     }
 
     render() {
-        const {ongoingTasksArr,tasks,timeTaskArr,app_options, service,setOngoingTasks,setSwitchableOngoingTask, other_inf} = this.props;
+        const {ongoingTasksArr,tasks,timeTaskArr,app_options, service,setOngoingTasks,setSwitchableOngoingTask, switchableTaskId} = this.props;
 
         const stopTaskHandler = (taskId)=>{
             service.stopTask(taskId).then((response)=>{
@@ -72,7 +72,7 @@ class OngoingTasks extends React.Component {
             });
         }
         const switchableHandler = (taskId) =>{
-            if(taskId === other_inf.switchableTaskId){
+            if(taskId === switchableTaskId){
                 setSwitchableOngoingTask(-1);
             }else{
                 setSwitchableOngoingTask(taskId);
@@ -92,7 +92,7 @@ class OngoingTasks extends React.Component {
 
         const tasksItems = () =>
         {
-            if(ongoingTasksArr.length == 0 || tasks.length == 0) return false;
+            if(ongoingTasksArr == undefined || ongoingTasksArr.length == 0 || tasks.length == 0) return false;
 
 
             return ongoingTasksArr.map((item,idx) => {
@@ -100,7 +100,7 @@ class OngoingTasks extends React.Component {
                 const stage =  getStageById(task, item.stageId);
                 console.log(ongoingTasksArr);
                 let classList = 'ongoingTasksItem';
-                if(other_inf.switchableTaskId == item.id) classList +=' switchable';
+                if(switchableTaskId == item.id) classList +=' switchable';
                 return (
 
                     <div className={classList}>
@@ -142,11 +142,11 @@ class OngoingTasks extends React.Component {
 
 const mapStateToProps = (state)=>{
     return {
-        ongoingTasksArr:state.ongoingTasksArr,
-        tasks:state.tasks,
-        other_inf: state.other_inf,
+        ongoingTasksArr:state.ongoingTasks.items,
+        tasks:state.tasks.items,
+        switchableTaskId: state.ongoingTasks.switchableTaskId,
         timeTaskArr:state.timeTaskArr,
-        app_options:state.app_options,
+        app_options:state.appOptions,
     }
 
 }

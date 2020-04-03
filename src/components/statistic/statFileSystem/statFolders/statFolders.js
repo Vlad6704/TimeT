@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as actions from '../../../../redux_components/actions';
 import TimeStat from '../../timeStatistic_class/timeStat';
 
-const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr}) => {
+const StatFolders = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr}) => {
     const [arrStatOpenFolderIds, setArrStatOpenFolderIds] = useState([]);
     const timeStat = new TimeStat(timeTaskArr,app_options.timeShift);
     const folderClickHandler = (e,folderId) =>{
@@ -17,13 +17,13 @@ const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_opti
         }
         setArrStatOpenFolderIds(newarrStatOpenFolderIds);
     }
-    const getIdAllTasksInsideFolder = (folderId,arrFileSistemItems, tasks) =>{
+    const getIdAllTasksInsideFolder = (folderId,arrfileSystemItems, tasks) =>{
         //including descendants
-        let fileSistemReduce;
+        let fileSystemReduce;
         let tasksReduce;
-        fileSistemReduce = arrFileSistemItems.reduce( (resArr=[],item) => {
+        fileSystemReduce = arrfileSystemItems.reduce( (resArr=[],item) => {
             if(folderId === item.parentsId){
-                resArr.push(...getIdAllTasksInsideFolder(item.id,arrFileSistemItems, tasks));
+                resArr.push(...getIdAllTasksInsideFolder(item.id,arrfileSystemItems, tasks));
             }
             return resArr;
 
@@ -34,7 +34,7 @@ const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_opti
             }
             return taskArr;
         },[]);
-         return fileSistemReduce.concat(tasksReduce);
+         return fileSystemReduce.concat(tasksReduce);
 
 
     }
@@ -56,25 +56,25 @@ const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_opti
             }
         })
     }
-    const getFileSystemTree = (arrFileSistemItems,parentId) => {
+    const getFileSystemTree = (arrfileSystemItems,parentId) => {
 
-        return arrFileSistemItems.map(fileSistemItem => {
+        return arrfileSystemItems.map(fileSystemItem => {
 
-            if(fileSistemItem.parentsId === parentId){
-                // console.log(getIdAllTasksInsideFolder(fileSistemItem.id,fileSistemObj.items, tasks));
+            if(fileSystemItem.parentsId === parentId){
+                // console.log(getIdAllTasksInsideFolder(fileSystemItem.id,fileSystemObj.items, tasks));
                 return (
-                    <div className={`statFolder level_id_${parentId+1} ${arrStatOpenFolderIds.some((id) => id === fileSistemItem.id)?'open':null}`}
-                         onClick={(ev)=>folderClickHandler(ev,fileSistemItem.id)}
+                    <div className={`statFolder level_id_${parentId+1} ${arrStatOpenFolderIds.some((id) => id === fileSystemItem.id)?'open':null}`}
+                         onClick={(ev)=>folderClickHandler(ev,fileSystemItem.id)}
                     >
-                        <p className={'statFolderTitle'}>{fileSistemItem.name}
+                        <p className={'statFolderTitle'}>{fileSystemItem.name}
                             <span className={'sumTime'}>
 
-                                {timeStat.getSumTaskTimeByDateIntervalAndTaskArr(startDate,endDate,getIdAllTasksInsideFolder(fileSistemItem.id,fileSistemObj.items, tasks), -1)}
+                                {timeStat.getSumTaskTimeByDateIntervalAndTaskArr(startDate,endDate,getIdAllTasksInsideFolder(fileSystemItem.id,fileSystemObj.items, tasks), -1)}
                             </span>
                         </p>
                         <div className={"inner"}>
-                            {getFileSystemTree(arrFileSistemItems,fileSistemItem.id)}
-                            {getTasksArrDyFolderId(tasks,fileSistemItem.id)}
+                            {getFileSystemTree(arrfileSystemItems,fileSystemItem.id)}
+                            {getTasksArrDyFolderId(tasks,fileSystemItem.id)}
                         </div>
                     </div>
                 )
@@ -84,7 +84,7 @@ const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_opti
 
     return (
         <div>
-            {getFileSystemTree(fileSistemObj.items,-1)}
+            {getFileSystemTree(fileSystemObj.items,-1)}
             {getTasksArrDyFolderId(tasks,-1)}
         </div>
     )
@@ -92,14 +92,14 @@ const StatFolders = ({startDate,endDate,tasks,fileSistemObj,timeTaskArr,app_opti
 
 const mapStateToProps = (state) =>{
     return {
-        statChartsTasksArr:state.statistic.charts.tasksArr,
-        tasks: state.tasks,
-        fileSistemObj: state.fileSistem,
-        dateRange: state.statistic.dateRange,
-        timeTaskArr:state.timeTaskArr,
-        app_options:state.app_options,
-        startDate:state.statistic.dateRange.startDate,
-        endDate:state.statistic.dateRange.endDate,
+        statChartsTasksArr:state.statistics.charts.tasksArr,
+        tasks: state.tasks.items,
+        fileSystemObj: state.fileSystem,
+        dateRange: state.statistics.dateRange,
+        timeTaskArr:state.statistics.timeTaskArr,
+        app_options:state.appOptions,
+        startDate:state.statistics.dateRange.startDate,
+        endDate:state.statistics.dateRange.endDate,
     }
 }
 
