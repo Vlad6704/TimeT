@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from "react-redux";
-import * as actions from "../../../redux_components/actions";
+import {onGoToPrev, closeAllModalWindow} from "../../../redux_components/fileSystem/fileSystemActions";
 import {bindActionCreators} from "redux";
 
 const GoToPrev = ({onGoToPrev}) =>{
@@ -21,11 +21,11 @@ const mapStateToProps = (state) =>{
 }
 
 const mapDispatchToProps = (dispatch) =>{
-    const {onGoToPrev, closeAllModalWindow} = bindActionCreators(actions , dispatch);
+        const bindActions = bindActionCreators({onGoToPrev, closeAllModalWindow} , dispatch);
     return{
         onGoToPrev: ()=>{
-            closeAllModalWindow();
-            onGoToPrev();
+            bindActions.closeAllModalWindow();
+            bindActions.onGoToPrev();
         }
     }
 

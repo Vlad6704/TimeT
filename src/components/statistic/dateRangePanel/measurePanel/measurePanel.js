@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import './measurePanel.css';
-import * as actions from "../../../../redux_components/actions";
+import * as actions from "../../../../redux_components/statistics/statisticsActions";
 import moment from "moment";
 
 const MeasurePanel = ({currMeasure,dateRange,startDate,endDate,setDateRange,isIntegerMeasure,firstDayOfTheWeek,setDateRangeStartDate,setDateRangeEndDate}) =>{

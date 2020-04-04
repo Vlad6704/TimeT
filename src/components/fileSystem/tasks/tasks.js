@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../../../redux_components/actions';
+import * as actions from '../../../redux_components/fileSystem/fileSystemActions';
+import {setOngoingTasks} from '../../../redux_components/ongoingTasks/ongoingTasksActions';
 import WithService from "../../hoc/with-service/with-service";
 import Stages from "../stages/stages";
 import './tasks.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTasks, faPencilAlt} from '@fortawesome/free-solid-svg-icons'
+import {bindActionCreators} from "redux";
 
 const Tasks = ({tasks,switchableTaskId ,startTask,currentItemId, service,setOngoingTasks, openFiSyOptionsPanel,setSwitchableOngoingTask}) => {
 
@@ -95,7 +97,12 @@ const mapStateToProps = (state) =>{
     }
 };
 
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        ...bindActionCreators({...actions,setOngoingTasks}, dispatch )
+    }
+}
 
 
-
-export default WithService()(connect(mapStateToProps,actions)(Tasks));
+export default WithService()(connect(mapStateToProps,mapDispatchToProps)(Tasks));

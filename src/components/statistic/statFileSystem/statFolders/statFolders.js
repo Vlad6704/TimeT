@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../../../../redux_components/actions';
+import * as actions from '../../../../redux_components/statistics/statisticsActions';
 import TimeStat from '../../timeStatistic_class/timeStat';
 
 const StatFolders = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr}) => {

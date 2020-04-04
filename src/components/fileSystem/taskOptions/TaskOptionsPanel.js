@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import RenameTaskForm from './rename/RenameTaskForm/RenameTaskForm';
 import {connect} from "react-redux";
-import * as actions from "../../../redux_components/actions";
+import * as actions from "../../../redux_components/fileSystem/fileSystemActions";
 import RemoveTaskButton from './remove/RemoveTaskButton/RemoveTaskButton';
 
 const TaskOptionsPanel = ()=> {

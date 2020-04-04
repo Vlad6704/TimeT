@@ -15,7 +15,7 @@ import  CutFolderButton from './folderOptions/replace/cutFolderButton/CutFolderB
 import  PasteFolderButton from './folderOptions/replace/pasteFolderButton/PasteFolderButton';
 import  TaskOptionsPanel from './taskOptions/TaskOptionsPanel';
 import {connect} from "react-redux";
-import * as actions from "../../redux_components/actions";
+import * as actions from "../../redux_components/fileSystem/fileSystemActions";
 import WithService from '../hoc/with-service/with-service'
 
 class FileSystem extends React.Component{

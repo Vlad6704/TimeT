@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from "react-redux";
-import * as actions from "../../../../redux_components/actions";
+import * as actions from "../../../../redux_components/fileSystem/fileSystemActions";
 import WithService from "../../../hoc/with-service/with-service";
 
 const getInputVal = () =>{
@@ -51,11 +51,11 @@ const getInputVal = () =>{
 
 
 
-const CreateNewTaskForm = ({CreateNewTask,service,temporaryId,increaseTemporaryIdForTask, folderId,changeStatusAndSetIdForTaskByTemporaryId}) =>{
+const CreateNewTaskForm = ({createNewTask,service,temporaryId,increaseTemporaryIdForTask, folderId,changeStatusAndSetIdForTaskByTemporaryId}) =>{
     const GetNewIdAndCreateNewTask = ()=>{
         const ObjFormVal = getObjFormVal();
         ObjFormVal.folderId = folderId;
-        CreateNewTask({
+        createNewTask({
             getObjFormVal: ObjFormVal,
             temporaryId
         });

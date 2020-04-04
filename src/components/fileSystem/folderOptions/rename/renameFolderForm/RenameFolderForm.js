@@ -1,7 +1,7 @@
 import React from 'react';
 import WithService from "../../../../hoc/with-service/with-service";
 import {connect} from "react-redux";
-import * as actions from "../../../../../redux_components/actions";
+import * as actions from "../../../../../redux_components/fileSystem/fileSystemActions";
 
 const getInputVal = () =>{
     return document.getElementById("folderName").value;

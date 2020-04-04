@@ -4,7 +4,7 @@ import NavPanel from './navPanel/navPanel';
 import CurrentDateRangeSetUp from './currentDateRangeSetUp/currentDateRangeSetUp';
 import moment from 'moment';
 import {connect} from "react-redux";
-import * as actions from "../../../redux_components/actions";
+import * as actions from "../../../redux_components/statistics/statisticsActions";
 
 class DateRangePanel extends React.Component {
 

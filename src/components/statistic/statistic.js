@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
-import * as actions from "../../redux_components/actions";
+import * as actions from "../../redux_components/statistics/statisticsActions";
 import moment from 'moment';
 import TimeStat from './timeStatistic_class/timeStat';
 import StatFileSystem from './statFileSystem/statFileSystem';

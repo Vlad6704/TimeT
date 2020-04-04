@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
-import * as actions from "../../../redux_components/actions";
+import { onGoToHome} from "../../../redux_components/fileSystem/fileSystemActions";
+import {bindActionCreators} from "redux";
 
 const GoToHome = ({onGoToHome}) =>{
     return (
@@ -19,4 +20,12 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps,actions)(GoToHome);
+const mapDispatchToProps = (dispatch) =>{
+
+    return{
+        onGoToHome: bindActionCreators(onGoToHome , dispatch)
+    }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(GoToHome);
