@@ -18,6 +18,8 @@ const initialState = {
     isOpenCreateFolderForm:false,
     isOpenCreateTaskForm:false,
     isOpenRenameFolderForm:false,
+    isOpenRenameTaskForm:false,
+    idTaskWithOpenStageList:-1,
     taskOptionsPanel:{
         optionsPanelIsOpenForTask:-1,
 
@@ -169,6 +171,20 @@ const  fileSystemReduser = (state = initialState, action) => {
 
             return newState;
         }
+        case 'OPEN_RENAME_TASK_FORM': {
+            const newState = {
+                ...state,
+                isOpenRenameTaskForm:true,
+            }
+            return newState;
+        }
+        case 'SET_ID_TASK_WITH_OPEN_STAGE_LIST': {
+            const newState = {
+                ...state,
+                idTaskWithOpenStageList:action.payload,
+            }
+            return newState;
+        }
         default:
             return state;
     }
@@ -180,6 +196,8 @@ const getfileSystemWithCloseModalWindow = (state)=>{
         isOpenCreateFolderForm:false,
         isOpenCreateTaskForm: false,
         isOpenRenameFolderForm:false,
+        isOpenRenameTaskForm:false,
+        idTaskWithOpenStageList: -1,
         taskOptionsPanel:{
             optionsPanelIsOpenForTask:-1,
         },

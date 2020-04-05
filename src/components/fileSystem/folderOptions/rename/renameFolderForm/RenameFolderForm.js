@@ -7,17 +7,9 @@ const getInputVal = () =>{
     return document.getElementById("folderName").value;
 }
 
-const RenameFolderForm = ({service,currentFolderId,setFileSystemItems})=>{
+const RenameFolderForm = ({renameFolderHandler})=>{
 
-    const renameFolderHandler = (folderName)=>{
 
-        service.renameFolder({folderName:folderName,folderId:currentFolderId}).then((response)=>{
-            // console.log(response.data);
-            setFileSystemItems(response.data);
-        },(error)=>{
-
-        });
-    }
     return (
         <div>
             <input id={'folderName'}/>
@@ -28,7 +20,7 @@ const RenameFolderForm = ({service,currentFolderId,setFileSystemItems})=>{
 
 const mapStateToProps = (state) =>{
     return {
-        currentFolderId:state.fileSystem.currentItemId,
+
     }
 }
 

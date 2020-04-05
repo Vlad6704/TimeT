@@ -3,20 +3,10 @@ import {connect} from 'react-redux';
 import * as actions from '../../../../redux_components/statistics/statisticsActions';
 import TimeStat from '../../timeStatistic_class/timeStat';
 
-const StatFolders = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr}) => {
-    const [arrStatOpenFolderIds, setArrStatOpenFolderIds] = useState([]);
+const StatFolders = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr, folderClickHandler, arrStatOpenFolderIds}) => {
+    // const [arrStatOpenFolderIds, setArrStatOpenFolderIds] = useState([]);
     const timeStat = new TimeStat(timeTaskArr,app_options.timeShift);
-    const folderClickHandler = (e,folderId) =>{
-        e.stopPropagation();
-        let newarrStatOpenFolderIds;
-        const idxFolderId = arrStatOpenFolderIds.indexOf(folderId);
 
-        if(idxFolderId === -1) newarrStatOpenFolderIds = [...arrStatOpenFolderIds,folderId ];
-        else {
-            newarrStatOpenFolderIds = [...arrStatOpenFolderIds.slice(0,idxFolderId),...arrStatOpenFolderIds.slice(idxFolderId+1)];
-        }
-        setArrStatOpenFolderIds(newarrStatOpenFolderIds);
-    }
     const getIdAllTasksInsideFolder = (folderId,arrfileSystemItems, tasks) =>{
         //including descendants
         let fileSystemReduce;
@@ -100,6 +90,8 @@ const mapStateToProps = (state) =>{
         app_options:state.appOptions,
         startDate:state.statistics.dateRange.startDate,
         endDate:state.statistics.dateRange.endDate,
+        arrStatOpenFolderIds:state.statistics.arrStatOpenFolderIds,
+
     }
 }
 

@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import * as actions from '../../../redux_components/fileSystem/fileSystemActions';
 import WithService from "../../hoc/with-service/with-service";
 
-const Stages = ({task,stageClickHandler}) => {
+const Stages = ({task,startTaskHandler}) => {
 
 
     const getStagesArr =  task.stages.map(item => {
         return (
             <div className={"stage"}
-                onClick={()=>stageClickHandler(task.id,item.id)}
+                onClick={()=>startTaskHandler(task.id,item.id)}
             >
                 StageName: {item.name}
                 {item.status == 'creating' && `, status: ${item.status}`}

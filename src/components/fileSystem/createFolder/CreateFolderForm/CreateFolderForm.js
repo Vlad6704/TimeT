@@ -9,19 +9,10 @@ const getInputVal = () =>{
 
 
 
-const CreateFolderForm = ({createNewFolder,currentFolderId, service}) =>{
-    const createNewFolderHandler = (folderName)=>{
-        createNewFolder(folderName);
-        service.createNewFolder({name:folderName,parentsId:currentFolderId}).then((response)=>{
-            console.log(response.data);
-        },(error)=>{
+const CreateFolderForm = ({createNewFolderHandler}) =>{
 
-        });
-    }
     return (
-        <div
-
-        >
+        <div>
             <input id={'nameNewFolder'}/>
             <button onClick={()=> createNewFolderHandler(getInputVal())}>Submit</button>
         </div>
@@ -30,7 +21,7 @@ const CreateFolderForm = ({createNewFolder,currentFolderId, service}) =>{
 
 const mapStateToProps = (state) =>{
     return {
-        currentFolderId:state.fileSystem.currentItemId,
+
     }
 }
 

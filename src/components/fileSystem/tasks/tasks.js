@@ -9,49 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTasks, faPencilAlt} from '@fortawesome/free-solid-svg-icons'
 import {bindActionCreators} from "redux";
 
-const Tasks = ({tasks,switchableTaskId ,startTask,currentItemId, service,setOngoingTasks, openFiSyOptionsPanel,setSwitchableOngoingTask}) => {
+const Tasks = ({taskClickHandler, idTaskWithOpenStageList,tasks,currentItemId,  openFiSyOptionsPanel}) => {
 
-    const [openStageListById, setIdForOpenStageList] = useState(-1);
-
-    const taskClickHandler = (id) => {
-
-        if(isHaveStages(id)) setIdForOpenStageList(id);
-        else{
-            startTaskHandler(id);
-
-        }
-    };
-
-    const startTaskHandler = (taskId, stageId)=>{
-        startTask(taskId);
-        if(switchableTaskId !== -1){
-            service.stopTask(switchableTaskId)
-                .then((response) => {
-                    setSwitchableOngoingTask(taskId);
-                    return service.startTask(taskId, stageId);
-                })
-                .then((response) => {
-                    console.log(response.data);
-                    setOngoingTasks(response.data);
-                }, (error) => {
-
-                });
-
-        }else{
-            service.startTask(taskId, stageId).then((response) => {
-                console.log(response.data);
-                setOngoingTasks(response.data);
-            }, (error) => {
-
-            });
-        }
-    };
-
-    const isHaveStages = (taskId) => {
-        const item = tasks.find((item) => item.id === taskId);
-        return item.stageItemIdx !== -1;
-
-    };
 
     const openFiSyOptionsPanelHandler = (ev,taskId) => {
         ev.stopPropagation();
@@ -69,8 +28,8 @@ const Tasks = ({tasks,switchableTaskId ,startTask,currentItemId, service,setOngo
                             {item.name}
                         </span>
                         {item.status == 'creating' && `, status: ${item.status}`}
-                        {openStageListById === item.id &&
-                             <Stages task={item}  stageClickHandler={startTaskHandler} />
+                        {idTaskWithOpenStageList === item.id &&
+                             <Stages task={item}   />
                         }
                         <div className={'openOptionsButton'} onClick={(ev) => openFiSyOptionsPanelHandler(ev,item.id)}>
                             <FontAwesomeIcon icon={faPencilAlt} />
@@ -93,7 +52,9 @@ const mapStateToProps = (state) =>{
     return {
         tasks: state.tasks.items,
         currentItemId: state.fileSystem.currentItemId,
-        switchableTaskId: state.ongoingTasks.switchableTaskId,
+        idTaskWithOpenStageList: state.fileSystem.idTaskWithOpenStageList,
+
+
     }
 };
 

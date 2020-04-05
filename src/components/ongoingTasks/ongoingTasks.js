@@ -61,23 +61,10 @@ class OngoingTasks extends React.Component {
     }
 
     render() {
-        const {ongoingTasksArr,tasks,timeTaskArr,app_options, service,setOngoingTasks,setSwitchableOngoingTask, switchableTaskId} = this.props;
+        const {ongoingTasksArr,tasks,stopTaskHandler,switchableHandler, switchableTaskId} = this.props;
 
-        const stopTaskHandler = (taskId)=>{
-            service.stopTask(taskId).then((response)=>{
-                // console.log(response.data);
-                setOngoingTasks(response.data);
-            }, (error) => {
 
-            });
-        }
-        const switchableHandler = (taskId) =>{
-            if(taskId === switchableTaskId){
-                setSwitchableOngoingTask(-1);
-            }else{
-                setSwitchableOngoingTask(taskId);
-            }
-        }
+
         function getTaskById(id){
             return tasks.find((item) =>{
                 return item.id == id

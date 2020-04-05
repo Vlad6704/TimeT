@@ -51,24 +51,7 @@ const getInputVal = () =>{
 
 
 
-const CreateNewTaskForm = ({createNewTask,service,temporaryId,increaseTemporaryIdForTask, folderId,changeStatusAndSetIdForTaskByTemporaryId}) =>{
-    const GetNewIdAndCreateNewTask = ()=>{
-        const ObjFormVal = getObjFormVal();
-        ObjFormVal.folderId = folderId;
-        createNewTask({
-            getObjFormVal: ObjFormVal,
-            temporaryId
-        });
-        increaseTemporaryIdForTask();
-        service.createNewTask(ObjFormVal).
-            then((response) =>{
-               console.log(response.data);
-                if(response.data.status === "success") changeStatusAndSetIdForTaskByTemporaryId({temporaryId:temporaryId, status: 'created', id:response.data.idNewTask});
-
-            },
-            (error) =>{       console.log(error)    });
-
-    };
+const CreateNewTaskForm = ({GetNewIdAndCreateNewTask}) =>{
 
     return (
         <div
@@ -85,7 +68,7 @@ const CreateNewTaskForm = ({createNewTask,service,temporaryId,increaseTemporaryI
                 <input id="InputNewStageTitle" />
                 <button id="buttonAddNewStage" onClick={addNewStage}> Add </button>
             </div>
-            <button onClick={()=> GetNewIdAndCreateNewTask()}>
+            <button onClick={()=> GetNewIdAndCreateNewTask(getObjFormVal())}>
                 Submit
             </button>
         </div>
@@ -94,8 +77,7 @@ const CreateNewTaskForm = ({createNewTask,service,temporaryId,increaseTemporaryI
 
 const mapStateToProps = (state) =>{
     return {
-        temporaryId: state.tasks.newTemporaryIdForNewTask,
-        folderId: state.fileSystem.currentItemId,
+
     }
 }
 

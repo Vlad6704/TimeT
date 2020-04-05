@@ -21,12 +21,9 @@ const mapStateToProps = (state) =>{
 }
 
 const mapDispatchToProps = (dispatch) =>{
-        const bindActions = bindActionCreators({onGoToPrev, closeAllModalWindow} , dispatch);
+
     return{
-        onGoToPrev: ()=>{
-            bindActions.closeAllModalWindow();
-            bindActions.onGoToPrev();
-        }
+        onGoToPrev: () => dispatch(onGoToPrev())
     }
 
 }

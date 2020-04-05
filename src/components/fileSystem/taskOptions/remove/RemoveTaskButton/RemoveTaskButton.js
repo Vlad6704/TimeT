@@ -5,21 +5,10 @@ import WithService from "../../../../hoc/with-service/with-service";
 
 
 
-const RemoveTaskButton = ({service,taskId,setTasks,})=>{
-
-    const removeFolderHandler = ()=>{
-        if(!window.confirm("Remove task?"))return false;
-        service.removeTask(taskId).then((response)=>{
-            // console.log(response.data);
-            setTasks(response.data);
-
-        },(error)=>{
-
-        });
-    }
+const RemoveTaskButton = ({removeTaskHandler})=>{
 
     return (
-        <div className={"cursPointSelNon"} onClick={removeFolderHandler}>
+        <div className={"cursPointSelNon"} onClick={removeTaskHandler}>
             Remove Task
         </div>
     )
@@ -27,7 +16,7 @@ const RemoveTaskButton = ({service,taskId,setTasks,})=>{
 
 const mapStateToProps = (state)=>{
     return {
-        taskId:state.fileSystem.taskOptionsPanel.optionsPanelIsOpenForTask,
+
     }
 };
 

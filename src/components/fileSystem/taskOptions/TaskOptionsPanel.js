@@ -4,13 +4,12 @@ import {connect} from "react-redux";
 import * as actions from "../../../redux_components/fileSystem/fileSystemActions";
 import RemoveTaskButton from './remove/RemoveTaskButton/RemoveTaskButton';
 
-const TaskOptionsPanel = ()=> {
+const TaskOptionsPanel = ({isOpenRenameTaskForm,openRenameTaskForm}) => {
 
-    const [isOpenRenameTaskForm, setOpenRenameTaskForm] = useState(false);
 
     return (
         <div className={"TaskOptionsPanel"}>
-            <div className={"renameTaskButton cursPointSelNon"} onClick={() => setOpenRenameTaskForm(true)}>
+            <div className={"renameTaskButton cursPointSelNon"} onClick={openRenameTaskForm}>
                 Rename Task
             </div>
             {isOpenRenameTaskForm &&
@@ -23,7 +22,7 @@ const TaskOptionsPanel = ()=> {
 
 const mapStateToProps = (state) =>{
     return {
-        // optionsPanelIsOpenForTask:state.fileSystem.taskOptionsPanel.optionsPanelIsOpenForTask,
+        isOpenRenameTaskForm: state.fileSystem.isOpenRenameTaskForm
     }
 }
 

@@ -7,17 +7,9 @@ const getInputVal = () =>{
     return document.getElementById("taskName").value;
 }
 
-const RenameTaskForm = ({service,taskId,setTasks})=>{
+const RenameTaskForm = ({renameTaskHandler})=>{
 
-    const renameTaskHandler = (taskName)=>{
 
-        service.renameTask(taskName,taskId).then((response)=>{
-            // console.log(response.data);
-            setTasks(response.data);
-        },(error)=>{
-
-        });
-    }
     return (
         <div>
             <input id={'taskName'}/>
@@ -28,7 +20,7 @@ const RenameTaskForm = ({service,taskId,setTasks})=>{
 
 const mapStateToProps = (state) =>{
     return {
-        taskId:state.fileSystem.taskOptionsPanel.optionsPanelIsOpenForTask,
+
     }
 }
 

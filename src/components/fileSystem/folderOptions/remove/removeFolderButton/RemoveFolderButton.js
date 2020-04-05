@@ -5,18 +5,9 @@ import WithService from "../../../../hoc/with-service/with-service";
 
 
 
-const RemoveFolderButton = ({service,currentFolderId,setFileSystemItems,onGoToHome})=>{
+const RemoveFolderButton = ({removeFolderHandler})=>{
 
-    const removeFolderHandler = ()=>{
-        if(!window.confirm("Remove ?"))return false;
-        service.removeFolder(currentFolderId).then((response)=>{
-            // console.log(response.data);
-            setFileSystemItems(response.data);
-            onGoToHome();
-        },(error)=>{
 
-        });
-    }
 
     return (
         <div className={"cursPointSelNon"} onClick={removeFolderHandler}>
@@ -27,7 +18,7 @@ const RemoveFolderButton = ({service,currentFolderId,setFileSystemItems,onGoToHo
 
 const mapStateToProps = (state)=>{
     return {
-        currentFolderId:state.fileSystem.currentItemId,
+
     }
 };
 

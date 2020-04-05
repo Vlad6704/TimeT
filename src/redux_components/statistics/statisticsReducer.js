@@ -13,7 +13,8 @@ const initialState = {
     },
     statFileSystem:{
 
-    }
+    },
+    arrStatOpenFolderIds: []
 }
 
 const statisticsReducer = (statistics = initialState, action) => {
@@ -87,7 +88,13 @@ const statisticsReducer = (statistics = initialState, action) => {
                 return newState;
             }
         }
-
+        case 'SET_ARR_STAT_OPEN_FOLDER_IDS':{
+            const newState = {
+                ...statistics,
+                arrStatOpenFolderIds: action.payload
+            }
+            return newState;
+        }
         default:
             return statistics;
     }
