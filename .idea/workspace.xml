@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
-      <change afterPath="$PROJECT_DIR$/src/selectors/selectors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/createFolder/CreateFolderForm/CreateFolderForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/createFolder/CreateFolderForm/CreateFolderForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/createNewTask/createNewTaskForm/createNewTaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/createNewTask/createNewTaskForm/createNewTaskForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/remove/removeFolderButton/RemoveFolderButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/remove/removeFolderButton/RemoveFolderButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/rename/renameFolderForm/RenameFolderForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/rename/renameFolderForm/RenameFolderForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/replace/cutFolderButton/CutFolderButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/replace/cutFolderButton/CutFolderButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/replace/pasteFolderButton/PasteFolderButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/folderOptions/replace/pasteFolderButton/PasteFolderButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/goToPrev/goToPrev.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/goToPrev/goToPrev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/stages/stages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/stages/stages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/taskOptions/TaskOptionsPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/taskOptions/TaskOptionsPanel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/taskOptions/remove/RemoveTaskButton/RemoveTaskButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/taskOptions/remove/RemoveTaskButton/RemoveTaskButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/taskOptions/rename/RenameTaskForm/RenameTaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/taskOptions/rename/RenameTaskForm/RenameTaskForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/tasks/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/tasks/tasks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/statistic/dateRangePanel/measurePanel/measurePanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/dateRangePanel/measurePanel/measurePanel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/statistic/dateRangePanel/navPanel/navPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/dateRangePanel/navPanel/navPanel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/statistic/statFileSystem/statFolders/statFolders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/statFileSystem/statFolders/statFolders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/action_type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/action_type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemReduser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemReduser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/statistics/statisticsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/statistics/statisticsActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/statistics/statisticsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/statistics/statisticsReducer.js" afterDir="false" />
     </list>
     <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -115,7 +96,8 @@
       <workItem from="1585857782589" duration="4302000" />
       <workItem from="1585906604697" duration="25003000" />
       <workItem from="1585999880581" duration="17147000" />
-      <workItem from="1586101373815" duration="1848000" />
+      <workItem from="1586101373815" duration="2861000" />
+      <workItem from="1586178250982" duration="7216000" />
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>

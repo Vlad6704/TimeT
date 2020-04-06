@@ -1,6 +1,6 @@
 import * as action_type from "../action_type";
 import DataStoreService from "../../services/service";
-import {setOngoingTasks, setSwitchableOngoingTask} from "../ongoingTasks/ongoingTasksActions";
+import {setOngoingTasks, setOngoingTasksHandler, setSwitchableOngoingTask} from "../ongoingTasks/ongoingTasksActions";
 const service = new DataStoreService();
 
 export const onSerfing = (payload) => ({type:action_type.ON_SERFING, payload});
@@ -170,7 +170,7 @@ export const startTaskHandler = (taskId, stageId)=>{
                 })
                 .then((response) => {
                     console.log(response.data);
-                    dispatch(setOngoingTasks(response.data));
+                    dispatch(setOngoingTasksHandler(response.data));
                 }, (error) => {
 
                 });

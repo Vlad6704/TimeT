@@ -1,7 +1,11 @@
 import DataStoreService from "../services/service";
 import * as action_type from './action_type';
 import {setFileSystemItems, setTasks} from './fileSystem/fileSystemActions'
-import {setOngoingTasks, setSwitchableOngoingTask, setTimeTask} from "./ongoingTasks/ongoingTasksActions";
+import {
+    setOngoingTasksHandler,
+    setSwitchableOngoingTask,
+    setTimeTask
+} from "./ongoingTasks/ongoingTasksActions";
 
 const service = new DataStoreService();
 
@@ -24,7 +28,7 @@ export const fetchStore = () => {
             else ongoingTasksArr = [];
             dispatch(setTasks(tasks));
             dispatch(setFileSystemItems(fileSystemItems));
-            dispatch(setOngoingTasks(ongoingTasksArr));
+            dispatch(setOngoingTasksHandler(ongoingTasksArr));
 
             if(data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
         }, (error) =>{

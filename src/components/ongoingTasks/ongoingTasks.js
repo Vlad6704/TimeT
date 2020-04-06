@@ -13,51 +13,10 @@ const moment = extendMoment(Moment);
 class OngoingTasks extends React.Component {
 
 
-    getPassedTime(item, startTime = 0){
-        const timeStat = new TimeStat(this.props.timeTaskArr,this.props.app_options.timeShift);
-        let totalSum = 0;
-        const timeFromState = timeStat.getSumTimeForTaskForToday(item.id);
-        const passedTimeFromServer = moment.utc(item.PassedTime*1000).format("HH:mm");
-        const sumTimeFromStateAndServerPassedTime = statistics_func.getTimeSum(timeFromState, passedTimeFromServer);
-        console.log(passedTimeFromServer);
-        console.log(sumTimeFromStateAndServerPassedTime);
-        totalSum = sumTimeFromStateAndServerPassedTime;
-        if(startTime){
-            const currentTime = moment().format("HH:mm");
-            if(startTime != currentTime){
-                console.log("currentTime: ", currentTime, "startTime: ", startTime);
-                const passedLocalTime = statistics_func.getTimeDifference(startTime, currentTime);
-                totalSum = statistics_func.getTimeSum(passedLocalTime, totalSum);
-            }
-        }
 
-        return totalSum;
-    }
-
-    getOngoingTaskArrWithPassedTime(ongoingTasksArr, startTime) {
-         return ongoingTasksArr.map(task => {
-             task.totalPassedTime = this.getPassedTime(task, startTime);
-             return task;
-         });
-    }
-    countTime = (ongoingTasksArr,setOngoingTasks,startTime) => {
-        let ongoingTaskArrWithPassedTime = this.getOngoingTaskArrWithPassedTime(ongoingTasksArr, startTime);
-        setOngoingTasks(ongoingTaskArrWithPassedTime);
-
-
-
-        const setNewSum = () => {
-            const ongoingTaskArrWithPassedTime = this.getOngoingTaskArrWithPassedTime(this.props.ongoingTasksArr, startTime);
-            setOngoingTasks(ongoingTaskArrWithPassedTime);
-        }
-        let timerId = setInterval(setNewSum, 20000);
-
-    }
 
     componentDidMount() {
-        const {ongoingTasksArr,timeTaskArr,app_options, setOngoingTasks} = this.props
-        const startTime = moment().format("HH:mm");
-        this.countTime(ongoingTasksArr,setOngoingTasks,startTime);
+
     }
 
     render() {
@@ -96,7 +55,7 @@ class OngoingTasks extends React.Component {
                         {stage && `, stage: ${stage.name} `}
                         <span className={"duration"} style={{marginLeft:'7px'}}>
                             {/*{item.totalPassedTime && item.totalPassedTime}*/}
-                            {item.totalPassedTime ? item.totalPassedTime: this.getPassedTime(item)}
+                            {item.totalPassedTime}
                         </span>
                             <span className={"stopButton"} onClick={() => stopTaskHandler(item.id)}>
                             Stop
