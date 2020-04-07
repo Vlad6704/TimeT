@@ -19,7 +19,7 @@ export const initialState = {
         //      stageLastId:2
         // }
     ],
-    fileSistem:{
+    fileSystem:{
         items:  [
             // {
             //     id:0,

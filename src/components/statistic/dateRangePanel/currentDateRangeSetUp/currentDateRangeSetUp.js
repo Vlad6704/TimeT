@@ -27,8 +27,8 @@ const CurrentDateRangeSetUp = ({dateRange,currMeasure}) =>{
 
 const mapStateToProps = (state)=>{
     return {
-        dateRange: state.statistic.dateRange,
-        currMeasure:state.statistic.dateRange.currMeasure,
+        dateRange: state.statistics.dateRange,
+        currMeasure:state.statistics.dateRange.currMeasure,
     }
 }
 
