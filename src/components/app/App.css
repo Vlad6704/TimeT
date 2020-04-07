@@ -4,3 +4,8 @@
   -khtml-user-select: none;
   user-select: none;
 }
+
+a {
+  color: #181818;
+  text-decoration: none;
+}

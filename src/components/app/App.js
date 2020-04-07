@@ -7,6 +7,8 @@ import * as actions from "../../redux_components/actions";
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import Statistic from "../statistic/statistic";
 import './App.css';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import MainNav from "../MainNav/mainNav";
 
 class App extends Component{
 
@@ -18,11 +20,14 @@ class App extends Component{
 
   render() {
     return(
-        <section>
-            <OngoingTasks/>
-            <FileSystem />
-            <Statistic />
-        </section>
+        <Router>
+            <section>
+                <OngoingTasks/>
+                <MainNav />
+                <Route path = "/" exact component = {FileSystem}/>
+                <Route path = "/statistics" component = {Statistic}/>
+            </section>
+        </Router>
     )
   }
 }

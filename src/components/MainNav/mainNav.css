@@ -1,0 +1,17 @@
+.mainNav {
+
+}
+
+.mainNav ul {
+    display: flex;
+    padding-left:0;
+}
+
+.mainNav ul li{
+
+    list-style: none;
+}
+
+.mainNav ul li a{
+    padding: 15px 5px;
+}
