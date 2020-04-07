@@ -2,50 +2,16 @@ import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../../../redux_components/statistics/statisticsActions';
 import TimeStat from '../../timeStatistic_class/timeStat';
+import Tasks from "../tasks/tasks";
+import {getIdAllTasksInsideFolder} from '../../../../getters/getters'
 
 const StatFolders = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_options,statChartsTasksArr,pushOrRemIdForStatChartTaskArr, folderClickHandler, arrStatOpenFolderIds}) => {
     // const [arrStatOpenFolderIds, setArrStatOpenFolderIds] = useState([]);
     const timeStat = new TimeStat(timeTaskArr,app_options.timeShift);
 
-    const getIdAllTasksInsideFolder = (folderId,arrfileSystemItems, tasks) =>{
-        //including descendants
-        let fileSystemReduce;
-        let tasksReduce;
-        fileSystemReduce = arrfileSystemItems.reduce( (resArr=[],item) => {
-            if(folderId === item.parentsId){
-                resArr.push(...getIdAllTasksInsideFolder(item.id,arrfileSystemItems, tasks));
-            }
-            return resArr;
-
-            },[]);
-        tasksReduce = tasks.reduce( (taskArr=[],item) => {
-            if(folderId === item.folderId){
-                taskArr.push(item.id);
-            }
-            return taskArr;
-        },[]);
-         return fileSystemReduce.concat(tasksReduce);
 
 
-    }
-    const getTasksArrDyFolderId = (tasks,folderId) => {
-        return tasks.map(item => {
-            if(folderId === item.folderId){
 
-                return (
-                    <div className={"statTask"}>
-                        <span className={`cursPointSelNon addCharts ${statChartsTasksArr.some(id => id === item.id)?'active':''}`} onClick={()=>pushOrRemIdForStatChartTaskArr(item.id)}>
-                            Charts
-                        </span>
-                        TaskTitle: {item.name}
-                        <span className={'sumTime'}>
-                            {timeStat.getSumTaskTimeByDateInterval(startDate,endDate,item.id, -1)}
-                        </span>
-                    </div>
-                )
-            }
-        })
-    }
     const getFileSystemTree = (arrfileSystemItems,parentId) => {
 
         return arrfileSystemItems.map(fileSystemItem => {
@@ -64,18 +30,33 @@ const StatFolders = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_opti
                         </p>
                         <div className={"inner"}>
                             {getFileSystemTree(arrfileSystemItems,fileSystemItem.id)}
-                            {getTasksArrDyFolderId(tasks,fileSystemItem.id)}
+                            <Tasks
+                                tasks={tasks}
+                                folderId = {fileSystemItem.id}
+                                statChartsTasksArr = {statChartsTasksArr}
+                                timeStat = {timeStat}
+                                onClickChartsHandler = {pushOrRemIdForStatChartTaskArr}
+                                startDate = {startDate}
+                                endDate = {endDate}
+                            />
                         </div>
                     </div>
                 )
             }
         })
     }
-
     return (
         <div>
             {getFileSystemTree(fileSystemObj.items,-1)}
-            {getTasksArrDyFolderId(tasks,-1)}
+            <Tasks
+                tasks={tasks}
+                folderId = {-1}
+                statChartsTasksArr = {statChartsTasksArr}
+                timeStat = {timeStat}
+                onClickHandler = {pushOrRemIdForStatChartTaskArr}
+                startDate = {startDate}
+                endDate = {endDate}
+            />
         </div>
     )
 }

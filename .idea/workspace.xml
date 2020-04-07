@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
+      <change afterPath="$PROJECT_DIR$/src/components/statistic/statFileSystem/tasks/tasks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/getters/getters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/statistic/statFileSystem/statFolders/statFolders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/statFileSystem/statFolders/statFolders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/statistic/statistic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/statistic.js" afterDir="false" />
     </list>
     <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -97,7 +97,8 @@
       <workItem from="1585906604697" duration="25003000" />
       <workItem from="1585999880581" duration="17147000" />
       <workItem from="1586101373815" duration="2861000" />
-      <workItem from="1586178250982" duration="7216000" />
+      <workItem from="1586178250982" duration="7504000" />
+      <workItem from="1586264529670" duration="4766000" />
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>
