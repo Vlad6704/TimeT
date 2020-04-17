@@ -17,6 +17,8 @@ import  TaskOptionsPanel from './taskOptions/TaskOptionsPanel';
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/fileSystem/fileSystemActions";
 import WithService from '../hoc/with-service/with-service'
+import OngoingTasks from "../ongoingTasks/ongoingTasks";
+import Header from "../header/header";
 
 class FileSystem extends React.Component{
 
@@ -34,7 +36,10 @@ class FileSystem extends React.Component{
     render() {
         const {isOpenCreateFolderForm,isOpenCreateTaskForm,optionsPanelIsOpenForTask,replaceFolderId} = this.props;
         return(
-                <div className="fileSystem">
+            <section className="fileSystem">
+                <OngoingTasks/>
+                <Header />
+                <div >
                     <GoToPrev    />
                     <GoToHome  />
                     <Folders />
@@ -49,12 +54,14 @@ class FileSystem extends React.Component{
                     }
                     {replaceFolderId === -1 && this.defaultFolderOptions()}
                     {replaceFolderId !== -1 &&
-                        <PasteFolderButton/>
+                    <PasteFolderButton/>
                     }
                     {optionsPanelIsOpenForTask !== -1 &&
-                        <TaskOptionsPanel />
+                    <TaskOptionsPanel />
                     }
                 </div>
+            </section>
+
             )
 
 

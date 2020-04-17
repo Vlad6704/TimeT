@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
-      <change afterPath="$PROJECT_DIR$/src/components/MainNav/mainNav.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MainNav/mainNav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/logOut/logOut.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/login/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/registration/registration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux_components/auth/authActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux_components/auth/authReduser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainNav/mainNav.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/MainNav/mainNav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainNav/mainNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/MainNav/mainNav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/fileSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/fileSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/statistic/statistic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/statistic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/action_type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/action_type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemReduser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/service.js" afterDir="false" />
     </list>
     <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -43,6 +55,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src\components\header" />
       <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src\components" />
     </key>
   </component>
@@ -106,6 +119,14 @@
       <workItem from="1586101373815" duration="2861000" />
       <workItem from="1586178250982" duration="7504000" />
       <workItem from="1586264529670" duration="4766000" />
+      <workItem from="1586622387004" duration="9612000" />
+      <workItem from="1586720045641" duration="1988000" />
+      <workItem from="1586788178607" duration="3420000" />
+      <workItem from="1586895806988" duration="2217000" />
+      <workItem from="1586898239945" duration="674000" />
+      <workItem from="1586966157981" duration="1867000" />
+      <workItem from="1586977310361" duration="2773000" />
+      <workItem from="1587054063851" duration="8741000" />
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>

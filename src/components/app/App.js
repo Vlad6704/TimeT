@@ -7,8 +7,12 @@ import * as actions from "../../redux_components/actions";
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import Statistic from "../statistic/statistic";
 import './App.css';
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import MainNav from "../MainNav/mainNav";
+import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
+import Login from '../login/login';
+import Registration from '../registration/registration';
+import {bindActionCreators} from "redux";
+import Header from "../header/header";
+
 
 class App extends Component{
 
@@ -18,25 +22,38 @@ class App extends Component{
     }
 
 
-  render() {
-    return(
-        <Router>
+    render() {
+        const {redirectToLogIn} = this.props;
+
+        return(
             <section>
-                <OngoingTasks/>
-                <MainNav />
+                {redirectToLogIn &&
+                    <Redirect
+                        to={{pathname: "/login"}}
+                    />
+                }
+
+
                 <Route path = "/" exact component = {FileSystem}/>
+                <Route path = "/login" exact component = {Login}/>
+                <Route path = "/registration" component = {Registration}/>
                 <Route path = "/statistics" component = {Statistic}/>
             </section>
-        </Router>
-    )
-  }
+
+        )
+    }
 }
 
 const mapStateToProps = (state)=>{
     return {
-        ongoingTasksArr:state.ongoingTasksArr
+        ongoingTasksArr:state.ongoingTasksArr,
+        redirectToLogIn:state.user.redirectToLogIn,
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({...actions},dispatch);
+}
 
-export default WithService()(connect(mapStateToProps,actions)(App));
+
+export default WithService()(connect(mapStateToProps,mapDispatchToProps)(App));

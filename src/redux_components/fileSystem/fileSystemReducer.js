@@ -27,7 +27,7 @@ const initialState = {
 
 };
 
-const  fileSystemReduser = (state = initialState, action) => {
+const  fileSystemReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'SET_FILE_SYSTEM_ITEMS':{
@@ -79,11 +79,12 @@ const  fileSystemReduser = (state = initialState, action) => {
         }
         case 'CREATE_NEW_FOLDER':{
             const newFolderName = action.payload;
-
-            const newtFolderId = state.items[state.items.length - 1].id + 1;
+            let newFolderId;
+            if(state.items.length > 0) newFolderId = state.items[state.items.length - 1].id + 1;
+            else newFolderId = 0 ;
 
             const newItem = {
-                id:newtFolderId,
+                id:newFolderId,
                 name:newFolderName,
                 children: [],
                 parentsId:state.currentItemId,
@@ -206,4 +207,4 @@ const getfileSystemWithCloseModalWindow = (state)=>{
 
 
 
-export default fileSystemReduser;
+export default fileSystemReducer;

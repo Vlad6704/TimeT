@@ -8,6 +8,8 @@ import StatFileSystem from './statFileSystem/statFileSystem';
 import DateRangePanel from './dateRangePanel/dateRangePanel';
 import LineChart from './charts/lineChart/lineChart';
 import getDataForLineChart from './charts/lineChart/getDataForLineChart';
+import OngoingTasks from "../ongoingTasks/ongoingTasks";
+import Header from "../header/header";
 
 class Statistic extends Component{
     constructor( props) {
@@ -31,14 +33,19 @@ class Statistic extends Component{
 
         if( Array.isArray(timeTaskArr) &&  Array.isArray(tasks) && tasks.length > 0){
             return (
-                <div className={'statistic'}>
-                    {/*{tasksItems()}*/}
-                    <div className={'chart'} style={{width:'700px', height:'350px'}}>
-                        <LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />
+                <section className={'statistic'}>
+                    <OngoingTasks/>
+                    <Header />
+                    <div >
+                        {/*{tasksItems()}*/}
+                        <div className={'chart'} style={{width:'700px', height:'350px'}}>
+                            <LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />
+                        </div>
+                        <DateRangePanel />
+                        <StatFileSystem />
                     </div>
-                    <DateRangePanel />
-                    <StatFileSystem />
-                </div>
+                </section>
+
             )
         }else{
             return (
