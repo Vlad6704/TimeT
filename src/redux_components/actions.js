@@ -6,6 +6,8 @@ import {
     setSwitchableOngoingTask,
     setTimeTask
 } from "./ongoingTasks/ongoingTasksActions";
+import {setLogIn, setRedirectToLogIn} from './auth/authActions';
+
 
 const service = new DataStoreService();
 
@@ -17,6 +19,7 @@ export const fetchStore = () => {
         service.getStore().then((response) =>{
             // console.log(response.data);
             const data = response.data;
+            console.log(data);
             let tasks;
             let fileSystemItems;
             let ongoingTasksArr;
@@ -29,10 +32,14 @@ export const fetchStore = () => {
             dispatch(setTasks(tasks));
             dispatch(setFileSystemItems(fileSystemItems));
             dispatch(setOngoingTasksHandler(ongoingTasksArr));
+            dispatch(setLogIn());
 
-            if(data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
+            if(data.activeTask && data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
         }, (error) =>{
-            console.log(error)
+            console.log(error);
+            dispatch(setRedirectToLogIn());
+
+
         });
         service.getTimeTask().then((response) => {
 
