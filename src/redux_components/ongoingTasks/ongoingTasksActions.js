@@ -48,55 +48,60 @@ export const switchableHandler = (taskId) =>{
 
 
 
-
-
-
 //utils
-function getPassedTimeForTask(item, ongoingTasksArr, startTime = 0, timeStat){
+function getPassedTimeForTask(task, startTime = 0){
 
-    let totalSum = 0;
-    const timeFromState = timeStat.getSumTimeForTaskForToday(item.id);
-    const passedTimeFromServer = moment.utc(item.PassedTime*1000).format("HH:mm");
-    const sumTimeFromStateAndServerPassedTime = statistics_func.getTimeSum(timeFromState, passedTimeFromServer);
-    console.log(passedTimeFromServer);
-    console.log(sumTimeFromStateAndServerPassedTime);
-    totalSum = sumTimeFromStateAndServerPassedTime;
+    let totalSum = task.staticPassedTime;
     if(startTime){
         const currentTime = moment().format("HH:mm");
         if(startTime != currentTime){
             console.log("currentTime: ", currentTime, "startTime: ", startTime);
             const passedLocalTime = statistics_func.getTimeDifference(startTime, currentTime);
-            totalSum = statistics_func.getTimeSum(passedLocalTime, totalSum);
+            totalSum = statistics_func.getTimeSum(passedLocalTime, task.staticPassedTime);
         }
     }
 
     return totalSum;
 }
 
-function getOngoingTaskArrWithPassedTime(ongoingTasksArr, startTime, timeStat) {
+function getOngoingTaskArrWithPassedTime(ongoingTasksArr, startTime) {
     return ongoingTasksArr.map(task => {
-        task.totalPassedTime = getPassedTimeForTask(task, ongoingTasksArr, startTime, timeStat);
+        task.totalPassedTime = getPassedTimeForTask(task, startTime);
         return task;
     });
+}
+
+function getOngoingTaskArrWithStaticPassedTime(ongoingTasksArr,  timeStat) {
+    //return sumTimeFromStateAndServerPassedTime (timeTask and passedTime)
+    return ongoingTasksArr.map(task => {
+        const timeFromState = timeStat.getSumTimeForTaskForToday(task.id);
+        const passedTimeFromServer = moment.utc(task.PassedTime*1000).format("HH:mm");
+        const sumTimeFromStateAndServerPassedTime = statistics_func.getTimeSum(timeFromState, passedTimeFromServer);
+        task.staticPassedTime = sumTimeFromStateAndServerPassedTime;
+        return task;
+    });
+}
+
+function setOngoingTaskArrWithPassedTime(startTime, dispatch, ongoingTaskArrWithStaticPassedTime){
+    let ongoingTaskArrWithPassedTime = getOngoingTaskArrWithPassedTime(ongoingTaskArrWithStaticPassedTime, startTime);
+    dispatch(setOngoingTasks(ongoingTaskArrWithPassedTime));
 }
 
 function countTime(dispatch, getState){
     const startTime = moment().format("HH:mm");
     const timeShift = getState().appOptions.timeShift;
-    setOngoingTaskArrWithPassedTime(startTime, timeShift, getState, dispatch);
+    const ongoingTasksArr = getState().ongoingTasks.items;
+    const timeTaskArr = getState().statistics.timeTaskArr;
+    const timeStat = new TimeStat(timeTaskArr,timeShift);
+    const ongoingTaskArrWithStaticPassedTime = getOngoingTaskArrWithStaticPassedTime(ongoingTasksArr,  timeStat);
+    setOngoingTaskArrWithPassedTime(startTime, dispatch, ongoingTaskArrWithStaticPassedTime);
 
 
 
     const setNewSum = () => {
-        setOngoingTaskArrWithPassedTime(startTime, timeShift, getState, dispatch);
+        setOngoingTaskArrWithPassedTime(startTime, dispatch, ongoingTaskArrWithStaticPassedTime);
     }
-    let timerId = setInterval(setNewSum, 20000);
+    let timerId = setInterval(setNewSum, 5000);
 
-    function setOngoingTaskArrWithPassedTime(startTime, timeShift, getState,dispatch){
-        const ongoingTasksArr = getState().ongoingTasks.items;
-        const timeTaskArr = getState().timeTaskArr;
-        const timeStat = new TimeStat(timeTaskArr,timeShift);
-        let ongoingTaskArrWithPassedTime = getOngoingTaskArrWithPassedTime(ongoingTasksArr, startTime,timeStat);
-        dispatch(setOngoingTasks(ongoingTaskArrWithPassedTime));
-    }
+
 }

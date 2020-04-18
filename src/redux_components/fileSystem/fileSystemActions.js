@@ -178,7 +178,7 @@ export const startTaskHandler = (taskId, stageId)=>{
         }else{
             service.startTask(taskId, stageId).then((response) => {
                 console.log(response.data);
-                dispatch(setOngoingTasks(response.data));
+                dispatch(setOngoingTasksHandler(response.data));
             }, (error) => {
 
             });
