@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
-      <change afterPath="$PROJECT_DIR$/src/components/header/header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/logOut/logOut.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/login/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/registration/registration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux_components/auth/authActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux_components/auth/authReduser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainNav/mainNav.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/MainNav/mainNav.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainNav/mainNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/MainNav/mainNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fileSystem/fileSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fileSystem/fileSystem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/statistic/statistic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/statistic/statistic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/action_type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/action_type.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux_components/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemReduser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/auth/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/auth/authActions.js" afterDir="false" />
     </list>
     <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -127,6 +111,14 @@
       <workItem from="1586966157981" duration="1867000" />
       <workItem from="1586977310361" duration="2773000" />
       <workItem from="1587054063851" duration="8741000" />
+      <workItem from="1587217257761" duration="3762000" />
+      <workItem from="1587498594482" duration="5408000" />
+      <workItem from="1587567909867" duration="434000" />
+      <workItem from="1587583041904" duration="5991000" />
+      <workItem from="1587604475715" duration="611000" />
+      <workItem from="1588289672315" duration="616000" />
+      <workItem from="1588692885664" duration="20000" />
+      <workItem from="1588692944476" duration="297000" />
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>
@@ -135,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580827618966</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix:add basename">
+      <created>1587503335473</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587503335473</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +155,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(fileSystem):add-styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(fileSystem):add-styling" />
+    <MESSAGE value="fix:add basename" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix:add basename" />
   </component>
 </project>

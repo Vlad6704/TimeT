@@ -35,11 +35,12 @@ export const fetchStore = () => {
             dispatch(setLogIn());
 
             if(data.activeTask && data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
-        }, (error) =>{
-            console.log(error);
-            dispatch(setRedirectToLogIn());
-
-
+        })
+        .catch( (error) =>{
+            console.log(error.toJSON() );
+            if(error.response.status === 401){
+                dispatch(setRedirectToLogIn());
+            }
         });
         service.getTimeTask().then((response) => {
 

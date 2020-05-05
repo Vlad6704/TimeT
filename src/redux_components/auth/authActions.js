@@ -46,7 +46,7 @@ export const setRedirectToLogIn = () => ({
 });
 
 const _doRequest = (type,data) => {
-    let url = 'http://vlad6451.zzz.com.ua/time/authentication-jwt/';
+    let url = 'http://vlad6432.zzz.com.ua/time/authentication-jwt/';
     switch (type) {
         case 'login':
             url += 'login.php';
