@@ -3,16 +3,28 @@ import DataStoreService from "../../services/service";
 import TimeStat from "../../components/statistic/timeStatistic_class/timeStat";
 import statistics_func from "../../functions/statistic/statistics_func";
 import moment from "moment";
+import {ENABLE_SOUND_REMINDER} from "../action_type";
+import {DISABLE_SOUND_REMINDER} from "../action_type";
 const service = new DataStoreService();
 
 export const setOngoingTasksHandler = (ongoingTask) => {
     return (dispatch, getState) => {
 
+        if(ongoingTask.length === 0 ) {
+            dispatch(disableSoundReminder());
+        }
+        else {
+            dispatch(enableSoundReminder());
+        }
         dispatch(setOngoingTasks(ongoingTask));
         countTime(dispatch, getState);
+
     }
 
-}
+};
+
+export const disableSoundReminder = () => ({type:DISABLE_SOUND_REMINDER});
+export const enableSoundReminder = () => ({type:ENABLE_SOUND_REMINDER});
 export const setOngoingTasks = (payload) => ({type:action_type.SET_ONGOING_TASKS,payload});
 export const setTimeTask = (payload) => ({type:action_type.SET_TIME_TASK,payload});
 export const setSwitchableOngoingTask = (payload) => ({type:action_type.SET_SWITCHABLE_ONGOING_TASK,payload});
@@ -21,12 +33,12 @@ export const stopTaskHandler = (taskId)=>{
     return (dispatch) => {
         service.stopTask(taskId).then((response)=>{
             // console.log(response.data);
-            dispatch(setOngoingTasks(response.data));
+            dispatch(setOngoingTasksHandler(response.data));
         }, (error) => {
 
         });
     }
-}
+};
 export const switchableHandler = (taskId) =>{
     return (dispatch, getState) => {
         const switchableTaskId = getState().ongoingTasks.switchableTaskId;
@@ -36,7 +48,7 @@ export const switchableHandler = (taskId) =>{
             dispatch(setSwitchableOngoingTask(taskId));
         }
     }
-}
+};
 
 
 

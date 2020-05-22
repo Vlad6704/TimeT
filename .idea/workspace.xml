@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
+    <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat:add sound reminder">
+      <change afterPath="$PROJECT_DIR$/src/components/soundReminder/soundReminder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/action_type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/action_type.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux_components/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux_components/auth/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/auth/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksReducer.js" afterDir="false" />
     </list>
     <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,6 +44,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\public" />
+      <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src" />
+      <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager" />
       <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src\components\header" />
       <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src\components" />
     </key>
@@ -118,7 +126,11 @@
       <workItem from="1587604475715" duration="611000" />
       <workItem from="1588289672315" duration="616000" />
       <workItem from="1588692885664" duration="20000" />
-      <workItem from="1588692944476" duration="297000" />
+      <workItem from="1588692944476" duration="9611000" />
+      <workItem from="1588771725637" duration="2448000" />
+      <workItem from="1588792418076" duration="38000" />
+      <workItem from="1588966863519" duration="14000" />
+      <workItem from="1590163875250" duration="249000" />
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>

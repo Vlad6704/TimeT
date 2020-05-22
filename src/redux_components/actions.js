@@ -37,7 +37,7 @@ export const fetchStore = () => {
             if(data.activeTask && data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
         })
         .catch( (error) =>{
-            console.log(error.toJSON() );
+            console.log(error);
             if(error.response.status === 401){
                 dispatch(setRedirectToLogIn());
             }
