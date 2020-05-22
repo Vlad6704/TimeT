@@ -1,6 +1,7 @@
 const initialState = {
     items:[],
     switchableTaskId:-1,
+    isEnableSoundReminder: false,
 };
 
 const ongoingTasksReducer = (ongoingTasks = initialState, action) => {
@@ -36,6 +37,10 @@ const ongoingTasksReducer = (ongoingTasks = initialState, action) => {
             }
             return newState;
         }
+        case 'ENABLE_SOUND_REMINDER':
+            return {...ongoingTasks, isEnableSoundReminder: true};
+        case 'DISABLE_SOUND_REMINDER':
+            return {...ongoingTasks, isEnableSoundReminder: false};
         default:
             return ongoingTasks;
 

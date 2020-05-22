@@ -7,6 +7,7 @@ import TimeStat from '../statistic/timeStatistic_class/timeStat';
 import Moment from 'moment';
 import {extendMoment} from "moment-range";
 import statistics_func from "../../functions/statistic/statistics_func";
+import SoundReminder from "../soundReminder/soundReminder";
 
 const moment = extendMoment(Moment);
 
@@ -20,7 +21,7 @@ class OngoingTasks extends React.Component {
     }
 
     render() {
-        const {ongoingTasksArr,tasks,stopTaskHandler,switchableHandler, switchableTaskId} = this.props;
+        const {ongoingTasksArr,tasks,stopTaskHandler,switchableHandler, switchableTaskId, isEnableSoundReminder} = this.props;
 
 
 
@@ -73,10 +74,13 @@ class OngoingTasks extends React.Component {
 
 
         return (
-
-
-            <div className={'ongoingTasksItems'} >
-                {tasksItems()}
+            <div className="ongoingTasks">
+                {isEnableSoundReminder &&
+                    <SoundReminder/>
+                }
+                <div className={'ongoingTasksItems'} >
+                    {tasksItems()}
+                </div>
             </div>
         )
 
@@ -89,6 +93,7 @@ class OngoingTasks extends React.Component {
 const mapStateToProps = (state)=>{
     return {
         ongoingTasksArr:state.ongoingTasks.items,
+        isEnableSoundReminder:state.ongoingTasks.isEnableSoundReminder,
         tasks:state.tasks.items,
         switchableTaskId: state.ongoingTasks.switchableTaskId,
         timeTaskArr:state.timeTaskArr,

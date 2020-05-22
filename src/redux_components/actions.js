@@ -42,11 +42,12 @@ export const fetchStore = () => {
             dispatch(setLogIn());
 
             if(data.activeTask && data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
-        }, (error) =>{
+        })
+        .catch( (error) =>{
             console.log(error);
-            dispatch(setRedirectToLogIn());
-
-
+            if(error.response.status === 401){
+                dispatch(setRedirectToLogIn());
+            }
         });
 
     }

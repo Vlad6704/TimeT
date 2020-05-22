@@ -17,7 +17,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { connectRouter, routerMiddleware , ConnectedRouter  } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 
-const history = createBrowserHistory();
+const history = createBrowserHistory({ basename: '/timeT' });
 console.log(history);
 const middleware = [thunk,routerMiddleware(history)];
 const rootReducer = combineReducers({

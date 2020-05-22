@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat(fileSystem):add-styling">
+    <list default="true" id="6965eb4c-386c-483f-8d3a-be14b2b6d5f8" name="Default Changelist" comment="feat:add sound reminder">
+      <change afterPath="$PROJECT_DIR$/src/components/soundReminder/soundReminder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ongoingTasks/ongoingTasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/action_type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/action_type.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux_components/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/fileSystem/fileSystemActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux_components/ongoingTasks/ongoingTasksReducer.js" afterDir="false" />
     </list>
     <list id="2f889893-12c2-4ab8-82f0-b2124560982d" name="Revert &quot;feat(fileSystem):add-styling&quot;" comment="Revert &quot;feat(fileSystem):add-styling&quot;&#10;&#10;This reverts commit 9bc957f8" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,6 +44,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\public" />
+      <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src" />
+      <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager" />
       <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src\components\header" />
       <recent name="C:\Users\Влад\Documents\js\timeT\taskmanager\src\components" />
     </key>
@@ -112,7 +119,22 @@
       <workItem from="1586966157981" duration="1867000" />
       <workItem from="1586977310361" duration="2773000" />
       <workItem from="1587054063851" duration="8741000" />
+<<<<<<< HEAD
       <workItem from="1587137866120" duration="6120000" />
+=======
+      <workItem from="1587217257761" duration="3762000" />
+      <workItem from="1587498594482" duration="5408000" />
+      <workItem from="1587567909867" duration="434000" />
+      <workItem from="1587583041904" duration="5991000" />
+      <workItem from="1587604475715" duration="611000" />
+      <workItem from="1588289672315" duration="616000" />
+      <workItem from="1588692885664" duration="20000" />
+      <workItem from="1588692944476" duration="9611000" />
+      <workItem from="1588771725637" duration="2448000" />
+      <workItem from="1588792418076" duration="38000" />
+      <workItem from="1588966863519" duration="14000" />
+      <workItem from="1590163875250" duration="249000" />
+>>>>>>> c011cdd720e5a1d62a72bbaeb669bbf177398f1b
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>
@@ -121,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580827618966</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix:add basename">
+      <created>1587503335473</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587503335473</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +171,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(fileSystem):add-styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(fileSystem):add-styling" />
+    <MESSAGE value="fix:add basename" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix:add basename" />
   </component>
 </project>
