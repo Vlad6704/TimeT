@@ -68,7 +68,11 @@ export const switchableHandler = (taskId) =>{
 
 
 function countTime(dispatch, getState){
+    //this function count time for all ongoingTasks and dispatch arr ongoing tasks with 
+    //passed time. key: totalPassedTime. func do this every [intervalSec]. interval id sets in state and
+    //it's clearing when func starts
     clearInterval(getState().ongoingTasks.timerId);
+    const intervalSec = 5;
     const startTime = moment().format("HH:mm");
     const timeShift = getState().appOptions.timeShift;
     const ongoingTasksArr = getState().ongoingTasks.items;
@@ -77,7 +81,7 @@ function countTime(dispatch, getState){
     const ongoingTaskArrWithServerPassedTime = getOngoingTaskArrWithServerPassedTime(ongoingTasksArr, timeStat);
     totalPassedTimeForOngoingTaskHandler(startTime, dispatch, ongoingTaskArrWithServerPassedTime);
     let timerId = setInterval(() => totalPassedTimeForOngoingTaskHandler(startTime, dispatch, ongoingTaskArrWithServerPassedTime)
-    ,  5000);
+    ,  intervalSec * 1000);
     dispatch(setOngoingTasksTimerId(timerId));
     //TODO if stop task and start again - client time resets to zero
 }
@@ -104,7 +108,7 @@ function getClientPassedTimeForTask(task, startTime = '00:00'){
     if(startTime){
         const currentTime = moment().format("HH:mm");
         if(startTime != currentTime){
-            console.log("currentTime: ", currentTime, "startTime: ", startTime);
+            //console.log("currentTime: ", currentTime, "startTime: ", startTime);
             clientPassedTime = statistics_func.getTimeDifference(startTime, currentTime);
 
         }
@@ -131,6 +135,7 @@ function getOngoingTaskArrWithTotalPassedTime(startTime, ongoingTaskArrWithServe
 }
 
 function totalPassedTimeForOngoingTaskHandler(startTime, dispatch, ongoingTaskArrWithServerPassedTime){
+    //get arr Ongoing Tasks with total Passed Time and dispatch it
     const ongoingTaskArrWithTotalPassedTime = getOngoingTaskArrWithTotalPassedTime(startTime, ongoingTaskArrWithServerPassedTime);
     dispatch(setOngoingTasks(ongoingTaskArrWithTotalPassedTime));
 }
