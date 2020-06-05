@@ -41,6 +41,8 @@ const ongoingTasksReducer = (ongoingTasks = initialState, action) => {
             return {...ongoingTasks, isEnableSoundReminder: true};
         case 'DISABLE_SOUND_REMINDER':
             return {...ongoingTasks, isEnableSoundReminder: false};
+        case 'SET_ONGOING_TASKS_TIMER_ID':
+            return {...ongoingTasks, timerId: action.payload};
         default:
             return ongoingTasks;
 
