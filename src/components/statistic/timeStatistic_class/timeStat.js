@@ -226,7 +226,8 @@ export default class TimeStat {
     }
 
     _getCurrentDate() {
-        return  moment().format("DD.MM.YYYY");
+        const date = moment().subtract(this.timeShift,'hours').format("DD.MM.YYYY");
+        return  date;
     }
 
     _getCurrentTime() {

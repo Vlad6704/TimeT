@@ -119,6 +119,9 @@
       <workItem from="1586966157981" duration="1867000" />
       <workItem from="1586977310361" duration="2773000" />
       <workItem from="1587054063851" duration="8741000" />
+<<<<<<< HEAD
+      <workItem from="1587137866120" duration="6120000" />
+=======
       <workItem from="1587217257761" duration="3762000" />
       <workItem from="1587498594482" duration="5408000" />
       <workItem from="1587567909867" duration="434000" />
@@ -131,6 +134,7 @@
       <workItem from="1588792418076" duration="38000" />
       <workItem from="1588966863519" duration="14000" />
       <workItem from="1590163875250" duration="249000" />
+>>>>>>> c011cdd720e5a1d62a72bbaeb669bbf177398f1b
     </task>
     <task id="LOCAL-00001" summary="feat(fileSystem):add-styling">
       <created>1580827618966</created>

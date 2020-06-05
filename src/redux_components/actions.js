@@ -16,6 +16,13 @@ const service = new DataStoreService();
 
 export const fetchStore = () => {
     return (dispatch) => {
+        service.getTimeTask().then((response) => {
+
+            dispatch(setTimeTask(response.data));
+
+        },(error)=>{
+
+        })
         service.getStore().then((response) =>{
             // console.log(response.data);
             const data = response.data;
@@ -42,13 +49,7 @@ export const fetchStore = () => {
                 dispatch(setRedirectToLogIn());
             }
         });
-        service.getTimeTask().then((response) => {
 
-            dispatch(setTimeTask(response.data));
-
-        },(error)=>{
-
-        })
     }
 }
 
