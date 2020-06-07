@@ -26,7 +26,7 @@ const SoundReminder = () => {
 
 
     return (
-        <audio style={{display:"none"}} id="sound-reminder" src="/media/Sound_11344.wav" controls ></audio>
+        <audio style={{display:"none"}} id="sound-reminder" src="media/Sound_11344.wav" controls ></audio>
 
     )
 };
