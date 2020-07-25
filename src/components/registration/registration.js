@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {registrationHandler} from '../../redux_components/auth/authActions';
 import {Link} from "react-router-dom";
+import './registration.css';
 
 class Registration extends Component {
     state = {
@@ -24,47 +25,63 @@ class Registration extends Component {
 
     render() {
         return (
-            <div className={"registration"}>
-                <form onSubmit={this.handleSubmit}>
-                    <h1>Sign Up For An Account</h1>
+            <div className={"registration-page"}>
 
-                    <label>First Name</label>
-                    <input
-                        name='firstname'
-                        placeholder='First Name'
-                        value={this.state.firstname}
-                        onChange={this.handleChange}
-                    /><br/>
+                <div className="login-wrapper">
+                    <div className="login">
+                        <h1 className={"login__title"}>Sign Up For An Account</h1>
+                        <form onSubmit={this.handleSubmit} className={"login-form"}>
 
-                    <label>Last Name</label>
-                    <input
-                        name='lastname'
-                        placeholder='Last Name'
-                        value={this.state.lastname}
-                        onChange={this.handleChange}
-                    /><br/>
+                            <div className={"login-form__inner"}>
 
-                    <label>Email</label>
-                    <input
-                        type='email'
-                        name='email'
-                        placeholder='Email'
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                    /><br/>
+                                <input
+                                    className={"login-form__input"}
+                                    name='firstname'
+                                    placeholder='First Name'
+                                    value={this.state.firstname}
+                                    onChange={this.handleChange}
+                                />
 
-                    <label>Password</label>
-                    <input
-                        type='password'
-                        name='password'
-                        placeholder='Password'
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    /><br/>
+                                <input
+                                    className={"login-form__input"}
+                                    name='lastname'
+                                    placeholder='Last Name'
+                                    value={this.state.lastname}
+                                    onChange={this.handleChange}
+                                />
 
-                    <input type='submit'/>
-                </form>
-                <Link to='/login'>Back to LogIn</Link>
+                                <input
+                                    className={"login-form__input"}
+                                    type='email'
+                                    name='email'
+                                    placeholder='Email'
+                                    value={this.state.email}
+                                    onChange={this.handleChange}
+                                />
+
+                                <input
+                                    className={"login-form__input"}
+                                    type='password'
+                                    name='password'
+                                    placeholder='Password'
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                />
+
+                            </div>
+
+                            <div className={"login-form__footer"}>
+
+                                <button className={"login-form__submit"}>
+                                    Submit
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                    <Link className={"login-form__registration-link"} to='/login'>Back to LogIn</Link>
+                </div>
+                
             </div>
         )
     }
