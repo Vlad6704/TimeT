@@ -7,6 +7,7 @@ import * as actions from "../../redux_components/actions";
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import Statistic from "../statistic/statistic";
 import './App.css';
+import './El-grid.css';
 import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import Login from '../login/login';
 import Registration from '../registration/registration';
@@ -26,7 +27,7 @@ class App extends Component{
         const {redirectToLogIn} = this.props;
 
         return(
-            <section>
+            <section className="app el-box">
                 {redirectToLogIn &&
                     <Redirect
                         to={{pathname: "/login"}}

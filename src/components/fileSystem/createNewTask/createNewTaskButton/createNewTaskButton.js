@@ -5,6 +5,7 @@ import * as actions from "../../../../redux_components/fileSystem/fileSystemActi
 const CreateNewTaskButton = ({openCreateNewTaskForm}) =>{
     return (
         <div
+            className="cursPointSelNon"
             onClick={openCreateNewTaskForm}
         >
             CreateNewTask >

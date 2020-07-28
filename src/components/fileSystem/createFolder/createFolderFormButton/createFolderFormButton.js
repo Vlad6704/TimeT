@@ -4,7 +4,7 @@ import * as actions from "../../../../redux_components/fileSystem/fileSystemActi
 
 const CreateFolderFormButton = ({openCreateFolderForm}) =>{
     return (
-        <div
+        <div className="cursPointSelNon"
              onClick={openCreateFolderForm}
         >
             CreateFolder >

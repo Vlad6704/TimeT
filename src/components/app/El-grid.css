@@ -1,0 +1,33 @@
+.el-box {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 15px;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+
+
+@media (min-width: 1230px) {
+    .el-box {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1229px) {
+    .el-box {
+        max-width: 961px;
+    }
+}
+
+@media (max-width: 991px) {
+    .el-box {
+        max-width: 737px;
+    }
+}
+
+@media (max-width: 767px) {
+    .el-box {
+        max-width: calc(100% - 30px);
+    }
+}
