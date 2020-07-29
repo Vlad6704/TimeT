@@ -4,9 +4,7 @@ import {logOutHandler} from '../../../redux_components/auth/authActions';
 
 const LogOut = ({logOutHandler}) => {
     return (
-        <button onClick={logOutHandler}>
-            LogOut
-        </button>
+        <i className={"icon-logout logout-button"} onClick={logOutHandler}></i>
     )
 }
 

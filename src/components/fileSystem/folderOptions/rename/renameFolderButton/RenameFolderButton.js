@@ -6,9 +6,7 @@ import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 const RenameFolderButton = ({openRenameFolderForm})=>{
 
     return (
-        <div className={"cursPointSelNon"} onClick={openRenameFolderForm}>
-            Rename folder
-        </div>
+       <i className={"icon-pen-solid folder-options__rename-folder"} onClick={openRenameFolderForm}></i>
     )
 }
 

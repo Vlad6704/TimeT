@@ -1,0 +1,31 @@
+.regular-tools {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.main-nav {
+    display: flex;
+}
+.main-nav__list {
+    display: flex;
+}
+
+.main-nav__list-item {
+    display: flex;
+}
+
+.main-nav__link {
+    display: flex;
+}
+
+.main-nav__link-icon {
+    font-size: 45px;
+    color: #fff;
+}
+
+.logout-button {
+    font-size: 45px;
+    color: #fff;
+    margin-left: 70px;
+}

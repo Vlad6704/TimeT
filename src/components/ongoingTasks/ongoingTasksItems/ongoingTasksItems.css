@@ -1,0 +1,43 @@
+.ongoing-task-item_switchable .ongoing-task-item__switchable-button {
+    opacity: 1;
+}
+
+.ongoing-task-item.switchable .switchableButton {
+    background-color: rgba(0, 255, 101, 0.13);
+}
+
+.ongoing-task-item {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.ongoing-task-item__title {
+    text-transform: capitalize;
+    color: #fff;
+    margin-right: 7px;
+    font-size: 26px;
+}
+
+.ongoing-task-item__run-icon {
+    width: 50px;
+    margin-right: 3px;
+}
+
+.ongoing-task-item__duration {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 26px;
+}
+
+.ongoing-task-item__switchable-button {
+    opacity: 0.5;
+    font-size: 30px;
+    color: #fff;
+}
+
+.ongoing-task-item__stop-button {
+    margin-right: 8px;
+    font-size: 30px;
+    color: #fff;
+}

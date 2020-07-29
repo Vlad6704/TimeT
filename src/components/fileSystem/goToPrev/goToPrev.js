@@ -9,7 +9,8 @@ const GoToPrev = ({onGoToPrev}) =>{
              style={{fontSize:"22px"}}
             onClick={onGoToPrev}
         >
-            GoToPrev >
+            <i className="g-icon icon-folder-solid "></i>
+            ...
         </div>
     )
 }

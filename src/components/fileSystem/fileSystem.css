@@ -1,3 +1,66 @@
 .fileSystem {
     padding-left: 10px;
 }
+
+.fileSystem-tools {
+    background-color: #5F9FFF;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    min-height: 69px;
+    position: sticky;
+    bottom: -1px;
+}
+
+
+
+.fileSystem-tools__home, .fileSystem-tools__add-task-icon, .fileSystem-tools__add-task, .fileSystem-tools__add-folder, .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder, .fileSystem-tools__add-folder-icon{
+    color: #fff;
+    font-size: 27px;
+    cursor: pointer;
+
+}
+
+.fileSystem-tools__home {
+    font-size: 40px;
+
+}
+
+.fileSystem-tools__home {
+    margin-right: 45px;
+}
+
+.fileSystem-tools__add-task {
+    margin-right: 25px;
+}
+
+.fileSystem-tools__add-task-icon {
+    margin-right: 5px;
+}
+
+.fileSystem-tools__add-folder {
+    margin-right: 55px;
+
+}
+
+.fileSystem-tools__add-folder-icon {
+    margin-right: 5px;
+    font-size: 33px;
+}
+
+.folder-options {
+    display: flex;
+}
+
+.folder-options__rename-folder {
+    margin-right: 25px;
+}
+
+.folder-options__cut-folder {
+    margin-right: 25px;
+}
+
+.folder-options__remove-folder {
+    margin-right: 25px;
+}
+

@@ -12,7 +12,6 @@ import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import Login from '../login/login';
 import Registration from '../registration/registration';
 import {bindActionCreators} from "redux";
-import Header from "../header/header";
 
 
 class App extends Component{

@@ -18,40 +18,44 @@ import {connect} from "react-redux";
 import * as actions from "../../redux_components/fileSystem/fileSystemActions";
 import WithService from '../hoc/with-service/with-service'
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
-import Header from "../header/header";
+import RegularTools from '../regularTools/regularTools';
 
 class FileSystem extends React.Component{
 
 
  defaultFolderOptions = () => (
-    <div className={"folderOptions"}>
+    <div className={"folder-options fileSystem-tools__folder-options"}>
         <RenameFolderButton />
         {this.props.isOpenRenameFolderForm &&
         <RenameFolderForm />
         }
-        <RemoveFolderButton />
         <CutFolderButton />
+        <RemoveFolderButton />
     </div>);
 
     render() {
         const {isOpenCreateFolderForm,isOpenCreateTaskForm,optionsPanelIsOpenForTask,replaceFolderId} = this.props;
         return(
-            <section className="fileSystem">
+            <section className="fileSystem-wrapper">
                 <OngoingTasks/>
-                <Header />
-                <div >
+                <div className={"fileSystem"}>
                     <GoToPrev    />
-                    <GoToHome  />
                     <Folders />
                     <Tasks />
-                    <CreateFolderFormButton />
-                    {isOpenCreateFolderForm &&
-                    <CreateFolderForm  />
-                    }
+                </div>
+                <div className="fileSystem-tools bottom-tools">
+                    <GoToHome  />
+
                     <CreateNewTaskButton />
                     {isOpenCreateTaskForm &&
                     <CreateNewTaskForm  />
                     }
+
+                    <CreateFolderFormButton />
+                    {isOpenCreateFolderForm &&
+                    <CreateFolderForm  />
+                    }
+
                     {replaceFolderId === -1 && this.defaultFolderOptions()}
                     {replaceFolderId !== -1 &&
                     <PasteFolderButton/>
@@ -59,6 +63,8 @@ class FileSystem extends React.Component{
                     {optionsPanelIsOpenForTask !== -1 &&
                     <TaskOptionsPanel />
                     }
+                    <RegularTools />
+
                 </div>
             </section>
 

@@ -4,10 +4,11 @@ import * as actions from "../../../../redux_components/fileSystem/fileSystemActi
 
 const CreateFolderFormButton = ({openCreateFolderForm}) =>{
     return (
-        <div className="cursPointSelNon"
+        <div className="button fileSystem-tools__add-folder"
              onClick={openCreateFolderForm}
         >
-            CreateFolder >
+            <i className="g-icon icon-folder-solid fileSystem-tools__add-folder-icon"></i>
+            New
         </div>
     )
 }

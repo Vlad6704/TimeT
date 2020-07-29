@@ -9,7 +9,8 @@ import DateRangePanel from './dateRangePanel/dateRangePanel';
 import LineChart from './charts/lineChart/lineChart';
 import getDataForLineChart from './charts/lineChart/getDataForLineChart';
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
-import Header from "../header/header";
+import './statistic.css'
+import RegularTools from '../regularTools/regularTools';
 
 class Statistic extends Component{
     constructor( props) {
@@ -28,21 +29,24 @@ class Statistic extends Component{
 
 
     render(){
-        const { timeTaskArr, app_options, tasks,statisticObj} = this.props;
+        const { timeTaskArr, app_options, tasks,statisticObj, chartsArr} = this.props;
 
 
         if( Array.isArray(timeTaskArr) &&  Array.isArray(tasks) && tasks.length > 0){
             return (
                 <section className={'statistic'}>
                     <OngoingTasks/>
-                    <Header />
-                    <div >
-                        {/*{tasksItems()}*/}
+
+                    <StatFileSystem />
+                    {chartsArr.length > 0 &&
                         <div className={'chart'} style={{width:'700px', height:'350px'}}>
                             <LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />
                         </div>
+                    }
+
+                    <div className={"statistic-tool-panel"}>
                         <DateRangePanel />
-                        <StatFileSystem />
+                        <RegularTools />
                     </div>
                 </section>
 
@@ -65,7 +69,7 @@ const mapStateToProps = (state)=>{
         tasks:state.tasks.items,
         timeTaskArr:state.statistics.timeTaskArr,
         app_options:state.appOptions,
-
+        chartsArr: state.statistics.charts.tasksArr
     }
 
 

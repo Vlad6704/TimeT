@@ -1,4 +1,4 @@
-.cursPointSelNon{
+.button{
   cursor:pointer;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -8,4 +8,9 @@
 a {
   color: #181818;
   text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
 }

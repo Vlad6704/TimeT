@@ -1,18 +1,19 @@
 import React from 'react';
-import MainNav from "./MainNav/mainNav";
+import MainNav from "./mainNav/mainNav";
 import LogOut from "./logOut/logOut";
 import {connect} from "react-redux";
+import './regularTools.css'
 
 
-const Header = ({userStatus}) => {
+const RegularTools = ({userStatus}) => {
     return (
-        <header>
+        <div className={"regular-tools"}>
             <MainNav />
             {userStatus &&
                 <LogOut />
             }
 
-        </header>
+        </div>
     )
 }
 
@@ -22,4 +23,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(RegularTools);
