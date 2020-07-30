@@ -24,6 +24,7 @@ export const startTask = (payload) => ({type:action_type.START_TASK,payload});
 export const setTasks = (payload) => ({type: action_type.SET_TASKS,payload});
 export const openRenameTaskForm = () => ({type:action_type.OPEN_RENAME_TASK_FORM});
 export const setIdTaskWithOpenStageList = (id) => ({type:action_type.SET_ID_TASK_WITH_OPEN_STAGE_LIST, payload:id});
+export const closeTaskOptionsPanel = () => ({type: action_type.CLOSE_TASK_OPTIONS_PANEL});
 
 export const createNewTask = (payload) => {
     return (dispatch,getState)  => {
@@ -137,7 +138,7 @@ export const removeTaskHandler = ()=>{
         service.removeTask(taskId).then((response)=>{
             // console.log(response.data);
             dispatch(setTasks(response.data));
-
+            dispatch(closeAllModalWindow());
         },(error)=>{
 
         });

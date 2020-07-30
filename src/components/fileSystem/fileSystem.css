@@ -64,3 +64,31 @@
     margin-right: 25px;
 }
 
+.folder-options_not-active {
+    opacity: .4;
+    position: relative;
+}
+
+.folder-options_not-active:before {
+    content: '';
+    width: 100%;
+    height: calc(100% + 10px);
+    top: -5px;
+    left: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.task-tool-panel {
+    margin-left: auto;
+}
+
+.task-tool-panel__rename-task-button {
+    margin-right: 10px;
+}
+
+.task-tool-panel__rename-task-button, .task-tool-panel__remove-button {
+    color: #fff;
+    font-size: 26px;
+    margin: 0 8px;
+}

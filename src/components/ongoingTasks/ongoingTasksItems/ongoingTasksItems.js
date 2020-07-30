@@ -27,7 +27,7 @@ const OngoingTasksItems = ({ongoingTasksArr,tasks,stopTaskHandler,switchableHand
 
     return ongoingTasksArr.map((item,idx) => {
         const task = getTaskById(item.id);
-        const stage =  getStageById(task, item.stageId);
+        // const stage =  getStageById(task, item.stageId);
         let classList = 'ongoing-task-item';
         if(switchableTaskId == item.id) classList +=' ongoing-task-item_switchable';
         return (

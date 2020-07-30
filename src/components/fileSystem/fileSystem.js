@@ -19,22 +19,25 @@ import * as actions from "../../redux_components/fileSystem/fileSystemActions";
 import WithService from '../hoc/with-service/with-service'
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import RegularTools from '../regularTools/regularTools';
+import RenameTaskForm from "./taskOptions/rename/RenameTaskForm/RenameTaskForm";
 
 class FileSystem extends React.Component{
 
 
- defaultFolderOptions = () => (
-    <div className={"folder-options fileSystem-tools__folder-options"}>
-        <RenameFolderButton />
-        {this.props.isOpenRenameFolderForm &&
-        <RenameFolderForm />
-        }
-        <CutFolderButton />
-        <RemoveFolderButton />
-    </div>);
+ defaultFolderOptions = () => {
+    const {currentFolderId} = this.props;
 
+    return (<div className={`folder-options fileSystem-tools__folder-options ${currentFolderId === -1 ? 'folder-options_not-active':''}`}>
+            <RenameFolderButton />
+            {this.props.isOpenRenameFolderForm &&
+            <RenameFolderForm />
+            }
+            <CutFolderButton />
+            <RemoveFolderButton />
+        </div>);
+    }
     render() {
-        const {isOpenCreateFolderForm,isOpenCreateTaskForm,optionsPanelIsOpenForTask,replaceFolderId} = this.props;
+        const {isOpenCreateFolderForm,isOpenCreateTaskForm,isOpenTaskOptionsPanel,replaceFolderId, isOpenRenameTaskForm} = this.props;
         return(
             <section className="fileSystem-wrapper">
                 <OngoingTasks/>
@@ -60,9 +63,13 @@ class FileSystem extends React.Component{
                     {replaceFolderId !== -1 &&
                     <PasteFolderButton/>
                     }
-                    {optionsPanelIsOpenForTask !== -1 &&
+                    {isOpenTaskOptionsPanel  &&
                     <TaskOptionsPanel />
                     }
+                    {isOpenRenameTaskForm &&
+                    <RenameTaskForm />
+                    }
+
                     <RegularTools />
 
                 </div>
@@ -81,7 +88,9 @@ const mapStateToProps = (state) =>{
         isOpenCreateTaskForm: state.fileSystem.isOpenCreateTaskForm,
         isOpenRenameFolderForm: state.fileSystem.isOpenRenameFolderForm,
         replaceFolderId:state.fileSystem.replaceFolderId,
-        optionsPanelIsOpenForTask:state.fileSystem.taskOptionsPanel.optionsPanelIsOpenForTask,
+        isOpenTaskOptionsPanel:state.fileSystem.taskOptionsPanel.isOpen,
+        currentFolderId: state.fileSystem.currentItemId,
+        isOpenRenameTaskForm: state.fileSystem.isOpenRenameTaskForm,
     }
 }
 

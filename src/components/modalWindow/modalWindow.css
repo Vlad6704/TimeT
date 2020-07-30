@@ -1,0 +1,127 @@
+.el-modal {
+    display: flex;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 99999999;
+    background-color: #000000ba;
+    justify-content: center;
+    overflow: scroll;
+}
+.el-modal__inner {
+    margin: auto;
+    position: relative;
+    max-width: -webkit-min-content;
+    max-width: min-content;
+    width: 100%;
+    padding: 30px 30px;
+}
+@media screen and (max-width: 768px) {
+    .el-modal__inner {
+        max-width: 100%;
+    }
+}
+.el-modal__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #5F9FFF;
+    width: 300px;
+    border-radius: 20px;
+    padding: 30px 35px;
+    box-sizing: border-box;
+}
+
+.el-modal__title {
+    color: #fff;
+    font-size: 27px;
+    text-transform: capitalize;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.el-modal__input {
+    height: 45px;
+}
+
+.el-modal__textarea {
+    min-height: 85px;
+    padding-top: 5px;
+}
+
+.el-modal__input,  .el-modal__textarea {
+    background-color: transparent;
+    border: 3px solid #fff;
+    width: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.el-modal__input:active,  .el-modal__textarea:active,
+.el-modal__input:focus,  .el-modal__textarea:focus {
+    outline: unset;
+    border: 3px solid #b6d3ff;
+}
+
+.el-modal__input::placeholder, .el-modal__textarea::placeholder {
+    color: #fff;
+}
+
+.el-modal__submit {
+    background-color: transparent;
+    border: 3px solid #fff;
+    padding: 8px 35px;
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.el-modal__submit:hover {
+    background-color: #fff;
+    color: #5F9FFF;
+}
+
+.el-modal__submit:active,  .el-modal__submit:focus{
+    outline: unset;
+}
+
+.el-modal__close {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    color: transparent;
+    text-shadow: none;
+    box-shadow: none;
+}
+@media screen and (max-width: 550px) {
+    .el-modal__close {
+        top: 5px;
+        right: 13px;
+    }
+}
+.el-modal__close::before, .el-modal__close::after {
+    content: "";
+    height: 1px;
+    width: 20px;
+    background-color: #b3b3b3;
+    position: absolute;
+    top: 10px;
+}
+.el-modal__close::before {
+    transform: rotate(45deg);
+}
+.el-modal__close::after {
+    transform: rotate(-45deg);
+}
+.el-modal__close:active, .el-modal__close:focus {
+    outline: none;
+}

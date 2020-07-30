@@ -26,19 +26,23 @@ class App extends Component{
         const {redirectToLogIn} = this.props;
 
         return(
-            <section className="app el-box">
-                {redirectToLogIn &&
-                    <Redirect
-                        to={{pathname: "/login"}}
-                    />
-                }
+            <>
+                <section className="app el-box">
+                    {redirectToLogIn &&
+                        <Redirect
+                            to={{pathname: "/login"}}
+                        />
+                    }
 
 
-                <Route path = "/" exact component = {FileSystem}/>
-                <Route path = "/login" exact component = {Login}/>
-                <Route path = "/registration" component = {Registration}/>
-                <Route path = "/statistics" component = {Statistic}/>
-            </section>
+                    <Route path = "/" exact component = {FileSystem}/>
+                    <Route path = "/login" exact component = {Login}/>
+                    <Route path = "/registration" component = {Registration}/>
+                    <Route path = "/statistics" component = {Statistic}/>
+
+                    <div className={"el-modal-container"}></div>
+                </section>
+            </>
 
         )
     }

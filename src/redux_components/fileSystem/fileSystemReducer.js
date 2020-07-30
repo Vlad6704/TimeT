@@ -21,6 +21,7 @@ const initialState = {
     isOpenRenameTaskForm:false,
     idTaskWithOpenStageList:-1,
     taskOptionsPanel:{
+        isOpen:false,
         optionsPanelIsOpenForTask:-1,
 
     }
@@ -165,6 +166,7 @@ const  fileSystemReducer = (state = initialState, action) => {
                     ...state,
                     taskOptionsPanel:{
                         ...state.taskOptionsPanel,
+                        isOpen:true,
                         optionsPanelIsOpenForTask:action.payload,
 
                     }
@@ -186,6 +188,17 @@ const  fileSystemReducer = (state = initialState, action) => {
             }
             return newState;
         }
+        case 'CLOSE_TASK_OPTIONS_PANEL': {
+            const newState = {
+                ...state,
+                taskOptionsPanel:{
+                    ...state.taskOptionsPanel,
+                    isOpen:false,
+
+                }
+            }
+            return newState;
+        }
         default:
             return state;
     }
@@ -200,6 +213,7 @@ const getfileSystemWithCloseModalWindow = (state)=>{
         isOpenRenameTaskForm:false,
         idTaskWithOpenStageList: -1,
         taskOptionsPanel:{
+            isOpen:false,
             optionsPanelIsOpenForTask:-1,
         },
     }
