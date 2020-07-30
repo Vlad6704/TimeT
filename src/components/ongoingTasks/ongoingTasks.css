@@ -1,7 +1,49 @@
-.ongoing-tasks {
+.ongoing-tasks-panel {
+    position: relative;
     background-color: #5F9FFF;
-    display: flex;
-    min-height: 69px;
-    padding: 0 12px;
 }
 
+.ongoing-tasks-wrapper {
+    overflow: hidden;
+    height: 69px;
+    transition: height 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.ongoing-tasks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0 12px;
+    padding-top: 4px;
+    box-sizing: border-box;
+}
+
+.ongoing-tasks-panel__dropDown-button {
+    position: absolute;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background-color: #5F9FFF;
+    width: 60px;
+    height: 60px;
+    border-radius: 0px 0px 50% 50%;
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.ongoing-tasks-panel__dropDown-icon {
+    font-size: 27px;
+    position: relative;
+    top: 10px;
+    color: #fff;
+    transition: all .5s;
+}   
+
+.ongoing-tasks-panel_open .ongoing-tasks-panel__dropDown-icon {
+    transform: rotate(180deg);
+    top: 8px;
+}   

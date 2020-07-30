@@ -4,10 +4,10 @@ import * as actions from "../../../../redux_components/fileSystem/fileSystemActi
 
 const CreateNewTaskButton = ({openCreateNewTaskForm}) =>{
     return (
-        <div className={"fileSystem-tools__add-task button"}>
+        <div className={"fileSystem-tools__add-task button"} onClick={openCreateNewTaskForm}>
             <i
                 className="icon-add fileSystem-tools__add-task-icon"
-                onClick={openCreateNewTaskForm}
+
             ></i>
             Task
         </div>

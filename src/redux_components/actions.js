@@ -41,7 +41,6 @@ export const fetchStore = () => {
             dispatch(setOngoingTasksHandler(ongoingTasksArr));
             dispatch(setLogIn());
 
-            if(data.activeTask && data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
         })
         .catch( (error) =>{
             console.log(error);

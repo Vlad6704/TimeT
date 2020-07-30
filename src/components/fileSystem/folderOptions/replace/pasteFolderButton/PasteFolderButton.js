@@ -7,9 +7,9 @@ const PasteFolderButton = ({PasteFolderHandler}) => {
 
 
     return(
-        <div className={'PasteFolderButton cursPointSelNon'} onClick={PasteFolderHandler}>
-            Paste Folder
-        </div>
+        <i className={"icon-paper folder-options__cut-folder"} onClick={PasteFolderHandler}>
+
+        </i>
     )
 }
 

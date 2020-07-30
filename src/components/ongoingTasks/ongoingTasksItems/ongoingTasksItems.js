@@ -37,8 +37,8 @@ const OngoingTasksItems = ({ongoingTasksArr,tasks,stopTaskHandler,switchableHand
                 <span class="ongoing-task-item__title">
                     {task.name}
                 </span>
-                {item.status && `, status: ${item.status}`}
-                {stage && `, stage: ${stage.name} `}
+                {/*{item.status && `, status: ${item.status}`}*/}
+                {/*{stage && `, stage: ${stage.name} `}*/}
                 <span className={"ongoing-task-item__duration"}>
                     {/*{item.totalPassedTime && item.totalPassedTime}*/}
                     {item.totalPassedTime}
