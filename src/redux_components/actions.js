@@ -26,7 +26,6 @@ export const fetchStore = () => {
         service.getStore().then((response) =>{
             // console.log(response.data);
             const data = response.data;
-            console.log(data);
             let tasks;
             let fileSystemItems;
             let ongoingTasksArr;

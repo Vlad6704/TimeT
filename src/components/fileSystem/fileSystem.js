@@ -20,6 +20,7 @@ import WithService from '../hoc/with-service/with-service'
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import RegularTools from '../regularTools/regularTools';
 import RenameTaskForm from "./taskOptions/rename/RenameTaskForm/RenameTaskForm";
+import ToolPanel from "../toolPanel/toolPanel";
 
 class FileSystem extends React.Component{
 
@@ -46,33 +47,37 @@ class FileSystem extends React.Component{
                     <Folders />
                     <Tasks />
                 </div>
-                <div className="fileSystem-tools bottom-tools">
-                    <GoToHome  />
+                <ToolPanel>
 
-                    <CreateNewTaskButton />
-                    {isOpenCreateTaskForm &&
-                    <CreateNewTaskForm  />
-                    }
+                    <div className="fileSystem-tools bottom-tools">
+                        <GoToHome  />
 
-                    <CreateFolderFormButton />
-                    {isOpenCreateFolderForm &&
-                    <CreateFolderForm  />
-                    }
+                        <CreateNewTaskButton />
+                        {isOpenCreateTaskForm &&
+                        <CreateNewTaskForm  />
+                        }
 
-                    {replaceFolderId === -1 && this.defaultFolderOptions()}
-                    {replaceFolderId !== -1 &&
-                    <PasteFolderButton/>
-                    }
-                    {isOpenTaskOptionsPanel  &&
-                    <TaskOptionsPanel />
-                    }
-                    {isOpenRenameTaskForm &&
-                    <RenameTaskForm />
-                    }
+                        <CreateFolderFormButton />
+                        {isOpenCreateFolderForm &&
+                        <CreateFolderForm  />
+                        }
 
-                    <RegularTools />
+                        {replaceFolderId === -1 && this.defaultFolderOptions()}
+                        {replaceFolderId !== -1 &&
+                        <PasteFolderButton/>
+                        }
+                        {isOpenTaskOptionsPanel  &&
+                        <TaskOptionsPanel />
+                        }
+                        {isOpenRenameTaskForm &&
+                        <RenameTaskForm />
+                        }
 
-                </div>
+                        <RegularTools />
+
+                    </div>
+
+                </ToolPanel>
             </section>
 
             )

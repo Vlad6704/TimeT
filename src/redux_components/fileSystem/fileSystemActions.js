@@ -110,7 +110,7 @@ export const PasteFolderHandler = ()=>{
         const currentFolderId = setState().fileSystem.currentItemId;
         const replaceFolderId = setState().fileSystem.replaceFolderId;
         service.replaceFolder(replaceFolderId,currentFolderId).then((response)=>{
-            console.log(response.data);
+            // console.log(response.data);
             dispatch(setFileSystemItems(response.data));
             dispatch(setFolderAvailable(replaceFolderId));
             dispatch(setReplaceFolderId(-1));
@@ -148,7 +148,6 @@ export const removeTaskHandler = ()=>{
 
 export const taskClickHandler = (id) => {
     return (dispatch, getState) => {
-        console.log(345);
         const tasks = getState().tasks.items;
         if(isTaskHaveStages(tasks, id)) dispatch(setIdTaskWithOpenStageList(id));
         else{
@@ -174,7 +173,7 @@ export const startTaskHandler = (taskId, stageId)=>{
                     return service.startTask(taskId, stageId);
                 })
                 .then((response) => {
-                    console.log(response.data);
+                    // console.log(response.data);
                     dispatch(setOngoingTasksHandler(response.data));
                 }, (error) => {
 
@@ -187,7 +186,7 @@ export const startTaskHandler = (taskId, stageId)=>{
                 return service.startTask(taskId, stageId);
             })
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 dispatch(setOngoingTasksHandler(response.data));
             }, (error) => {
 

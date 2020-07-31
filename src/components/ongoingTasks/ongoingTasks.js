@@ -77,6 +77,7 @@ class OngoingTasks extends React.Component {
     }
 
     dropDownButtonHandler(ev) {
+        console.log(this.state.isPanelOpen)
         ev.stopPropagation();
         if(this.state.isPanelOpen) this.liftUpPanel();
         else this.dropDownPanel();
@@ -90,7 +91,7 @@ class OngoingTasks extends React.Component {
             <>
 
 
-                <div className={`ongoing-tasks-panel ${this.state.isPanelOpen ? 'ongoing-tasks-panel_open' : ''}`} onMouseEnter={() => this.enterHandler()} onMouseLeave={() => this.leaveHandler()}>
+                <div className={`ongoing-tasks-panel ${this.state.isPanelOpen ? 'ongoing-tasks-panel_open' : ''}`} onMouseOver={() => this.enterHandler()} onMouseOut={() => this.leaveHandler()}>
                     {isEnableSoundReminder &&
                         <SoundReminder/>
                     }
@@ -100,7 +101,7 @@ class OngoingTasks extends React.Component {
                         </div>
                     </div>
                     {this.state.useDropDown &&
-                        <div class={"ongoing-tasks-panel__dropDown-button button"} onClick={(ev) => this.dropDownButtonHandler(ev)}>
+                        <div class={"ongoing-tasks-panel__dropDown-button button"} onTouchStart={(ev) => this.dropDownButtonHandler(ev)}>
                             <i className={"icon-down-arrow ongoing-tasks-panel__dropDown-icon"}></i>
                         </div>
                     }

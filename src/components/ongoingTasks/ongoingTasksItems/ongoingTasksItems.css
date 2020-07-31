@@ -17,28 +17,72 @@
     text-transform: capitalize;
     color: #fff;
     margin-right: 7px;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .ongoing-task-item__run-icon {
-    width: 50px;
+    width: 40px;
     margin-right: 3px;
 }
 
 .ongoing-task-item__duration {
     color: #fff;
     margin-right: 15px;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .ongoing-task-item__switchable-button {
     opacity: 0.5;
-    font-size: 30px;
+    font-size: 22px;
     color: #fff;
 }
 
 .ongoing-task-item__stop-button {
     margin-right: 8px;
-    font-size: 30px;
+    font-size: 22px;
     color: #fff;
+}
+
+@media screen and (min-width: 420px) {
+    .ongoing-task-item__title {
+        font-size: 22px;
+    }
+    
+    .ongoing-task-item__duration {
+        font-size: 22px;
+    }
+    
+    .ongoing-task-item__switchable-button {
+        font-size: 24px;
+    }
+    
+    .ongoing-task-item__stop-button {
+        font-size: 24px;
+    }
+
+    .ongoing-task-item__run-icon {
+        width: 45px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .ongoing-task-item__title {
+        font-size: 26px;
+    }
+    
+    .ongoing-task-item__duration {
+        font-size: 26px;
+    }
+    
+    .ongoing-task-item__switchable-button {
+        font-size: 30px;
+    }
+    
+    .ongoing-task-item__stop-button {
+        font-size: 30px;
+    }
+
+    .ongoing-task-item__run-icon {
+        width: 50px;
+    }
 }

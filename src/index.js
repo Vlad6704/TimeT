@@ -1,4 +1,5 @@
 import './fonts/icon/style.css';
+import './fonts/Roboto/roboto.css';
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -20,7 +21,7 @@ import { connectRouter, routerMiddleware , ConnectedRouter  } from 'connected-re
 import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory({ basename: '/timeT' });
-console.log(history);
+
 const middleware = [thunk,routerMiddleware(history)];
 const rootReducer = combineReducers({
     tasks : tasksReducer,

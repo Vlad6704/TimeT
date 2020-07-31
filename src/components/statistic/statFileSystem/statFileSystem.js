@@ -55,7 +55,7 @@ const StatFileSystem = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_o
                 folderId = {-1}
                 statChartsTasksArr = {statChartsTasksArr}
                 timeStat = {timeStat}
-                onClickHandler = {pushOrRemIdForStatChartTaskArr}
+                onClickChartsHandler = {pushOrRemIdForStatChartTaskArr}
                 startDate = {startDate}
                 endDate = {endDate}
             />

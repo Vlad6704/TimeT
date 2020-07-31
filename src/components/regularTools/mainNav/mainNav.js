@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 const MainNav = () => {
 
     const currentPath = useSelector( state => state.router.location.pathname);
-    console.log(currentPath);
 
     return (
         <nav className={"main-nav"}>

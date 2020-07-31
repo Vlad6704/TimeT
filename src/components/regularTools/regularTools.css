@@ -20,12 +20,37 @@
 }
 
 .main-nav__link-icon {
-    font-size: 45px;
+    font-size: 24px;
     color: #fff;
 }
 
 .logout-button {
-    font-size: 45px;
+    font-size: 24px;
     color: #fff;
-    margin-left: 70px;
+    margin-left: 15px;
 }
+
+@media screen and (min-width: 500px) {
+    .main-nav__link-icon {
+        font-size: 30px;
+    }
+    
+    .logout-button {
+        font-size: 30px;
+        margin-left: 30px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .main-nav__link-icon {
+        font-size: 45px;
+        color: #fff;
+    }
+
+    .logout-button {
+        font-size: 45px;
+        color: #fff;
+        margin-left: 70px;
+    }
+}
+

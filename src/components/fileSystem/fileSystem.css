@@ -1,37 +1,97 @@
 .fileSystem {
-    padding-left: 10px;
+    padding: 30px 10px;
+    min-height: 250px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+    html, body, #root, .app  {
+        height: 100%;
+    }
+    .fileSystem-wrapper, .statistic {
+        min-height: 100%;
+    }
 }
 
 .fileSystem-tools {
     background-color: #5F9FFF;
     display: flex;
     align-items: center;
-    padding: 0 15px;
-    min-height: 69px;
-    position: sticky;
-    bottom: -1px;
+
+    padding: 0 11px;
+    min-height: 55px;
 }
 
+@media screen and (min-width: 400px) {
+    .fileSystem-tools {
+        padding: 0 15px;
+        
+    }
+}
 
+@media screen and (min-width: 768px) {
+    .fileSystem-tools {
+        min-height: 69px;
+    }
+}
 
 .fileSystem-tools__home, .fileSystem-tools__add-task-icon, .fileSystem-tools__add-task, .fileSystem-tools__add-folder, .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder, .fileSystem-tools__add-folder-icon{
     color: #fff;
-    font-size: 27px;
+    font-size: 4vw;
     cursor: pointer;
 
 }
 
-.fileSystem-tools__home {
-    font-size: 40px;
+@media screen and (min-width: 500px) {
+    .fileSystem-tools__home, .fileSystem-tools__add-task-icon, .fileSystem-tools__add-task, .fileSystem-tools__add-folder, .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder, .fileSystem-tools__add-folder-icon{
+        font-size: 21px;
+    }
+}
 
+@media screen and (min-width: 768px) {
+    .fileSystem-tools__home, .fileSystem-tools__add-task-icon, .fileSystem-tools__add-task, .fileSystem-tools__add-folder, .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder, .fileSystem-tools__add-folder-icon{
+        font-size: 27px;
+    
+    }
 }
 
 .fileSystem-tools__home {
-    margin-right: 45px;
+    font-size: 24px;
+    margin-right: 6vw;
+
+}
+
+@media screen and (min-width: 500px) {
+    .fileSystem-tools__home {
+        font-size: 30px;
+        margin-right: 40px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .fileSystem-tools__home {
+        font-size: 40px;
+        margin-right: 45px;
+    
+    }
 }
 
 .fileSystem-tools__add-task {
-    margin-right: 25px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width: 500px) {
+    .fileSystem-tools__add-task {
+        margin-right: 15px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .fileSystem-tools__add-task {
+        margin-right: 25px;
+    }
 }
 
 .fileSystem-tools__add-task-icon {
@@ -39,29 +99,47 @@
 }
 
 .fileSystem-tools__add-folder {
-    margin-right: 55px;
+    margin-right: 6vw;
+    display: flex;
+    align-items: center;
 
+}
+
+@media screen and (min-width: 500px) {
+    .fileSystem-tools__add-folder {
+        margin-right: 35px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .fileSystem-tools__add-folder {
+        margin-right: 55px;
+    
+    }
 }
 
 .fileSystem-tools__add-folder-icon {
     margin-right: 5px;
-    font-size: 33px;
 }
 
 .folder-options {
     display: flex;
 }
 
-.folder-options__rename-folder {
-    margin-right: 25px;
+.folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder  {
+    margin-right: 10px;
 }
 
-.folder-options__cut-folder {
-    margin-right: 25px;
+@media screen and (min-width: 500px) {
+    .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder  {
+        margin-right: 15px;
+    }
 }
 
-.folder-options__remove-folder {
-    margin-right: 25px;
+@media screen and (min-width: 768px) {
+    .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder  {
+        margin-right: 25px;
+    }
 }
 
 .folder-options_not-active {

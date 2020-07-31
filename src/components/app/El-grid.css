@@ -28,6 +28,7 @@
 
 @media (max-width: 767px) {
     .el-box {
-        max-width: calc(100% - 30px);
+        max-width: calc(100%);
+        padding: 0;
     }
 }

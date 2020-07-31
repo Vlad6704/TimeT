@@ -40,6 +40,7 @@ class App extends Component{
                     <Route path = "/registration" component = {Registration}/>
                     <Route path = "/statistics" component = {Statistic}/>
 
+                    <div className={"el-tool-panel"}></div>
                     <div className={"el-modal-container"}></div>
                 </section>
             </>

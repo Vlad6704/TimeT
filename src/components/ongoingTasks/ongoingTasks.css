@@ -5,10 +5,16 @@
 
 .ongoing-tasks-wrapper {
     overflow: hidden;
-    height: 69px;
     transition: height 0.5s ease-in-out;
     position: relative;
     z-index: 1;
+    height: 55px;
+}
+
+@media screen and (min-width: 768px) {
+    .ongoing-tasks-wrapper {
+        height: 69px;
+    }
 }
 
 .ongoing-tasks {
@@ -16,8 +22,22 @@
     flex-wrap: wrap;
     align-items: flex-start;
     padding: 0 12px;
-    padding-top: 4px;
     box-sizing: border-box;
+    padding-top: 3px;
+}
+
+@media screen and (min-width: 420px) {
+    .ongoing-tasks {
+        padding-top: 0px;
+        
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .ongoing-tasks {
+        padding-top: 4px;
+        
+    }
 }
 
 .ongoing-tasks-panel__dropDown-button {

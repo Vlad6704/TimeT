@@ -11,6 +11,7 @@ import getDataForLineChart from './charts/lineChart/getDataForLineChart';
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import './statistic.css'
 import RegularTools from '../regularTools/regularTools';
+import ToolPanel from "../toolPanel/toolPanel";
 
 class Statistic extends Component{
     constructor( props) {
@@ -44,10 +45,12 @@ class Statistic extends Component{
                         </div>
                     }
 
-                    <div className={"statistic-tool-panel"}>
-                        <DateRangePanel />
-                        <RegularTools />
-                    </div>
+                    <ToolPanel>
+                        <div className={"statistic-tool-panel"}>
+                            <DateRangePanel />
+                            <RegularTools />
+                        </div>
+                    </ToolPanel>
                 </section>
 
             )
