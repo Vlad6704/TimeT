@@ -11,7 +11,7 @@ const Tasks = ({tasks,folderId, statChartsTasksArr, timeStat, onClickChartsHandl
         if(folderId === item.folderId){
 
             return (
-                <div className={"stat-task"}>
+                <div key={item.id} className={"stat-task"}>
                     <i className={"icon-tasks-solid stat-task__task-icon"}></i>
                     <span className={'stat-task__title'}>
                         {item.name}

@@ -34,7 +34,7 @@ const OngoingTasksItems = ({ongoingTasksArr,tasks,stopTaskHandler,switchableHand
 
             <div key={item.id} className={classList}>
                 <img className="ongoing-task-item__run-icon" src="/icons/clock.svg" alt="clock" />
-                <span class="ongoing-task-item__title">
+                <span className="ongoing-task-item__title">
                     {task.name}
                 </span>
                 {/*{item.status && `, status: ${item.status}`}*/}

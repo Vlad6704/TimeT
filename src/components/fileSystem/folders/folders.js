@@ -11,11 +11,11 @@ const Folders = ({fileSystemObj ,onSerfing,currentItemId}) => {
     return  fileSystemObj.items.map(item => {
         if(currentItemId === item.parentsId){
             return (
-                <div className={`folder button  ${item.isNotAvailable && 'notAvailable'}`}
+                <div key={item.id}
+                     className={`folder button  ${item.isNotAvailable && 'notAvailable'}`}
                      onClick={()=> {
                          if(!item.isNotAvailable) onSerfing(item.id);
                      }}
-
                 >
                     <FontAwesomeIcon icon={faFolder} />
                     {item.name}

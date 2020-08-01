@@ -3,14 +3,6 @@ import ReactDOM from 'react-dom';
 
 class ToolPanel extends React.Component{
 
-    // let toolPanelContainer;
-    // if(!document.querySelector('.el-tool-panel')){
-    //     toolPanelContainer = document.createElement('div');
-    //     toolPanelContainer.classList.add("el-tool-panel");
-    //     document.querySelector('.app').append(toolPanelContainer);
-    // }
-
-
 
     state = {
         isAppMount: false

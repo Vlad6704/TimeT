@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(()=>{},mapDispatchToProps)(LogOut);
+export default connect(null, mapDispatchToProps)(LogOut);

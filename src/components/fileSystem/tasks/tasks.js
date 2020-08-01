@@ -20,7 +20,7 @@ const Tasks = ({taskClickHandler, idTaskWithOpenStageList,tasks,currentItemId,  
     const getTasksArr =  tasks.map(item => {
             if(currentItemId === item.folderId){
                 return (
-                    <div className={"task button"}
+                    <div key={item.id} className={"task button"}
                          onClick={()=>taskClickHandler(item.id)}
                     >
                         <FontAwesomeIcon icon={faTasks} />

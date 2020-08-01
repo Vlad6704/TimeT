@@ -4,7 +4,6 @@ import FileSystem from '../fileSystem/fileSystem'
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
-import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import Statistic from "../statistic/statistic";
 import './App.css';
 import './El-grid.css';

@@ -20,7 +20,7 @@ const StatFileSystem = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_o
             if(fileSystemItem.parentsId === parentId){
                 // console.log(getIdAllTasksInsideFolder(fileSystemItem.id,fileSystemObj.items, tasks));
                 return (
-                    <div className={`stat-folder level_id_${parentId+1} ${arrStatOpenFolderIds.some((id) => id === fileSystemItem.id)?'open':null}`}
+                    <div key={fileSystemItem.id} className={`stat-folder level_id_${parentId+1} ${arrStatOpenFolderIds.some((id) => id === fileSystemItem.id)?'open':null}`}
                          onClick={(ev)=>folderClickHandler(ev,fileSystemItem.id)}
                     >
                         <i className={"icon-folder-solid stat-folder__icon"}></i>
@@ -33,6 +33,7 @@ const StatFileSystem = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_o
                         <div className={"stat-folder__inner"}>
                             {getFileSystemTree(arrfileSystemItems,fileSystemItem.id)}
                             <Tasks
+                                key={fileSystemItem.id}
                                 tasks={tasks}
                                 folderId = {fileSystemItem.id}
                                 statChartsTasksArr = {statChartsTasksArr}
@@ -51,6 +52,7 @@ const StatFileSystem = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_o
         <div className={"stat-file-system"}>
             {getFileSystemTree(fileSystemObj.items,-1)}
             <Tasks
+                key={"main"}
                 tasks={tasks}
                 folderId = {-1}
                 statChartsTasksArr = {statChartsTasksArr}

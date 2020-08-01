@@ -77,7 +77,6 @@ class OngoingTasks extends React.Component {
     }
 
     dropDownButtonHandler(ev) {
-        console.log(this.state.isPanelOpen)
         ev.stopPropagation();
         if(this.state.isPanelOpen) this.liftUpPanel();
         else this.dropDownPanel();
@@ -101,7 +100,7 @@ class OngoingTasks extends React.Component {
                         </div>
                     </div>
                     {this.state.useDropDown &&
-                        <div class={"ongoing-tasks-panel__dropDown-button button"} onTouchStart={(ev) => this.dropDownButtonHandler(ev)}>
+                        <div className={"ongoing-tasks-panel__dropDown-button button"} onTouchStart={(ev) => this.dropDownButtonHandler(ev)}>
                             <i className={"icon-down-arrow ongoing-tasks-panel__dropDown-icon"}></i>
                         </div>
                     }

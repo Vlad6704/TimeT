@@ -160,6 +160,7 @@ export const taskClickHandler = (id) => {
 
 export const startTaskHandler = (taskId, stageId)=>{
     return (dispatch, getState) => {
+        if(getState().ongoingTasks.items.some( ongoingTask => ongoingTask.id === taskId )) return;
         const switchableTaskId = getState().ongoingTasks.switchableTaskId;
         dispatch(startTask(taskId));
         if(switchableTaskId !== -1){
