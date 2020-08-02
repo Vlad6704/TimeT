@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as actions from "../../../../redux_components/fileSystem/fileSystemActions";
 import WithService from "../../../hoc/with-service/with-service";
@@ -26,10 +27,8 @@ const CreateFolderForm = ({createNewFolderHandler}) =>{
     )
 }
 
-const mapStateToProps = (state) =>{
-    return {
-
-    }
+CreateFolderForm.propTypes = {
+    createNewFolderHandler: PropTypes.func
 }
 
-export default WithService()(connect(mapStateToProps,actions)(CreateFolderForm));
+export default WithService()(connect(null,actions)(CreateFolderForm));

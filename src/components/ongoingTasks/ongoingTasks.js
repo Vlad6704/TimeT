@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/ongoingTasks/ongoingTasksActions";
 import WithService from "../hoc/with-service/with-service";
@@ -114,7 +115,14 @@ class OngoingTasks extends React.Component {
 }
 
 
-
+OngoingTasks.propTypes = {
+    ongoingTasksArr: PropTypes.array.isRequired,
+    tasks: PropTypes.array.isRequired,
+    stopTaskHandler: PropTypes.func.isRequired,
+    switchableHandler: PropTypes.func.isRequired,
+    switchableTaskId: PropTypes.number.isRequired,
+    isEnableSoundReminder: PropTypes.bool.isRequired,
+}
 
 const mapStateToProps = (state)=>{
     return {

@@ -57,3 +57,14 @@
     margin-top: 10px;
     display: inline-block;
 }
+
+.login-form__input_error {
+    margin-bottom: 5px;
+    border-color: #f00;
+}
+
+.login-form__error-massage {
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: #f00;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as actions from "../../../../redux_components/fileSystem/fileSystemActions";
 
@@ -14,10 +15,8 @@ const CreateNewTaskButton = ({openCreateNewTaskForm}) =>{
     )
 }
 
-const mapStateToProps = (state) =>{
-    return {
-
-    }
+CreateNewTaskButton.propTypes = {
+    openCreateNewTaskForm: PropTypes.func
 }
 
-export default connect(mapStateToProps,actions)(CreateNewTaskButton);
+export default connect(null,actions)(CreateNewTaskButton);

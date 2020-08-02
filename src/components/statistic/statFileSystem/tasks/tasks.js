@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 const Tasks = ({tasks,folderId, statChartsTasksArr, timeStat, onClickChartsHandler, startDate, endDate}) => {
 
@@ -26,6 +27,16 @@ const Tasks = ({tasks,folderId, statChartsTasksArr, timeStat, onClickChartsHandl
             )
         }
     })
+}
+
+Tasks.propTypes = {
+    tasks: PropTypes.array.isRequired,
+    folderId: PropTypes.number.isRequired,
+    statChartsTasksArr: PropTypes.array.isRequired,
+    timeStat: PropTypes.object.isRequired,
+    onClickChartsHandler: PropTypes.func.isRequired,
+    startDate: PropTypes.string,
+    endDate: PropTypes.string
 }
 
 export default Tasks;

@@ -6,7 +6,7 @@ import './login.css';
 
 class Login extends Component {
     state = {
-        username: "",
+        email: "",
         password: ""
     }
 
@@ -22,6 +22,9 @@ class Login extends Component {
     }
 
     render() {
+
+        const {registrationError} = this.props;
+
         return (
             <section className={"login-page"}>
 
@@ -34,10 +37,12 @@ class Login extends Component {
 
                                 <input
                                     className={"login-form__input"}
+                                    type="email"
                                     name='email'
                                     placeholder='Email'
                                     value={this.state.email}
                                     onChange={this.handleChange}
+                                    required
                                 />
 
                                 <input
@@ -47,7 +52,17 @@ class Login extends Component {
                                     placeholder='Password'
                                     value={this.state.password}
                                     onChange={this.handleChange}
+                                    required
                                 />
+
+                                {registrationError === "invalid_username_or_password" &&
+                                    this.state.password &&
+                                        this.state.email &&
+
+                                    <p className="login-form__error-massage">
+                                        Invalid username or password
+                                    </p>
+                                }
 
                             </div>
 
@@ -67,8 +82,15 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = state => {
+
+    return {
+        registrationError: state.user.registrationError,
+    }
+}
+
 const mapDispatchToProps = dispatch => ({
     userLoginFetch: userInfo => dispatch(loginHandler(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

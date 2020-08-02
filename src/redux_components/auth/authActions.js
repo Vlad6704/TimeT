@@ -6,23 +6,30 @@ import { push } from 'connected-react-router'
 
 export const loginHandler = user => {
     return dispatch => {
-        _doRequest('login',user).then(response => {
-            localStorage.setItem("token", response.data.jwt);
-            dispatch(setLogIn());
-            dispatch(fetchStore());
-            dispatch(push('/'))
-        });
+        _doRequest('login',user)
+            .then(response => {
+                localStorage.setItem("token", response.data.jwt);
+                dispatch(setLogIn());
+                dispatch(fetchStore());
+                dispatch(push('/'))
+            })
+            .catch( e => {
+                dispatch(setRegistrationError(e.response.data.message));
+            })
 
     }
 };
 
 export const registrationHandler = user => {
     return dispatch => {
-        _doRequest('create_user',user).then(response => {
-        }).then(() => {
-            dispatch(setLogIn());
+        _doRequest('create_user',user)
+        .then(() => {
+            dispatch(loginHandler(user));
+        })
+        .catch(e => {
+            dispatch(setRegistrationError(e.response.data.message));
         });
-    }
+}
 };
 
 export const logOutHandler = () => {
@@ -32,6 +39,8 @@ export const logOutHandler = () => {
         dispatch(setLogOut());
     }
 };
+
+export const setRegistrationError = (errorMassage) => ({type:action_type.SET_REGISTRATION_ERROR, payload: errorMassage});
 
 export const setLogIn = () => ({
     type: action_type.LOGIN_USER,

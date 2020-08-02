@@ -6,8 +6,7 @@ import './registration.css';
 
 class Registration extends Component {
     state = {
-        firstName: "",
-        lastName: "",
+        username: "",
         email: "",
         password: ""
     }
@@ -24,6 +23,9 @@ class Registration extends Component {
     }
 
     render() {
+
+        const {registrationError} = this.props;
+
         return (
             <div className={"registration-page"}>
 
@@ -36,37 +38,44 @@ class Registration extends Component {
 
                                 <input
                                     className={"login-form__input"}
-                                    name='firstname'
-                                    placeholder='First Name'
-                                    value={this.state.firstname}
+                                    name='username'
+                                    placeholder='Username'
+                                    value={this.state.username}
                                     onChange={this.handleChange}
+                                    required
                                 />
 
                                 <input
-                                    className={"login-form__input"}
-                                    name='lastname'
-                                    placeholder='Last Name'
-                                    value={this.state.lastname}
-                                    onChange={this.handleChange}
-                                />
-
-                                <input
-                                    className={"login-form__input"}
-                                    type='email'
+                                    className={`login-form__input ${registrationError === "unacceptable_email" && this.state.email ? "login-form__input_error" : ""}`}
+                                    // type='email'
                                     name='email'
                                     placeholder='Email'
                                     value={this.state.email}
                                     onChange={this.handleChange}
+                                    required
                                 />
 
+                                {registrationError === "unacceptable_email" && this.state.email &&
+                                    <p className="login-form__error-massage">
+                                        Unacceptable email
+                                    </p>
+                                }
+
                                 <input
-                                    className={"login-form__input"}
+                                    className={`login-form__input ${registrationError === "unacceptable_password_length" && this.state.password ? "login-form__input_error" : ""}`}
                                     type='password'
                                     name='password'
                                     placeholder='Password'
                                     value={this.state.password}
                                     onChange={this.handleChange}
+                                    required
                                 />
+
+                                {registrationError === "unacceptable_password_length" && this.state.password &&
+                                    <p className="login-form__error-massage">
+                                        Password length must be at least 4 symbols
+                                    </p>
+                                }
 
                             </div>
 
@@ -87,8 +96,15 @@ class Registration extends Component {
     }
 }
 
+const mapStateToProps = state => {
+
+    return {
+        registrationError: state.user.registrationError,
+    }
+}
+
 const mapDispatchToProps = dispatch => ({
     userPostFetch: userInfo => dispatch(registrationHandler(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(Registration);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

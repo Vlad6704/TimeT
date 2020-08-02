@@ -11,6 +11,7 @@ import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import Login from '../login/login';
 import Registration from '../registration/registration';
 import {bindActionCreators} from "redux";
+import PropTypes from 'prop-types';
 
 
 class App extends Component{
@@ -46,6 +47,11 @@ class App extends Component{
 
         )
     }
+}
+
+App.propTypes = {
+    ongoingTasksArr: PropTypes.array,
+    redirectToLogIn: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = (state)=>{

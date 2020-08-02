@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as actions from '../../../redux_components/fileSystem/fileSystemActions';
 import {setOngoingTasks} from '../../../redux_components/ongoingTasks/ongoingTasksActions';
@@ -46,6 +47,14 @@ const Tasks = ({taskClickHandler, idTaskWithOpenStageList,tasks,currentItemId,  
         </div>
     )
 
+}
+
+Tasks.propTypes = {
+    taskClickHandler: PropTypes.func.isRequired,
+    idTaskWithOpenStageList: PropTypes.number.isRequired,
+    tasks: PropTypes.array.isRequired,
+    currentItemId: PropTypes.number.isRequired,
+    openFiSyOptionsPanel: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) =>{

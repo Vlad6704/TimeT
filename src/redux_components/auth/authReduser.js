@@ -4,6 +4,7 @@ const initialState = {
 
     },
     redirectToLogIn:false,
+    registrationError:""
 };
 
 const authReducer = (state = initialState, action) => {
@@ -29,6 +30,14 @@ const authReducer = (state = initialState, action) => {
             };
             return newState;
         }
+        case 'SET_REGISTRATION_ERROR': {
+            const newState = {
+                ...state,
+                registrationError:action.payload,
+            };
+            return newState;
+        }
+
         default: return state;
 
     }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../../redux_components/statistics/statisticsActions';
+import PropTypes from 'prop-types';
 import TimeStat from '../timeStatistic_class/timeStat';
 import Tasks from "./tasks/tasks";
 import {getIdAllTasksInsideFolder} from '../../../getters/getters'
@@ -63,6 +64,19 @@ const StatFileSystem = ({startDate,endDate,tasks,fileSystemObj,timeTaskArr,app_o
             />
         </div>
     )
+}
+
+StatFileSystem.propTypes = {
+    startDate: PropTypes.string,
+    endDate: PropTypes.string,
+    tasks: PropTypes.array.isRequired,
+    fileSystemObj: PropTypes.object.isRequired,
+    timeTaskArr: PropTypes.array.isRequired,
+    app_options: PropTypes.object.isRequired,
+    statChartsTasksArr: PropTypes.array.isRequired,
+    pushOrRemIdForStatChartTaskArr: PropTypes.func.isRequired,
+    folderClickHandler: PropTypes.func.isRequired,
+    arrStatOpenFolderIds: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = (state) =>{

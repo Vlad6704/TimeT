@@ -1,5 +1,6 @@
 import React from 'react';
 import './fileSystem.css';
+import PropTypes from 'prop-types';
 import  GoToPrev from './goToPrev/goToPrev';
 import  GoToHome from './goHome/goHome';
 import  Folders from './folders/folders';
@@ -39,6 +40,7 @@ class FileSystem extends React.Component{
     }
     render() {
         const {isOpenCreateFolderForm,isOpenCreateTaskForm,isOpenTaskOptionsPanel,replaceFolderId, isOpenRenameTaskForm} = this.props;
+
         return(
             <section className="fileSystem-wrapper">
                 <OngoingTasks/>
@@ -48,7 +50,6 @@ class FileSystem extends React.Component{
                     <Tasks />
                 </div>
                 <ToolPanel>
-
                     <div className="fileSystem-tools bottom-tools">
                         <GoToHome  />
 
@@ -85,6 +86,14 @@ class FileSystem extends React.Component{
 
     }
 
+}
+
+FileSystem.propTypes = {
+    isOpenCreateFolderForm: PropTypes.bool.isRequired,
+    isOpenCreateTaskForm: PropTypes.bool.isRequired,
+    isOpenTaskOptionsPanel: PropTypes.bool.isRequired,
+    replaceFolderId: PropTypes.number.isRequired,
+    isOpenRenameTaskForm: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = (state) =>{

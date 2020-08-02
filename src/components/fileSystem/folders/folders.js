@@ -4,6 +4,7 @@ import {onSerfing} from '../../../redux_components/fileSystem/fileSystemActions'
 import './folder.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolder } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types';
 
 
 const Folders = ({fileSystemObj ,onSerfing,currentItemId}) => {
@@ -24,6 +25,12 @@ const Folders = ({fileSystemObj ,onSerfing,currentItemId}) => {
             )
         }
     })
+}
+
+Folders.propTypes = {
+    fileSystemObj: PropTypes.object.isRequired,
+    onSerfing: PropTypes.func.isRequired,
+    currentItemId: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = (state) =>{

@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
-import ErrorIndicator from '../error-indicator/error-indicator'
+import ErrorIndicator from '../errorIndicator/errorIndicator'
 
 export default class ErrorBoundry extends Component {
     state = {
         hasError:false
     };
-    componentDidCatch(){
+
+    static getDerivedStateFromError(error) {
+        return {hasError: true}
 
     }
 

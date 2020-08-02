@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as actions from "../../../../redux_components/fileSystem/fileSystemActions";
 
@@ -13,10 +14,9 @@ const CreateFolderFormButton = ({openCreateFolderForm}) =>{
     )
 }
 
-const mapStateToProps = (state) =>{
-    return {
-
-    }
+CreateFolderFormButton.propTypes = {
+    openCreateFolderForm: PropTypes.func
 }
 
-export default connect(mapStateToProps,actions)(CreateFolderFormButton);
+
+export default connect(null,actions)(CreateFolderFormButton);

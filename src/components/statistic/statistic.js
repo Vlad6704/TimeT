@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/statistics/statisticsActions";
-import moment from 'moment';
+import PropTypes from 'prop-types';
 import TimeStat from './timeStatistic_class/timeStat';
 import StatFileSystem from './statFileSystem/statFileSystem';
 import DateRangePanel from './dateRangePanel/dateRangePanel';
@@ -63,6 +63,14 @@ class Statistic extends Component{
 
 
     }
+}
+
+Statistic.propTypes = {
+    timeTaskArr: PropTypes.array.isRequired,
+    app_options: PropTypes.object.isRequired,
+    tasks: PropTypes.array.isRequired,
+    statisticObj: PropTypes.object.isRequired,
+    chartsArr:PropTypes.array.isRequired,
 }
 
 const mapStateToProps = (state)=>{
