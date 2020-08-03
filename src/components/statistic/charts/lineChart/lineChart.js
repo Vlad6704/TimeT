@@ -7,7 +7,7 @@ import moment from 'moment';
 const LineChart = ({data}) =>  (
     <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 30, right: 110, bottom: 90, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 0, max: 'auto' }}
         yFormat={ d => {
@@ -22,10 +22,10 @@ const LineChart = ({data}) =>  (
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
-            legend: 'transportation',
+            tickRotation: 35,
+            legend: '',
             legendOffset: 36,
-            legendPosition: 'middle'
+            legendPosition: 'middle',
         }}
         axisLeft={{
             format: d => {
@@ -37,7 +37,7 @@ const LineChart = ({data}) =>  (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
+            legend: '',
             legendOffset: -50,
             legendPosition: 'middle'
         }}

@@ -54,57 +54,58 @@ export default class getDataForLineChart{
     getDateArr(){
         // [
 
+        const resultFormat = 'DD.MM.YYYY';
         let newStartDate = this.startDate;
         let newEndDate = this.endDate;
         let arrDateRange = [];
         if(this.currMeasure === 'day') {
-            newStartDate = moment(this.endDate, 'DD-MM-YYYY').add(2, 'days').format("DD.MM.YYYY");
-            newEndDate = moment(this.endDate, 'DD-MM-YYYY').subtract(4, 'days').format("DD.MM.YYYY");
+            newStartDate = moment(this.endDate, 'DD-MM-YYYY').add(2, 'days').format(resultFormat);
+            newEndDate = moment(this.endDate, 'DD-MM-YYYY').subtract(4, 'days').format(resultFormat);
             const start = moment(newEndDate, 'DD-MM-YYYY');
             const end   = moment(newStartDate, 'DD-MM-YYYY');
             const range = moment.range(start, end);
             const acc = Array.from(range.by('days'));
-            arrDateRange = acc.map(m => m.format("DD.MM.YYYY"));
+            arrDateRange = acc.map(m => m.format(resultFormat));
 
         }
         if(this.currMeasure === 'week') {
             arrDateRange[0] = {
-                startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(3, 'week').format("DD.MM.YYYY"),
-                endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(3, 'week').format("DD.MM.YYYY")
+                startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(3, 'week').format(resultFormat),
+                endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(3, 'week').format(resultFormat)
             };
             arrDateRange[1] = {
-                startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(2, 'week').format("DD.MM.YYYY"),
-                endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(2, 'week').format("DD.MM.YYYY")
+                startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(2, 'week').format(resultFormat),
+                endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(2, 'week').format(resultFormat)
             };
             arrDateRange[2] = {
-                startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(1, 'week').format("DD.MM.YYYY"),
-                endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(1, 'week').format("DD.MM.YYYY")
+                startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(1, 'week').format(resultFormat),
+                endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(1, 'week').format(resultFormat)
             };
             arrDateRange[3] = {
                 startDate: this.startDate,
                 endDate: this.endDate,
             };
             arrDateRange[4] = {
-                startDate: moment(this.startDate, 'DD-MM-YYYY').add(1, 'week').format("DD.MM.YYYY"),
-                endDate: moment(this.endDate, 'DD-MM-YYYY').add(1, 'week').format("DD.MM.YYYY")
+                startDate: moment(this.startDate, 'DD-MM-YYYY').add(1, 'week').format(resultFormat),
+                endDate: moment(this.endDate, 'DD-MM-YYYY').add(1, 'week').format(resultFormat)
             };
         }
             if(this.currMeasure === 'month') {
                 arrDateRange[0] = {
-                    startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(2, 'month').format("DD.MM.YYYY"),
-                    endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(2, 'month').format("DD.MM.YYYY")
+                    startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(2, 'month').format(resultFormat),
+                    endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(2, 'month').format(resultFormat)
                 };
                 arrDateRange[1] = {
-                    startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(1, 'month').format("DD.MM.YYYY"),
-                    endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(1, 'month').format("DD.MM.YYYY")
+                    startDate: moment(this.startDate, 'DD-MM-YYYY').subtract(1, 'month').format(resultFormat),
+                    endDate: moment(this.endDate, 'DD-MM-YYYY').subtract(1, 'month').format(resultFormat)
                 };
                 arrDateRange[2] = {
                     startDate: this.startDate,
                     endDate: this.endDate,
                 };
                 arrDateRange[3] = {
-                    startDate: moment(this.startDate, 'DD-MM-YYYY').add(1, 'month').format("DD.MM.YYYY"),
-                    endDate: moment(this.endDate, 'DD-MM-YYYY').add(1, 'month').format("DD.MM.YYYY")
+                    startDate: moment(this.startDate, 'DD-MM-YYYY').add(1, 'month').format(resultFormat),
+                    endDate: moment(this.endDate, 'DD-MM-YYYY').add(1, 'month').format(resultFormat)
                 };
 
             }

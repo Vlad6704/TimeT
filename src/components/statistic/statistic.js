@@ -40,7 +40,7 @@ class Statistic extends Component{
 
                     <StatFileSystem />
                     {chartsArr.length > 0 &&
-                        <div className={'chart'} style={{width:'700px', height:'350px'}}>
+                        <div className={'stat-chart'}>
                             <LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />
                         </div>
                     }

@@ -1,11 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
 import * as actions from "../../../../redux_components/statistics/statisticsActions";
-import moment from "moment";
 import CurrentDateRangeSetUp from "../currentDateRangeSetUp/currentDateRangeSetUp";
 
 
-const NavPanel = ({startDate,endDate,isIntegerMeasure,currMeasure,setDateRangeStartDate,setDateRangeEndDate, prevHandler,nextHandler}) =>{
+const NavPanel = ({ prevHandler,nextHandler}) =>{
 
 
     return (

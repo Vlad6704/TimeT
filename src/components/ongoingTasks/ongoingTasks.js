@@ -29,16 +29,20 @@ class OngoingTasks extends React.Component {
         if(!this.state.useDropDown) return;
         const ongoingTasksWrapper = this.ongoingTasksWrapperRef.current;
         const ongoingTasks = this.ongoingTasksRef.current;
-        if(!this.state.ongoingTasksWrapperHeight) this.setState({ongoingTasksWrapperHeight: ongoingTasksWrapper.clientHeight});
+        if(!this.state.ongoingTasksWrapperHeight) this.setWrapperHeight(ongoingTasksWrapper.clientHeight);
         ongoingTasksWrapper.style.height = ongoingTasks.clientHeight+'px';
         this.setState({isPanelOpen:true});
 
 
     }
 
+    setWrapperHeight(height) {
+        this.setState({ongoingTasksWrapperHeight: height})
+    }
+
     liftUpPanel() {
         const ongoingTasksWrapper = this.ongoingTasksWrapperRef.current;
-        ongoingTasksWrapper.style.height = this.state.ongoingTasksWrapperHeight+ 'px';
+        ongoingTasksWrapper.style.removeProperty('height');
         this.setState({isPanelOpen:false});
     }
 
@@ -59,7 +63,13 @@ class OngoingTasks extends React.Component {
             this.setState({useDropDown: false});
         }
 
+        if(this.state.isPanelOpen) {
+            this.liftUpPanel();
+        }
+
     }
+
+
 
     componentDidMount() {
         this.showOrHideDropDownButton();
@@ -86,15 +96,21 @@ class OngoingTasks extends React.Component {
     render() {
         const {ongoingTasksArr,tasks,stopTaskHandler,switchableHandler, switchableTaskId, isEnableSoundReminder} = this.props;
 
-
+        let ongoingTasksPanelClasses;
+        if(this.state.isPanelOpen) ongoingTasksPanelClasses +=' ongoing-tasks-panel_open';
+        if(ongoingTasksArr.length) ongoingTasksPanelClasses +=' ongoing-tasks-panel_tasks-is-running';
         return (
             <>
 
 
-                <div className={`ongoing-tasks-panel ${this.state.isPanelOpen ? 'ongoing-tasks-panel_open' : ''}`} onMouseOver={() => this.enterHandler()} onMouseOut={() => this.leaveHandler()}>
+                <div className={`ongoing-tasks-panel ${ongoingTasksPanelClasses}`} onMouseOver={() => this.enterHandler()} onMouseOut={() => this.leaveHandler()}>
                     {isEnableSoundReminder &&
                         <SoundReminder/>
                     }
+                    <div className="ongoing-tasks-logo">
+                        <i className={"icon-clock-solid ongoing-tasks-logo__icon"}></i>
+                        <span className="ongoing-tasks-logo__title">TimeT</span>
+                    </div>
                     <div className={"ongoing-tasks-wrapper"} ref={this.ongoingTasksWrapperRef}>
                         <div className={'ongoing-tasks'} ref={this.ongoingTasksRef}>
                             <OngoingTasksItems ongoingTasksArr={ongoingTasksArr} tasks={tasks} stopTaskHandler={stopTaskHandler} switchableHandler={switchableHandler}  switchableTaskId={switchableTaskId} />

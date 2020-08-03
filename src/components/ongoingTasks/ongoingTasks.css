@@ -8,7 +8,7 @@
     transition: height 0.5s ease-in-out;
     position: relative;
     z-index: 1;
-    height: 55px;
+    height: 59px;
 }
 
 @media screen and (min-width: 768px) {
@@ -23,7 +23,13 @@
     align-items: flex-start;
     padding: 0 12px;
     box-sizing: border-box;
-    padding-top: 3px;
+    position: relative;
+    top: 100%;
+    -webkit-transition: top .3s;
+    -moz-transition: top .3s;
+    -ms-transition: top .3s;
+    -o-transition: top .3s;
+    transition: top .3s;
 }
 
 @media screen and (min-width: 420px) {
@@ -35,7 +41,6 @@
 
 @media screen and (min-width: 768px) {
     .ongoing-tasks {
-        padding-top: 4px;
         
     }
 }
@@ -66,4 +71,38 @@
 .ongoing-tasks-panel_open .ongoing-tasks-panel__dropDown-icon {
     transform: rotate(180deg);
     top: 8px;
-}   
+}
+
+.ongoing-tasks-logo {
+    position: absolute;
+    font-size: 32px;
+    color: #fff;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    display: flex;
+    align-items: center;
+    -webkit-transition: top .3s;
+    -moz-transition: top .3s;
+    -ms-transition: top .3s;
+    -o-transition: top .3s;
+    transition: top .3s;
+}
+
+@media screen and (min-width: 768px) {
+    .ongoing-tasks-logo {
+        font-size: 36px;
+    }
+}
+
+.ongoing-tasks-logo__title {
+    margin-left: 7px;
+}
+
+.ongoing-tasks-panel_tasks-is-running .ongoing-tasks-logo {
+    top: -50%
+}
+
+.ongoing-tasks-panel_tasks-is-running .ongoing-tasks {
+    top: 0;
+}

@@ -13,7 +13,7 @@ const Folders = ({fileSystemObj ,onSerfing,currentItemId}) => {
         if(currentItemId === item.parentsId){
             return (
                 <div key={item.id}
-                     className={`folder button  ${item.isNotAvailable && 'notAvailable'}`}
+                     className={`fileSystem-folder button  ${item.isNotAvailable && 'fileSystem-folder_not-available'}`}
                      onClick={()=> {
                          if(!item.isNotAvailable) onSerfing(item.id);
                      }}

@@ -21,18 +21,18 @@ const Tasks = ({taskClickHandler, idTaskWithOpenStageList,tasks,currentItemId,  
     const getTasksArr =  tasks.map(item => {
             if(currentItemId === item.folderId){
                 return (
-                    <div key={item.id} className={"task button"}
+                    <div key={item.id} className={"fileSystem-task button"}
                          onClick={()=>taskClickHandler(item.id)}
                     >
                         <FontAwesomeIcon icon={faTasks} />
-                        <span className={'title'}>
+                        <span className={'fileSystem-task__title'}>
                             {item.name}
                         </span>
                         {item.status == 'creating' && `, status: ${item.status}`}
                         {idTaskWithOpenStageList === item.id &&
                              <Stages task={item}   />
                         }
-                        <div className={'openOptionsButton'} onClick={(ev) => openFiSyOptionsPanelHandler(ev,item.id)}>
+                        <div className={'fileSystem-task__open-options-button'} onClick={(ev) => openFiSyOptionsPanelHandler(ev,item.id)}>
                             <FontAwesomeIcon icon={faPencilAlt} />
                         </div>
                     </div>

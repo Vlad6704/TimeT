@@ -9,15 +9,15 @@
 .ongoing-task-item {
     display: flex;
     align-items: center;
-    margin-right: 40px;
-    padding: 5px 0;
+    margin-right: 10px;
+    min-height: 59px;
 }
 
 .ongoing-task-item__title {
     text-transform: capitalize;
     color: #fff;
     margin-right: 7px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .ongoing-task-item__run-icon {
@@ -43,7 +43,18 @@
     color: #fff;
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 375px) {
+    .ongoing-task-item__title {
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 450px) {
+
+    .ongoing-task-item {
+        margin-right: 20px;
+
+    }
+
     .ongoing-task-item__title {
         font-size: 22px;
     }
@@ -66,6 +77,11 @@
 }
 
 @media screen and (min-width: 768px) {
+
+    .ongoing-task-item {
+        margin-right: 40px;
+        min-height: 69px;
+    }
     .ongoing-task-item__title {
         font-size: 26px;
     }

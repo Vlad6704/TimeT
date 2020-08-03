@@ -41,6 +41,7 @@ const OngoingTasksItems = ({ongoingTasksArr,tasks,stopTaskHandler,switchableHand
                 {/*{stage && `, stage: ${stage.name} `}*/}
                 <span className={"ongoing-task-item__duration"}>
                     {/*{item.totalPassedTime && item.totalPassedTime}*/}
+                    {!item.totalPassedTime && "0:00"}
                     {item.totalPassedTime}
                 </span>
                 <i className="icon-stop ongoing-task-item__stop-button button" onClick={() => stopTaskHandler(item.id)}></i>
