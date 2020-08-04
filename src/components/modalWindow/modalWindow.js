@@ -6,7 +6,21 @@ import {closeAllModalWindow} from "../../redux_components/fileSystem/fileSystemA
 
 class ModalWindow extends React.Component {
 
+    componentDidMount() {
+        window.addEventListener("keydown", (e) => {
+            if (e.keyCode === 27) {
+                this.props.closeAllModalWindow();
+            }
+        }, true);
+    }
 
+    componentWillUnmount() {
+        window.removeEventListener("keydown", (e) => {
+            if (e.keyCode === 27) {
+                this.props.closeAllModalWindow();
+            }
+        }, true);
+    }
 
     render(){
         const {children, closeAllModalWindow} = this.props;

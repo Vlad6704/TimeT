@@ -11,6 +11,11 @@ import ModSubmit from "../../../../modalWindow/modalElements/modSubmit";
 const RenameTaskForm = ({id, renameTaskHandler})=>{
 
     const inputRef = React.useRef(null);
+
+    React.useEffect(()=>{
+        inputRef.current.focus();
+    },[]);
+
     const getInputVal = () =>{
         return inputRef.current.value;
     }

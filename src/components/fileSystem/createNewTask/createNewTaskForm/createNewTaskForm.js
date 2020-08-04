@@ -16,6 +16,11 @@ const CreateNewTaskForm = ({GetNewIdAndCreateNewTask}) =>{
 const inputRef = React.useRef(null);
 const textareaRef = React.useRef(null);
 
+React.useEffect(()=>{
+    inputRef.current.focus();
+},[]);
+
+
 const getInputVal = () =>{
     return document.getElementById("nameNewFolder").value;
 }
@@ -35,7 +40,10 @@ const addNewStage = () =>{
 const getObjFormVal = ()=>{
         const objFormVal = {};
         objFormVal.name = inputRef.current.value;
-        objFormVal.description = textareaRef.current.value;
+
+        //description
+        // objFormVal.description = textareaRef.current.value;
+        objFormVal.description = '';
 
         // stage
         let stageItems = [];
@@ -67,7 +75,8 @@ const getObjFormVal = ()=>{
         <ModalWindow>
             <ModTitle title={"Add new task"} />
             <ModInput placeholder={'Title'}  inputRef={inputRef}/>
-            <ModTextArea placeholder={'Description'} textareaRef={textareaRef}/>
+
+            {/*<ModTextArea placeholder={'Description'} textareaRef={textareaRef}/>*/}
 
             {/*<div id={'stageList'}>*/}
             {/*    Add stages*/}
