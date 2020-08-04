@@ -12,6 +12,8 @@ import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import './statistic.css'
 import RegularTools from '../regularTools/regularTools';
 import ToolPanel from "../toolPanel/toolPanel";
+import {setTimeTask} from "../../redux_components/ongoingTasks/ongoingTasksActions";
+import {bindActionCreators} from "redux";
 
 class Statistic extends Component{
     constructor( props) {
@@ -19,7 +21,13 @@ class Statistic extends Component{
         this.timeStat = new TimeStat(props.timeTaskArr,props.app_options.timeShift );
     }
     componentDidMount() {
+        const {service, setTimeTask} = this.props;
+        service.getTimeTask().then((response) => {
+            setTimeTask(response.data);
 
+        },(error)=>{
+
+        })
 
     }
     getTaskById(id, tasks){
@@ -87,4 +95,10 @@ const mapStateToProps = (state)=>{
 
 }
 
-export default WithService()(connect(mapStateToProps,actions)(Statistic));
+const mapDispatchToProps = (dispatch) => {
+
+
+    return bindActionCreators({...actions, setTimeTask}, dispatch);
+}
+
+export default WithService()(connect(mapStateToProps,mapDispatchToProps)(Statistic));
