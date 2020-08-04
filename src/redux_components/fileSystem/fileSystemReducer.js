@@ -81,15 +81,12 @@ const  fileSystemReducer = (state = initialState, action) => {
         case 'CREATE_NEW_FOLDER':{
             const newFolderName = action.payload;
             let newFolderId;
-            if(state.items.length > 0) newFolderId = state.items[state.items.length - 1].id + 1;
-            else newFolderId = 0 ;
+            newFolderId = -2;
 
             const newItem = {
                 id:newFolderId,
                 name:newFolderName,
-                children: [],
                 parentsId:state.currentItemId,
-                tasks:[],
             };
             let newState = {
                 ...state,

@@ -1,6 +1,12 @@
 import * as action_type from "../action_type";
 import DataStoreService from "../../services/service";
-import {setOngoingTasks, setOngoingTasksHandler, setSwitchableOngoingTask, setTimeTask} from "../ongoingTasks/ongoingTasksActions";
+import {
+    setOngoingTasks,
+    setOngoingTasksHandler,
+    setSwitchableOngoingTask,
+    setTimeTask,
+    stopTaskHandler
+} from "../ongoingTasks/ongoingTasksActions";
 const service = new DataStoreService();
 
 export const onSerfing = (payload) => ({type:action_type.ON_SERFING, payload});
@@ -46,7 +52,8 @@ export const createNewFolderHandler = (folderName) => {
         const currentFolderId = getState().fileSystem.currentItemId;
         dispatch(createNewFolder(folderName));
         service.createNewFolder({name:folderName,parentsId:currentFolderId}).then((response)=>{
-            console.log(response.data);
+            dispatch(setFileSystemItems(response.data));
+
         },(error)=>{
 
         });
@@ -78,6 +85,7 @@ export const removeFolderHandler = ()=>{
         if(!window.confirm("Remove ?"))return false;
         service.removeFolder(currentFolderId).then((response)=>{
             // console.log(response.data);
+            //TODO needs to add deletion all tasks in the folder
             dispatch(setFileSystemItems(response.data));
             dispatch(onGoToHome());
         },(error)=>{
@@ -135,6 +143,7 @@ export const removeTaskHandler = ()=>{
     return (dispatch, getState) => {
         const taskId = getState().fileSystem.taskOptionsPanel.optionsPanelIsOpenForTask;
         if(!window.confirm("Remove task?"))return false;
+        dispatch(stopTaskHandler(taskId));
         service.removeTask(taskId).then((response)=>{
             // console.log(response.data);
             dispatch(setTasks(response.data));
