@@ -83,7 +83,7 @@ function countTime(dispatch, getState){
     let timerId = setInterval(() => totalPassedTimeForOngoingTaskHandler(startTime, dispatch, ongoingTaskArrWithServerPassedTime)
     ,  intervalSec * 1000);
     dispatch(setOngoingTasksTimerId(timerId));
-    //TODO if stop task and start again - client time resets to zero
+
 }
 
 

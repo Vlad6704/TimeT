@@ -1,5 +1,5 @@
 const initialState = {
-    timeShift:7,
+    timeShift:0,
     firstDayOfTheWeek:1,
 };
 
