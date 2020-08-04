@@ -6,12 +6,19 @@ import {closeAllModalWindow} from "../../redux_components/fileSystem/fileSystemA
 
 class ModalWindow extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.elModalRef = React.createRef();
+    }
+
     componentDidMount() {
         window.addEventListener("keydown", (e) => {
             if (e.keyCode === 27) {
                 this.props.closeAllModalWindow();
             }
         }, true);
+
+
     }
 
     componentWillUnmount() {
@@ -22,12 +29,17 @@ class ModalWindow extends React.Component {
         }, true);
     }
 
+    ElModalClickHandler(ev) {
+        const elModal = this.elModalRef.current;
+        if(ev.target === elModal) this.props.closeAllModalWindow();
+    }
+
     render(){
         const {children, closeAllModalWindow} = this.props;
 
         return ReactDOM.createPortal(
             (
-                <div className={"el-modal"}>
+                <div className={"el-modal"} ref={this.elModalRef} onClick={(ev) => this.ElModalClickHandler(ev)}>
 
                     <div className={"el-modal__inner"}>
                         <div className={"el-modal__content"}>

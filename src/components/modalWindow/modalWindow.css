@@ -62,7 +62,7 @@
 .el-modal__input:active,  .el-modal__textarea:active,
 .el-modal__input:focus,  .el-modal__textarea:focus {
     outline: unset;
-    border: 3px solid #b6d3ff;
+    /*border: 3px solid #b6d3ff;*/
 }
 
 .el-modal__input::placeholder, .el-modal__textarea::placeholder {
