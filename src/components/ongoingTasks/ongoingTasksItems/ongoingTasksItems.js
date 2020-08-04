@@ -1,6 +1,6 @@
 import React from 'react'
 import './ongoingTasksItems.css'
-import {ReactComponent as RunIcon2} from './clock.svg';
+import {ReactComponent as RunIcon} from './clock.svg';
 
 
 const OngoingTasksItems = ({ongoingTasksArr,tasks,stopTaskHandler,switchableHandler, switchableTaskId}) =>
@@ -34,7 +34,7 @@ const OngoingTasksItems = ({ongoingTasksArr,tasks,stopTaskHandler,switchableHand
         return (
 
             <div key={item.id} className={classList}>
-                <RunIcon2 />
+                <RunIcon />
                 <span className="ongoing-task-item__title">
                     {task.name}
                 </span>
