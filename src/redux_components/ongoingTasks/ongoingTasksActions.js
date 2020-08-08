@@ -34,13 +34,18 @@ export const setTimeTask = (payload) => ({type:action_type.SET_TIME_TASK,payload
 export const setSwitchableOngoingTask = (payload) => ({type:action_type.SET_SWITCHABLE_ONGOING_TASK,payload});
 
 export const stopTaskHandler = (taskId)=>{
-    return (dispatch) => {
+    return (dispatch, getState) => {
         service.stopTask(taskId).then((response)=>{
             // console.log(response.data);
             dispatch(setOngoingTasksHandler(response.data));
-        }, (error) => {
-
         });
+
+        if(getState().router.location.pathname === "/statistics") {
+            return service.getTimeTask()
+                .then(response => {
+                    dispatch(setTimeTask(response.data));
+                });
+        }
     }
 };
 export const switchableHandler = (taskId) =>{

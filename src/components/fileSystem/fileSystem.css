@@ -35,11 +35,25 @@
     }
 }
 
-.fileSystem-tools__home, .fileSystem-tools__add-task-icon, .fileSystem-tools__add-task, .fileSystem-tools__add-folder, .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder, .fileSystem-tools__add-folder-icon{
-    color: #fff;
+.fileSystem-tools__home, .fileSystem-tools__add-task-icon, .fileSystem-tools__add-task, .fileSystem-tools__add-folder,  .fileSystem-tools__add-folder-icon{
     font-size: 4vw;
+    color: #fff;
     cursor: pointer;
+    
+}
 
+.folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder {
+    color: #fff;
+    cursor: pointer;
+    font-size: 4.7vw;
+
+}
+
+@media screen and (min-width: 420px) {
+    .folder-options__rename-folder, .folder-options__cut-folder, .folder-options__remove-folder {
+        font-size: 4.3vw;
+    
+    }
 }
 
 @media screen and (min-width: 500px) {
@@ -99,7 +113,7 @@
 }
 
 .fileSystem-tools__add-folder {
-    margin-right: 6vw;
+    margin-right: 5vw;
     display: flex;
     align-items: center;
 

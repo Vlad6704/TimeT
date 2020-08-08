@@ -1,0 +1,1 @@
+export const server = "http://timet-demo.zzz.com.ua";

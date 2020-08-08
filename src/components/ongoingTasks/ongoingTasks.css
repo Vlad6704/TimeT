@@ -74,6 +74,15 @@
 }
 
 .ongoing-tasks-logo {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ongoing-tasks-logo__inner{
     position: absolute;
     font-size: 32px;
     color: #fff;
@@ -90,7 +99,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .ongoing-tasks-logo {
+    .ongoing-tasks-logo__inner {
         font-size: 36px;
     }
 }
@@ -99,7 +108,7 @@
     margin-left: 7px;
 }
 
-.ongoing-tasks-panel_tasks-is-running .ongoing-tasks-logo {
+.ongoing-tasks-panel_tasks-is-running .ongoing-tasks-logo__inner {
     top: -50%
 }
 

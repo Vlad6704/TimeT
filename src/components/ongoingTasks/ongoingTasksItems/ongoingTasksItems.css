@@ -21,9 +21,10 @@
 }
 
 .ongoing-task-item__run-icon {
-    width: 40px;
+    width: 35px;
     height: auto;
-    margin-right: 3px;
+    margin-right: 3px !important;
+    flex-shrink: 0;
 }
 
 .ongoing-task-item__duration {
@@ -44,7 +45,10 @@
     color: #fff;
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 400px) {
+    .ongoing-task-item__run-icon {
+        width: 40px;
+    }
     .ongoing-task-item__title {
         font-size: 18px;
     }

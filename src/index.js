@@ -20,7 +20,8 @@ import './fonts/icon/style.css';
 import './fonts/Roboto/roboto.css';
 import './index.css';
 
-const history = createBrowserHistory({ basename: '/timeT' });
+// const history = createBrowserHistory({ basename: '/timeT' });
+const history = createBrowserHistory();
 
 const middleware = [thunk,routerMiddleware(history)];
 const rootReducer = combineReducers({

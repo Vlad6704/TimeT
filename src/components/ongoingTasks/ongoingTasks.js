@@ -4,12 +4,12 @@ import {connect} from "react-redux";
 import * as actions from "../../redux_components/ongoingTasks/ongoingTasksActions";
 import WithService from "../hoc/with-service/with-service";
 import './ongoingTasks.css';
-import Moment from 'moment';
-import {extendMoment} from "moment-range";
 import SoundReminder from "../soundReminder/soundReminder";
 import OngoingTasksItems from './ongoingTasksItems/ongoingTasksItems';
-
-const moment = extendMoment(Moment);
+import {
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 
 class OngoingTasks extends React.Component {
     constructor(props) {
@@ -27,6 +27,7 @@ class OngoingTasks extends React.Component {
 
     dropDownPanel() {
         if(!this.state.useDropDown) return;
+        if(this.state.isPanelOpen) return;
         const ongoingTasksWrapper = this.ongoingTasksWrapperRef.current;
         const ongoingTasks = this.ongoingTasksRef.current;
         if(!this.state.ongoingTasksWrapperHeight) this.setWrapperHeight(ongoingTasksWrapper.clientHeight);
@@ -41,6 +42,7 @@ class OngoingTasks extends React.Component {
     }
 
     liftUpPanel() {
+        if(!this.state.isPanelOpen) return;
         const ongoingTasksWrapper = this.ongoingTasksWrapperRef.current;
         ongoingTasksWrapper.style.removeProperty('height');
         this.setState({isPanelOpen:false});
@@ -80,17 +82,17 @@ class OngoingTasks extends React.Component {
     }
 
     enterHandler() {
-        this.dropDownPanel();
+        if(isBrowser) this.dropDownPanel();
     }
 
     leaveHandler() {
-        this.liftUpPanel();
+        if(isBrowser) this.liftUpPanel();
     }
 
     dropDownButtonHandler(ev) {
-        ev.stopPropagation();
         if(this.state.isPanelOpen) this.liftUpPanel();
         else this.dropDownPanel();
+        ev.stopPropagation();
     }
 
     render() {
@@ -103,21 +105,23 @@ class OngoingTasks extends React.Component {
             <>
 
 
-                <div className={`ongoing-tasks-panel ${ongoingTasksPanelClasses}`} onMouseOver={() => this.enterHandler()} onMouseOut={() => this.leaveHandler()}>
+                <div className={`ongoing-tasks-panel ${ongoingTasksPanelClasses}`} >
                     {isEnableSoundReminder &&
                         <SoundReminder/>
                     }
                     <div className="ongoing-tasks-logo">
-                        <i className={"icon-clock-solid ongoing-tasks-logo__icon"}></i>
-                        <span className="ongoing-tasks-logo__title">TimeT</span>
+                        <div className="ongoing-tasks-logo__inner">
+                            <i className={"icon-clock-solid ongoing-tasks-logo__icon"}></i>
+                            <span className="ongoing-tasks-logo__title">TimeT</span>
+                        </div>
                     </div>
-                    <div className={"ongoing-tasks-wrapper"} ref={this.ongoingTasksWrapperRef}>
+                    <div className={"ongoing-tasks-wrapper"} ref={this.ongoingTasksWrapperRef} onMouseOver={() => this.enterHandler()} onMouseOut={() => this.leaveHandler()}>
                         <div className={'ongoing-tasks'} ref={this.ongoingTasksRef}>
                             <OngoingTasksItems ongoingTasksArr={ongoingTasksArr} tasks={tasks} stopTaskHandler={stopTaskHandler} switchableHandler={switchableHandler}  switchableTaskId={switchableTaskId} />
                         </div>
                     </div>
                     {this.state.useDropDown &&
-                        <div className={"ongoing-tasks-panel__dropDown-button button"} onTouchStart={(ev) => this.dropDownButtonHandler(ev)}>
+                        <div className={"ongoing-tasks-panel__dropDown-button button"} onClick={(ev) => this.dropDownButtonHandler(ev)}>
                             <i className={"icon-down-arrow ongoing-tasks-panel__dropDown-icon"}></i>
                         </div>
                     }

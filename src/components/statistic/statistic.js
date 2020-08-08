@@ -25,8 +25,6 @@ class Statistic extends Component{
         service.getTimeTask().then((response) => {
             setTimeTask(response.data);
 
-        },(error)=>{
-
         })
 
     }

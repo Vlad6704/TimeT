@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as action_type from "../action_type";
 import {fetchStore} from "../actions";
 import { push } from 'connected-react-router'
+import {server} from '../../services/config'
 
 
 export const loginHandler = user => {
@@ -35,7 +36,7 @@ export const registrationHandler = user => {
 export const logOutHandler = () => {
     return dispatch => {
         localStorage.removeItem('token');
-        window.location.href = '/login';
+        dispatch(push('/login'));
         dispatch(setLogOut());
     }
 };
@@ -55,7 +56,7 @@ export const setRedirectToLogIn = () => ({
 });
 
 const _doRequest = (type,data) => {
-    let url = 'http://vlad6432.zzz.com.ua/time/authentication-jwt/';
+    let url = server + '/time/authentication-jwt/';
     switch (type) {
         case 'login':
             url += 'login.php';
