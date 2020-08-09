@@ -1,13 +1,19 @@
 import React,{Component} from 'react';
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
-import * as actions from "../../redux_components/actions";
-import moment from 'moment';
+import * as actions from "../../redux_components/statistics/statisticsActions";
+import PropTypes from 'prop-types';
 import TimeStat from './timeStatistic_class/timeStat';
 import StatFileSystem from './statFileSystem/statFileSystem';
 import DateRangePanel from './dateRangePanel/dateRangePanel';
 import LineChart from './charts/lineChart/lineChart';
 import getDataForLineChart from './charts/lineChart/getDataForLineChart';
+import OngoingTasks from "../ongoingTasks/ongoingTasks";
+import './statistic.css'
+import RegularTools from '../regularTools/regularTools';
+import ToolPanel from "../toolPanel/toolPanel";
+import {setTimeTask} from "../../redux_components/ongoingTasks/ongoingTasksActions";
+import {bindActionCreators} from "redux";
 
 class Statistic extends Component{
     constructor( props) {
@@ -15,14 +21,12 @@ class Statistic extends Component{
         this.timeStat = new TimeStat(props.timeTaskArr,props.app_options.timeShift );
     }
     componentDidMount() {
-        const {service,setTimeTask, timeTaskArr,app_options} = this.props;
+        const {service, setTimeTask} = this.props;
         service.getTimeTask().then((response) => {
-            console.log(response.data);
             setTimeTask(response.data);
 
-        },(error)=>{
-
         })
+
     }
     getTaskById(id, tasks){
         return tasks.find((item) =>{
@@ -32,50 +36,29 @@ class Statistic extends Component{
 
 
     render(){
-        const { timeTaskArr, app_options, tasks,statisticObj} = this.props;
-
-        const tasksItems = () =>
-        {
-
-            if( Array.isArray(timeTaskArr) &&  Array.isArray(tasks) && tasks.length > 0){
-
-                // const date = "07.01.2020";
-                // const curTime = "08:00";
-                let date = moment().format("DD.MM.YYYY");
-                const curTime =  moment().format("HH:mm");
-                const arrTaskIdAndSumSorted = this.timeStat.getArrTaskIdAndSumSortedForDate(date,curTime);
-                if(!arrTaskIdAndSumSorted ) return false;
-                return arrTaskIdAndSumSorted.map((item, idx) => {
-                    const task = this.getTaskById(item[0],tasks);
-                    // console.log(tasks);
-                    return(
-                        <div
-                            key={idx}
-                            className={'statistic_item'}
-                            style={{
-
-                                 border:'1px solid rgba(0,255,101,0.55)',
-                             }}
-                        >
-                            name:  {task.name} {item[1]}
-
-                        </div>
+        const { timeTaskArr, app_options, tasks,statisticObj, chartsArr} = this.props;
 
 
-                    )
-                })
-            }
-        }
         if( Array.isArray(timeTaskArr) &&  Array.isArray(tasks) && tasks.length > 0){
             return (
-                <div className={'statistic'}>
-                    {tasksItems()}
-                    <div className={'chart'} style={{width:'700px', height:'350px'}}>
-                        <LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />
-                    </div>
-                    <DateRangePanel />
+                <section className={'statistic'}>
+                    <OngoingTasks/>
+
                     <StatFileSystem />
-                </div>
+                    {chartsArr.length > 0 &&
+                        <div className={'stat-chart'}>
+                            <LineChart data={new getDataForLineChart(statisticObj,tasks,new TimeStat(timeTaskArr,app_options.timeShift )).getData()} />
+                        </div>
+                    }
+
+                    <ToolPanel>
+                        <div className={"statistic-tool-panel"}>
+                            <DateRangePanel />
+                            <RegularTools />
+                        </div>
+                    </ToolPanel>
+                </section>
+
             )
         }else{
             return (
@@ -88,18 +71,32 @@ class Statistic extends Component{
     }
 }
 
+Statistic.propTypes = {
+    timeTaskArr: PropTypes.array.isRequired,
+    app_options: PropTypes.object.isRequired,
+    tasks: PropTypes.array.isRequired,
+    statisticObj: PropTypes.object.isRequired,
+    chartsArr:PropTypes.array.isRequired,
+}
+
 const mapStateToProps = (state)=>{
 
     return {
-        statisticObj:state.statistic,
-        tasks:state.tasks,
-        timeTaskArr:state.timeTaskArr,
-        app_options:state.app_options,
-
+        statisticObj:state.statistics,
+        tasks:state.tasks.items,
+        timeTaskArr:state.statistics.timeTaskArr,
+        app_options:state.appOptions,
+        chartsArr: state.statistics.charts.tasksArr
     }
 
 
 
 }
 
-export default WithService()(connect(mapStateToProps,actions)(Statistic));
+const mapDispatchToProps = (dispatch) => {
+
+
+    return bindActionCreators({...actions, setTimeTask}, dispatch);
+}
+
+export default WithService()(connect(mapStateToProps,mapDispatchToProps)(Statistic));

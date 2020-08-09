@@ -1,67 +1,29 @@
 import React from 'react';
 import {connect} from "react-redux";
 import './measurePanel.css';
-import * as actions from "../../../../redux_components/actions";
-import moment from "moment";
+import * as actions from "../../../../redux_components/statistics/statisticsActions";
 
-const MeasurePanel = ({currMeasure,dateRange,startDate,endDate,setDateRange,isIntegerMeasure,firstDayOfTheWeek,setDateRangeStartDate,setDateRangeEndDate}) =>{
-    const measureBoxHandler = (measure)=>{
+const MeasurePanel = ({currMeasure,isIntegerMeasure, measureSwitcherHandler,measureBoxHandler}) =>{
 
-        const newDateRange = {
-            ...dateRange,
-            currMeasure:measure,
-        }
-        setDateRange(newDateRange);
-        getEndDate(measure);
-    }
-    const getEndDate = (measure)=>{
-        let newStartDate = startDate;
-        let newEndDate = endDate;
-        if(measure === 'day') newStartDate = null;
-        if(measure === 'week') {
-            if(isIntegerMeasure){
-                newEndDate = moment(endDate, 'DD-MM-YYYY').weekday(firstDayOfTheWeek + 6).format("DD.MM.YYYY");
-                newStartDate = moment(endDate, 'DD-MM-YYYY').weekday(firstDayOfTheWeek).format("DD.MM.YYYY");
 
-            }else{
-                newStartDate = moment(endDate, 'DD-MM-YYYY').subtract(6,'days').format("DD.MM.YYYY");
-            }
-        }
-        if(measure === 'month'){
-            if(isIntegerMeasure){
-                const dayInCurrMonth = moment(endDate, 'DD-MM-YYYY').daysInMonth();
-                newEndDate = moment(endDate, 'DD-MM-YYYY').date(dayInCurrMonth).format("DD.MM.YYYY");
-                newStartDate = moment(endDate, 'DD-MM-YYYY').date(1).format("DD.MM.YYYY");
-            }else{
-                newStartDate = moment(endDate, 'DD-MM-YYYY').subtract(1,'month').format("DD.MM.YYYY");
-            }
-        }
-        setDateRangeStartDate(newStartDate);
-        setDateRangeEndDate(newEndDate);
-
-    }
-    const measureSwitcherHandler = ()=>{
-        const newDateRange = {
-            ...dateRange,
-            isIntegerMeasure: !isIntegerMeasure,
-        }
-        setDateRange(newDateRange);
-    }
     return (
-        <div className={'measurePanel'}>
-            <div className={'measureBoxItems'}>
-                <div className={`measureBox cursPointSelNon ${currMeasure === 'day'?'active':''}`} onClick={()=>measureBoxHandler('day')}>
+        <div className={'measure-panel'}>
+            <div className={'measure-box-items'}>
+                <div className={`measure-box button ${currMeasure === 'day'?'measure-box_active':''}`} onClick={()=>measureBoxHandler('day')}>
                     day
                 </div>
-                <div className={`measureBox cursPointSelNon ${currMeasure === 'week'?'active':''}`} onClick={()=>measureBoxHandler('week')}>
+                <div className={`measure-box button ${currMeasure === 'week'?'measure-box_active':''}`} onClick={()=>measureBoxHandler('week')}>
                     week
                 </div>
-                <div className={`measureBox cursPointSelNon ${currMeasure === 'month'?'active':''}`} onClick={()=>measureBoxHandler('month')}>
+                <div className={`measure-box button ${currMeasure === 'month'?'measure-box_active':''}`} onClick={()=>measureBoxHandler('month')}>
                     month
                 </div>
             </div>
-            <div className={`measureSwitcher cursPointSelNon ${isIntegerMeasure && 'active'}`} onClick={measureSwitcherHandler}>
-                is Integer Measure? {isIntegerMeasure && 'Yes'}
+            <div className={`measure-switcher button ${isIntegerMeasure ? 'measure-switcher_active':''}`} onClick={measureSwitcherHandler}>
+                <div className={"measure-switcher__check"}>
+                    <i className={"icon-correct measure-switcher__check-icon"}></i>
+                </div>
+                    Integer
             </div>
         </div>
     )
@@ -69,12 +31,8 @@ const MeasurePanel = ({currMeasure,dateRange,startDate,endDate,setDateRange,isIn
 
 const mapStateToProps = (state) =>{
     return{
-        firstDayOfTheWeek:state.app_options.firstDayOfTheWeek,
-        startDate:state.statistic.dateRange.startDate,
-        endDate:state.statistic.dateRange.endDate,
-        isIntegerMeasure:state.statistic.dateRange.isIntegerMeasure,
-        dateRange:state.statistic.dateRange,
-        currMeasure:state.statistic.dateRange.currMeasure,
+        isIntegerMeasure:state.statistics.dateRange.isIntegerMeasure,
+        currMeasure:state.statistics.dateRange.currMeasure,
     }
 }
 

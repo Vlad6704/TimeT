@@ -1,0 +1,11 @@
+.fileSystem-folder_not-available{
+    color: #b1b1b1;
+}
+
+.fileSystem-folder {
+    font-size: 22px;
+    padding: 1px 0;
+}
+.fileSystem-folder svg {
+    margin-right: 5px;
+}

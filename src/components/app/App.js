@@ -1,44 +1,69 @@
 import React, {Component} from "react";
 import './App.css';
-import FileSystem from '../fileSistem/fileSystem'
+import FileSystem from '../fileSystem/fileSystem'
 import WithService from "../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../redux_components/actions";
-import OngoingTasks from "../ongoingTasks/ongoingTasks";
 import Statistic from "../statistic/statistic";
 import './App.css';
+import './El-grid.css';
+import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
+import Login from '../login/login';
+import Registration from '../registration/registration';
+import {bindActionCreators} from "redux";
+import PropTypes from 'prop-types';
+
 
 class App extends Component{
 
     componentDidMount() {
-        const {service, setStore} = this.props;
-
-        service.getStore().then((response) =>{
-            // console.log(response.data);
-            setStore(response.data);
-        }, (error) =>{
-            console.log(error)
-        });
-
+        const {fetchStore} = this.props;
+        fetchStore();
     }
 
 
-  render() {
-    return(
-        <section>
-            <OngoingTasks/>
-            <FileSystem />
-            <Statistic />
-        </section>
-    )
-  }
+    render() {
+        const {redirectToLogIn} = this.props;
+
+        return(
+            <>
+                <section className="app el-box">
+                    {redirectToLogIn &&
+                        <Redirect
+                            to={{pathname: "/login"}}
+                        />
+                    }
+
+
+                    <Route path = "/" exact component = {FileSystem}/>
+                    <Route path = "/login" exact component = {Login}/>
+                    <Route path = "/registration" component = {Registration}/>
+                    <Route path = "/statistics" component = {Statistic}/>
+
+                    <div className={"el-tool-panel"}></div>
+                    <div className={"el-modal-container"}></div>
+                </section>
+            </>
+
+        )
+    }
+}
+
+App.propTypes = {
+    ongoingTasksArr: PropTypes.array,
+    redirectToLogIn: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = (state)=>{
     return {
-
+        ongoingTasksArr:state.ongoingTasksArr,
+        redirectToLogIn:state.user.redirectToLogIn,
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({...actions},dispatch);
+}
 
-export default WithService()(connect(mapStateToProps,actions)(App));
+
+export default WithService()(connect(mapStateToProps,mapDispatchToProps)(App));

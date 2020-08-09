@@ -1,84 +1,157 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import * as actions from "../../redux_components/actions";
+import * as actions from "../../redux_components/ongoingTasks/ongoingTasksActions";
 import WithService from "../hoc/with-service/with-service";
 import './ongoingTasks.css';
+import SoundReminder from "../soundReminder/soundReminder";
+import OngoingTasksItems from './ongoingTasksItems/ongoingTasksItems';
+import {
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 
-const OngoingTasks = ({ongoingTasksArr,tasks,service,setOngoingTasks,setSwitchableOngoingTask, other_inf}) =>{
+class OngoingTasks extends React.Component {
+    constructor(props) {
+        super(props);
+        this.ongoingTasksWrapperRef = React.createRef();
+        this.ongoingTasksRef = React.createRef();
 
-    const stopTaskHandler = (taskId)=>{
-        service.stopTask(taskId).then((response)=>{
-            // console.log(response.data);
-            setOngoingTasks(response.data);
-        }, (error) => {
-
-        });
     }
 
-    const switchableHandler = (taskId) =>{
-        if(taskId === other_inf.switchableTaskId){
-            setSwitchableOngoingTask(-1);
-        }else{
-            setSwitchableOngoingTask(taskId);
+    state = {
+        ongoingTasksWrapperHeight: false,
+        useDropDown: false,
+        isPanelOpen: false,
+    }
+
+    dropDownPanel() {
+        if(!this.state.useDropDown) return;
+        if(this.state.isPanelOpen) return;
+        const ongoingTasksWrapper = this.ongoingTasksWrapperRef.current;
+        const ongoingTasks = this.ongoingTasksRef.current;
+        if(!this.state.ongoingTasksWrapperHeight) this.setWrapperHeight(ongoingTasksWrapper.clientHeight);
+        ongoingTasksWrapper.style.height = ongoingTasks.clientHeight+'px';
+        this.setState({isPanelOpen:true});
+
+
+    }
+
+    setWrapperHeight(height) {
+        this.setState({ongoingTasksWrapperHeight: height})
+    }
+
+    liftUpPanel() {
+        if(!this.state.isPanelOpen) return;
+        const ongoingTasksWrapper = this.ongoingTasksWrapperRef.current;
+        ongoingTasksWrapper.style.removeProperty('height');
+        this.setState({isPanelOpen:false});
+    }
+
+    showOrHideDropDownButton() {
+        const ongoingTasksWrapper = this.ongoingTasksWrapperRef.current;
+        const ongoingTasks = this.ongoingTasksRef.current;
+
+        let ongoingTasksWrapperHeight;
+        if(this.state.ongoingTasksWrapperHeight) ongoingTasksWrapperHeight = this.state.ongoingTasksWrapperHeight;
+        else ongoingTasksWrapperHeight = ongoingTasksWrapper.clientHeight;
+
+        if(ongoingTasksWrapperHeight < ongoingTasks.clientHeight){
+            if(this.state.useDropDown) return;
+            this.setState({useDropDown:true});
         }
+        else{
+            if(!this.state.useDropDown) return;
+            this.setState({useDropDown: false});
+        }
+
+        if(this.state.isPanelOpen) {
+            this.liftUpPanel();
+        }
+
     }
 
-    function getTaskById(id){
-        return tasks.find((item) =>{
-            return item.id == id
-        })
-    }
-    function getStageById(task, stageId){
-        console.log(33);
-        return task.stages.find((item) =>{
-            return item.id == stageId
-        })
+
+
+    componentDidMount() {
+        this.showOrHideDropDownButton();
     }
 
-    const tasksItems = () =>
-    {
-        if(ongoingTasksArr.length == 0 || tasks.length == 0) return false;
-        return ongoingTasksArr.map((item,idx) => {
-            const task = getTaskById(item.id);
-            const stage =  getStageById(task, item.stageId);
-            console.log(ongoingTasksArr);
-            let classList = 'ongoingTasksItem';
-            if(other_inf.switchableTaskId == item.id) classList +=' switchable';
-            return (
+    componentDidUpdate(prevProps, prevState) {
+        this.showOrHideDropDownButton();
+    }
 
-                <div className={classList}>
-                    name: {task.name}
-                    {item.status && `, status: ${item.status}`}
-                    {stage && `, stage: ${stage.name} `}
-                    <span className={"stopButton"} onClick={() => stopTaskHandler(item.id)}>
-                        Stop
-                    </span>
-                    <span className={'switchableButton'}
-                          onClick={() => switchableHandler(item.id)}
-                    >
-                        Switchable
-                    </span>
+    enterHandler() {
+        if(isBrowser) this.dropDownPanel();
+    }
 
+    leaveHandler() {
+        if(isBrowser) this.liftUpPanel();
+    }
+
+    dropDownButtonHandler(ev) {
+        if(this.state.isPanelOpen) this.liftUpPanel();
+        else this.dropDownPanel();
+        ev.stopPropagation();
+    }
+
+    render() {
+        const {ongoingTasksArr,tasks,stopTaskHandler,switchableHandler, switchableTaskId, isEnableSoundReminder} = this.props;
+
+        let ongoingTasksPanelClasses;
+        if(this.state.isPanelOpen) ongoingTasksPanelClasses +=' ongoing-tasks-panel_open';
+        if(ongoingTasksArr.length) ongoingTasksPanelClasses +=' ongoing-tasks-panel_tasks-is-running';
+        return (
+            <>
+
+
+                <div className={`ongoing-tasks-panel ${ongoingTasksPanelClasses}`} >
+                    {isEnableSoundReminder &&
+                        <SoundReminder/>
+                    }
+                    <div className="ongoing-tasks-logo">
+                        <div className="ongoing-tasks-logo__inner">
+                            <i className={"icon-clock-solid ongoing-tasks-logo__icon"}></i>
+                            <span className="ongoing-tasks-logo__title">TimeT</span>
+                        </div>
+                    </div>
+                    <div className={"ongoing-tasks-wrapper"} ref={this.ongoingTasksWrapperRef} onMouseOver={() => this.enterHandler()} onMouseOut={() => this.leaveHandler()}>
+                        <div className={'ongoing-tasks'} ref={this.ongoingTasksRef}>
+                            <OngoingTasksItems ongoingTasksArr={ongoingTasksArr} tasks={tasks} stopTaskHandler={stopTaskHandler} switchableHandler={switchableHandler}  switchableTaskId={switchableTaskId} />
+                        </div>
+                    </div>
+                    {this.state.useDropDown &&
+                        <div className={"ongoing-tasks-panel__dropDown-button button"} onClick={(ev) => this.dropDownButtonHandler(ev)}>
+                            <i className={"icon-down-arrow ongoing-tasks-panel__dropDown-icon"}></i>
+                        </div>
+                    }
                 </div>
-            )
-        });
+
+
+            </>
+        )
+
     }
+}
 
 
-    return (
-
-
-        <div className={'ongoingTasksItems'} >
-            {tasksItems()}
-        </div>
-    )
+OngoingTasks.propTypes = {
+    ongoingTasksArr: PropTypes.array.isRequired,
+    tasks: PropTypes.array.isRequired,
+    stopTaskHandler: PropTypes.func.isRequired,
+    switchableHandler: PropTypes.func.isRequired,
+    switchableTaskId: PropTypes.number.isRequired,
+    isEnableSoundReminder: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = (state)=>{
     return {
-        ongoingTasksArr:state.ongoingTasksArr,
-        tasks:state.tasks,
-        other_inf: state.other_inf
+        ongoingTasksArr:state.ongoingTasks.items,
+        isEnableSoundReminder:state.ongoingTasks.isEnableSoundReminder,
+        tasks:state.tasks.items,
+        switchableTaskId: state.ongoingTasks.switchableTaskId,
+        timeTaskArr:state.timeTaskArr,
+        app_options:state.appOptions,
     }
 
 }

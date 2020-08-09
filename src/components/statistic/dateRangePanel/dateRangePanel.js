@@ -4,7 +4,7 @@ import NavPanel from './navPanel/navPanel';
 import CurrentDateRangeSetUp from './currentDateRangeSetUp/currentDateRangeSetUp';
 import moment from 'moment';
 import {connect} from "react-redux";
-import * as actions from "../../../redux_components/actions";
+import * as actions from "../../../redux_components/statistics/statisticsActions";
 
 class DateRangePanel extends React.Component {
 
@@ -21,9 +21,8 @@ class DateRangePanel extends React.Component {
     render(){
 
         return(
-            <div className={'dateRangePanel'}>
+            <div className={'date-range-panel'}>
                 <MeasurePanel />
-                <CurrentDateRangeSetUp />
                 <NavPanel />
             </div>
         )
@@ -34,7 +33,7 @@ class DateRangePanel extends React.Component {
 
 const mapStateToProps = (state) =>{
     return {
-        dateRange: state.statistic.dateRange,
+        dateRange: state.statistics.dateRange,
 
     }
 }
