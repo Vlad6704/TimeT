@@ -1,8 +1,8 @@
-.task:hover{
+.fileSystem-task:hover{
 
 }
 
-.task{
+.fileSystem-task{
     cursor: pointer;
     display:flex;
     align-items: center;
@@ -10,13 +10,13 @@
     padding: 5px 0;
 }
 
-.task .openOptionsButton{
+.fileSystem-task__open-options-button{
 
     margin-left: auto;
 
 }
 
-.task .title{
+.fileSystem-task__title{
 margin-left: 7px;
     font-size: 20px;
 }

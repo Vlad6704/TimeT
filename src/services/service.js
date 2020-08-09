@@ -1,11 +1,12 @@
 import axios from 'axios';
+import {server} from './config';
 
 export  default class DataStoreService {
     doRequest(action,payload){
         const token = localStorage.token;
         return axios({
             method: 'POST',
-            url: 'http://vlad6432.zzz.com.ua/time_t.php',
+            url: server + '/time_t.php',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 "Authorization" : token

@@ -4,17 +4,18 @@ import {connect} from "react-redux";
 const CurrentDateRangeSetUp = ({dateRange,currMeasure}) =>{
 
     const startDate = (
-        <p className={'startDate'}>
+        <span className={'stat-start-date'}>
+            &nbsp;-&nbsp;
             {dateRange.startDate}
-        </p>
+        </span>
     );
     const endDate = (
-        <p className={'endDate'}>
+        <span className={'stat-end-date'}>
             {dateRange.endDate}
-        </p>
+        </span>
     );
     return (
-        <div className={'currentDateRangeSetUp'}>
+        <div className={'current-date-range-setup'}>
             {dateRange.endDate &&
                 endDate
             }

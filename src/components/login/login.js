@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loginHandler} from '../../redux_components/auth/authActions';
 import {Link} from "react-router-dom";
+import './login.css';
 
 class Login extends Component {
     state = {
-        username: "",
+        email: "",
         password: ""
     }
 
@@ -21,33 +22,70 @@ class Login extends Component {
     }
 
     render() {
+
+        const {registrationError} = this.props;
+
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <h1>Login</h1>
+            <section className={"login-page"}>
 
-                    <label>Email</label>
-                    <input
-                        name='email'
-                        placeholder='Email'
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                    /><br/>
+                <div className="login-wrapper">
+                    <div className="login">
+                        <h1 className={"login__title"}>Login</h1>
+                        <form onSubmit={this.handleSubmit} className={"login-form"}>
 
-                    <label>Password</label>
-                    <input
-                        type='password'
-                        name='password'
-                        placeholder='Password'
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    /><br/>
+                            <div className={"login-form__inner"}>
 
-                    <input type='submit'/>
-                </form>
-                <Link to='/registration'>Registration</Link>
-            </div>
+                                <input
+                                    className={"login-form__input"}
+                                    type="email"
+                                    name='email'
+                                    placeholder='Email'
+                                    value={this.state.email}
+                                    onChange={this.handleChange}
+                                    required
+                                />
+
+                                <input
+                                    className={"login-form__input"}
+                                    type='password'
+                                    name='password'
+                                    placeholder='Password'
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                    required
+                                />
+
+                                {registrationError === "invalid_username_or_password" &&
+                                    this.state.password &&
+                                        this.state.email &&
+
+                                    <p className="login-form__error-massage">
+                                        Invalid username or password
+                                    </p>
+                                }
+
+                            </div>
+
+                            <div className={"login-form__footer"}>
+
+                                <button className={"login-form__submit"}>
+                                    LOGIN
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                    <Link className={"login-form__registration-link"} to='/registration'>Don’t have an account? Sign Up</Link>
+                </div>
+            </section>
         )
+    }
+}
+
+const mapStateToProps = state => {
+
+    return {
+        registrationError: state.user.registrationError,
     }
 }
 
@@ -55,4 +93,4 @@ const mapDispatchToProps = dispatch => ({
     userLoginFetch: userInfo => dispatch(loginHandler(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

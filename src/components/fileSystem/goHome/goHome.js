@@ -5,12 +5,7 @@ import {bindActionCreators} from "redux";
 
 const GoToHome = ({onGoToHome}) =>{
     return (
-        <div className={"GoToHome cursPointSelNon"}
-             style={{fontSize:"22px"}}
-             onClick={onGoToHome}
-        >
-            GoToHome >
-        </div>
+        <i className={"icon-home-solid fileSystem-tools__home"} onClick={onGoToHome}></i>
     )
 }
 

@@ -21,9 +21,8 @@ class DateRangePanel extends React.Component {
     render(){
 
         return(
-            <div className={'dateRangePanel'}>
+            <div className={'date-range-panel'}>
                 <MeasurePanel />
-                <CurrentDateRangeSetUp />
                 <NavPanel />
             </div>
         )

@@ -2,36 +2,46 @@ import axios from 'axios';
 import * as action_type from "../action_type";
 import {fetchStore} from "../actions";
 import { push } from 'connected-react-router'
+import {server} from '../../services/config'
 
 
 export const loginHandler = user => {
     return dispatch => {
-        _doRequest('login',user).then(response => {
-            localStorage.setItem("token", response.data.jwt);
-            dispatch(setLogIn());
-            dispatch(fetchStore());
-            dispatch(push('/'))
-        });
+        _doRequest('login',user)
+            .then(response => {
+                localStorage.setItem("token", response.data.jwt);
+                dispatch(setLogIn());
+                dispatch(fetchStore());
+                dispatch(push('/'))
+            })
+            .catch( e => {
+                dispatch(setRegistrationError(e.response.data.message));
+            })
 
     }
 };
 
 export const registrationHandler = user => {
     return dispatch => {
-        _doRequest('create_user',user).then(response => {
-        }).then(() => {
-            dispatch(setLogIn());
+        _doRequest('create_user',user)
+        .then(() => {
+            dispatch(loginHandler(user));
+        })
+        .catch(e => {
+            dispatch(setRegistrationError(e.response.data.message));
         });
-    }
+}
 };
 
 export const logOutHandler = () => {
     return dispatch => {
         localStorage.removeItem('token');
-        window.location.href = '/login';
+        dispatch(push('/login'));
         dispatch(setLogOut());
     }
 };
+
+export const setRegistrationError = (errorMassage) => ({type:action_type.SET_REGISTRATION_ERROR, payload: errorMassage});
 
 export const setLogIn = () => ({
     type: action_type.LOGIN_USER,
@@ -46,7 +56,7 @@ export const setRedirectToLogIn = () => ({
 });
 
 const _doRequest = (type,data) => {
-    let url = 'http://vlad6432.zzz.com.ua/time/authentication-jwt/';
+    let url = server + '/time/authentication-jwt/';
     switch (type) {
         case 'login':
             url += 'login.php';

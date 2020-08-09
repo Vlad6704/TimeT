@@ -48,7 +48,7 @@ const initialState = {
                 description: ObjFormVal.description,
                 stages:ObjFormVal.stages,
                 folderId: folderId,
-                stageLastId: ObjFormVal.stageItemIdx
+                stageItemIdx: ObjFormVal.stageItemIdx
             };
             const newState = {
                 ...state,

@@ -10,9 +10,7 @@ const RemoveFolderButton = ({removeFolderHandler})=>{
 
 
     return (
-        <div className={"cursPointSelNon"} onClick={removeFolderHandler}>
-            Remove folder
-        </div>
+        <i className={"icon-trash-alt-solid folder-options__remove-folder"} onClick={removeFolderHandler}></i>
     )
 }
 

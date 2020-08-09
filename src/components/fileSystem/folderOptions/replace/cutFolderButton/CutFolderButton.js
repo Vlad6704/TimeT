@@ -7,9 +7,7 @@ const CutFolderButton = ({CutFolderHandler}) => {
 
 
     return(
-        <div className={'CutFolderButton cursPointSelNon'} onClick={CutFolderHandler}>
-            Replace Folder
-        </div>
+        <i className={"icon-cut folder-options__cut-folder"} onClick={CutFolderHandler}></i>
     )
 }
 

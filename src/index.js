@@ -9,16 +9,20 @@ import ongoingTasksReducer from "./redux_components/ongoingTasks/ongoingTasksRed
 import appOptionsReducer from "./redux_components/appOptions/appOptionsReducer";
 import statisticsReducer from "./redux_components/statistics/statisticsReducer";
 import authReducer from "./redux_components/auth/authReduser";
-import ErrorBoundry from './components/error-boundry/error-boundry';
-import {ProviderService} from './components/service-context/service-context';
+import ErrorBoundry from './components/errorBoundry/errorBoundry';
+import {ProviderService} from './components/serviceContext/serviceContext';
 import DataStoreService from './services/service';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { connectRouter, routerMiddleware , ConnectedRouter  } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
+import './fonts/icon/style.css';
+import './fonts/Roboto/roboto.css';
+import './index.css';
 
-const history = createBrowserHistory({ basename: '/timeT' });
-console.log(history);
+// const history = createBrowserHistory({ basename: '/timeT' });
+const history = createBrowserHistory();
+
 const middleware = [thunk,routerMiddleware(history)];
 const rootReducer = combineReducers({
     tasks : tasksReducer,

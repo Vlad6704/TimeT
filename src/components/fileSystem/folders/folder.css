@@ -1,11 +1,11 @@
-.folder.notAvailable{
+.fileSystem-folder_not-available{
     color: #b1b1b1;
 }
 
-.folder {
+.fileSystem-folder {
     font-size: 22px;
     padding: 1px 0;
 }
-.folder svg {
+.fileSystem-folder svg {
     margin-right: 5px;
 }

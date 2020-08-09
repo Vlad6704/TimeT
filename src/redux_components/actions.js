@@ -26,7 +26,6 @@ export const fetchStore = () => {
         service.getStore().then((response) =>{
             // console.log(response.data);
             const data = response.data;
-            console.log(data);
             let tasks;
             let fileSystemItems;
             let ongoingTasksArr;
@@ -41,10 +40,8 @@ export const fetchStore = () => {
             dispatch(setOngoingTasksHandler(ongoingTasksArr));
             dispatch(setLogIn());
 
-            if(data.activeTask && data.activeTask[0]) dispatch(setSwitchableOngoingTask(data.activeTask[0].id));
         })
         .catch( (error) =>{
-            console.log(error);
             if(error.response.status === 401){
                 dispatch(setRedirectToLogIn());
             }

@@ -2,19 +2,30 @@ import React from 'react';
 import WithService from "../../../../hoc/with-service/with-service";
 import {connect} from "react-redux";
 import * as actions from "../../../../../redux_components/fileSystem/fileSystemActions";
+import ModalWindow from "../../../../modalWindow/modalWindow";
+import ModTitle from "../../../../modalWindow/modalElements/modTitle";
+import ModInput from "../../../../modalWindow/modalElements/modInput";
+import ModSubmit from "../../../../modalWindow/modalElements/modSubmit";
 
-const getInputVal = () =>{
-    return document.getElementById("taskName").value;
-}
 
-const RenameTaskForm = ({renameTaskHandler})=>{
+const RenameTaskForm = ({id, renameTaskHandler})=>{
 
+    const inputRef = React.useRef(null);
+
+    React.useEffect(()=>{
+        inputRef.current.focus();
+    },[]);
+
+    const getInputVal = () =>{
+        return inputRef.current.value;
+    }
 
     return (
-        <div>
-            <input id={'taskName'}/>
-            <button onClick={()=> renameTaskHandler(getInputVal())}>Submit</button>
-        </div>
+        <ModalWindow>
+            <ModTitle title={"Rename"} />
+            <ModInput placeholder={'Title'}  inputRef={inputRef}/>
+            <ModSubmit title={"Submit"} clickHandler={()=> renameTaskHandler(getInputVal())} />
+        </ModalWindow>
     )
 }
 

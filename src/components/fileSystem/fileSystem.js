@@ -1,5 +1,6 @@
 import React from 'react';
 import './fileSystem.css';
+import PropTypes from 'prop-types';
 import  GoToPrev from './goToPrev/goToPrev';
 import  GoToHome from './goHome/goHome';
 import  Folders from './folders/folders';
@@ -18,48 +19,66 @@ import {connect} from "react-redux";
 import * as actions from "../../redux_components/fileSystem/fileSystemActions";
 import WithService from '../hoc/with-service/with-service'
 import OngoingTasks from "../ongoingTasks/ongoingTasks";
-import Header from "../header/header";
+import RegularTools from '../regularTools/regularTools';
+import RenameTaskForm from "./taskOptions/rename/RenameTaskForm/RenameTaskForm";
+import ToolPanel from "../toolPanel/toolPanel";
 
 class FileSystem extends React.Component{
 
 
- defaultFolderOptions = () => (
-    <div className={"folderOptions"}>
-        <RenameFolderButton />
-        {this.props.isOpenRenameFolderForm &&
-        <RenameFolderForm />
-        }
-        <RemoveFolderButton />
-        <CutFolderButton />
-    </div>);
+ defaultFolderOptions = () => {
+    const {currentFolderId} = this.props;
 
+    return (<div className={`folder-options fileSystem-tools__folder-options ${currentFolderId === -1 ? 'folder-options_not-active':''}`}>
+            <RenameFolderButton />
+            {this.props.isOpenRenameFolderForm &&
+            <RenameFolderForm />
+            }
+            <CutFolderButton />
+            <RemoveFolderButton />
+        </div>);
+    }
     render() {
-        const {isOpenCreateFolderForm,isOpenCreateTaskForm,optionsPanelIsOpenForTask,replaceFolderId} = this.props;
+        const {isOpenCreateFolderForm,isOpenCreateTaskForm,isOpenTaskOptionsPanel,replaceFolderId, isOpenRenameTaskForm} = this.props;
+
         return(
-            <section className="fileSystem">
+            <section className="fileSystem-wrapper">
                 <OngoingTasks/>
-                <Header />
-                <div >
+                <div className={"fileSystem"}>
                     <GoToPrev    />
-                    <GoToHome  />
                     <Folders />
                     <Tasks />
-                    <CreateFolderFormButton />
-                    {isOpenCreateFolderForm &&
-                    <CreateFolderForm  />
-                    }
-                    <CreateNewTaskButton />
-                    {isOpenCreateTaskForm &&
-                    <CreateNewTaskForm  />
-                    }
-                    {replaceFolderId === -1 && this.defaultFolderOptions()}
-                    {replaceFolderId !== -1 &&
-                    <PasteFolderButton/>
-                    }
-                    {optionsPanelIsOpenForTask !== -1 &&
-                    <TaskOptionsPanel />
-                    }
                 </div>
+                <ToolPanel>
+                    <div className="fileSystem-tools bottom-tools">
+                        <GoToHome  />
+
+                        <CreateNewTaskButton />
+                        {isOpenCreateTaskForm &&
+                        <CreateNewTaskForm  />
+                        }
+
+                        <CreateFolderFormButton />
+                        {isOpenCreateFolderForm &&
+                        <CreateFolderForm  />
+                        }
+
+                        {replaceFolderId === -1 && this.defaultFolderOptions()}
+                        {replaceFolderId !== -1 &&
+                        <PasteFolderButton/>
+                        }
+                        {isOpenTaskOptionsPanel  &&
+                        <TaskOptionsPanel />
+                        }
+                        {isOpenRenameTaskForm &&
+                        <RenameTaskForm />
+                        }
+
+                        <RegularTools />
+
+                    </div>
+
+                </ToolPanel>
             </section>
 
             )
@@ -69,13 +88,23 @@ class FileSystem extends React.Component{
 
 }
 
+FileSystem.propTypes = {
+    isOpenCreateFolderForm: PropTypes.bool.isRequired,
+    isOpenCreateTaskForm: PropTypes.bool.isRequired,
+    isOpenTaskOptionsPanel: PropTypes.bool.isRequired,
+    replaceFolderId: PropTypes.number.isRequired,
+    isOpenRenameTaskForm: PropTypes.bool.isRequired,
+}
+
 const mapStateToProps = (state) =>{
     return {
         isOpenCreateFolderForm: state.fileSystem.isOpenCreateFolderForm,
         isOpenCreateTaskForm: state.fileSystem.isOpenCreateTaskForm,
         isOpenRenameFolderForm: state.fileSystem.isOpenRenameFolderForm,
         replaceFolderId:state.fileSystem.replaceFolderId,
-        optionsPanelIsOpenForTask:state.fileSystem.taskOptionsPanel.optionsPanelIsOpenForTask,
+        isOpenTaskOptionsPanel:state.fileSystem.taskOptionsPanel.isOpen,
+        currentFolderId: state.fileSystem.currentItemId,
+        isOpenRenameTaskForm: state.fileSystem.isOpenRenameTaskForm,
     }
 }
 

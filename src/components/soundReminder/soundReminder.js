@@ -6,7 +6,7 @@ const SoundReminder = () => {
 
         //set sound reminder that remind you that task ongoing more than startNotificationAfterMin
         const startNotificationAfterMin = 60;
-        const notificationIntervalMin = 7;
+        const notificationIntervalMin = 15;
         let intervalId;
         let soundReminderControl = document.getElementById("sound-reminder");
         soundReminderControl.volume = 0.3;

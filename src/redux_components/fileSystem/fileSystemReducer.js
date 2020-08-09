@@ -21,6 +21,7 @@ const initialState = {
     isOpenRenameTaskForm:false,
     idTaskWithOpenStageList:-1,
     taskOptionsPanel:{
+        isOpen:false,
         optionsPanelIsOpenForTask:-1,
 
     }
@@ -80,15 +81,12 @@ const  fileSystemReducer = (state = initialState, action) => {
         case 'CREATE_NEW_FOLDER':{
             const newFolderName = action.payload;
             let newFolderId;
-            if(state.items.length > 0) newFolderId = state.items[state.items.length - 1].id + 1;
-            else newFolderId = 0 ;
+            newFolderId = -2;
 
             const newItem = {
                 id:newFolderId,
                 name:newFolderName,
-                children: [],
                 parentsId:state.currentItemId,
-                tasks:[],
             };
             let newState = {
                 ...state,
@@ -165,6 +163,7 @@ const  fileSystemReducer = (state = initialState, action) => {
                     ...state,
                     taskOptionsPanel:{
                         ...state.taskOptionsPanel,
+                        isOpen:true,
                         optionsPanelIsOpenForTask:action.payload,
 
                     }
@@ -186,6 +185,17 @@ const  fileSystemReducer = (state = initialState, action) => {
             }
             return newState;
         }
+        case 'CLOSE_TASK_OPTIONS_PANEL': {
+            const newState = {
+                ...state,
+                taskOptionsPanel:{
+                    ...state.taskOptionsPanel,
+                    isOpen:false,
+
+                }
+            }
+            return newState;
+        }
         default:
             return state;
     }
@@ -200,6 +210,7 @@ const getfileSystemWithCloseModalWindow = (state)=>{
         isOpenRenameTaskForm:false,
         idTaskWithOpenStageList: -1,
         taskOptionsPanel:{
+            isOpen:false,
             optionsPanelIsOpenForTask:-1,
         },
     }

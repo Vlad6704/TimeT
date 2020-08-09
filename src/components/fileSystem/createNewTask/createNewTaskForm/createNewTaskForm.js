@@ -1,47 +1,68 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as actions from "../../../../redux_components/fileSystem/fileSystemActions";
 import WithService from "../../../hoc/with-service/with-service";
+import ModalWindow from '../../../modalWindow/modalWindow';
+import ModInput from "../../../modalWindow/modalElements/modInput";
+import ModTextArea from "../../../modalWindow/modalElements/modTextArea";
+import ModSubmit from "../../../modalWindow/modalElements/modSubmit";
+import ModTitle from "../../../modalWindow/modalElements/modTitle";
+
+
+
+
+const CreateNewTaskForm = ({GetNewIdAndCreateNewTask}) =>{
+const inputRef = React.useRef(null);
+const textareaRef = React.useRef(null);
+
+React.useEffect(()=>{
+    inputRef.current.focus();
+},[]);
+
 
 const getInputVal = () =>{
     return document.getElementById("nameNewFolder").value;
 }
 
+const addNewStage = () =>{
+    const list = document.getElementById('stage_list');
+    const buttonAddNewStage = document.getElementById('buttonAddNewStage');
+    const InputNewStageTitle = document.getElementById('InputNewStageTitle');
+    const NewStageTitle = InputNewStageTitle.value;
+    if(!NewStageTitle) return false;
+    let li = document.createElement('LI');
+    li.innerHTML = NewStageTitle;
+    list.appendChild(li);
+    InputNewStageTitle.value = '';
+}
 
-    const addNewStage = () =>{
-        const list = document.getElementById('stage_list');
-        const buttonAddNewStage = document.getElementById('buttonAddNewStage');
-        const InputNewStageTitle = document.getElementById('InputNewStageTitle');
-        const NewStageTitle = InputNewStageTitle.value;
-        if(!NewStageTitle) return false;
-        let li = document.createElement('LI');
-        li.innerHTML = NewStageTitle;
-        list.appendChild(li);
-        InputNewStageTitle.value = '';
-    }
-
-    const getObjFormVal = ()=>{
-        const list = document.getElementById('stage_list');
+const getObjFormVal = ()=>{
         const objFormVal = {};
-        const items = list.getElementsByTagName('li');
+        objFormVal.name = inputRef.current.value;
+
+        //description
+        // objFormVal.description = textareaRef.current.value;
+        objFormVal.description = '';
+
+        // stage
         let stageItems = [];
         let stageItemIdx = -1;
-        objFormVal.name = document.getElementById('titleNewTask').value;
-        objFormVal.description = document.getElementById('descriptionNewTask').value;
-
+        // const list = document.getElementById('stage_list');
+        // const items = list.getElementsByTagName('li');
         //list to array
-        for (var j = 0; j < items.length; j++) {
-            let str = items[j].innerHTML;
-            stageItemIdx++;
-            if (stageItems.indexOf(str) == -1) {
-                stageItems.push(
-                    {
-                        id:stageItemIdx,
-                        name:str
-                    }
-                    );
-            }
-        }
+        // for (var j = 0; j < items.length; j++) {
+        //     let str = items[j].innerHTML;
+        //     stageItemIdx++;
+        //     if (stageItems.indexOf(str) == -1) {
+        //         stageItems.push(
+        //             {
+        //                 id:stageItemIdx,
+        //                 name:str
+        //             }
+        //             );
+        //     }
+        // }
         objFormVal.stages = stageItems;
         objFormVal.stageItemIdx = stageItemIdx;
 
@@ -50,35 +71,33 @@ const getInputVal = () =>{
 
 
 
-
-const CreateNewTaskForm = ({GetNewIdAndCreateNewTask}) =>{
-
     return (
-        <div
+        <ModalWindow>
+            <ModTitle title={"Add new task"} />
+            <ModInput placeholder={'Title'}  inputRef={inputRef}/>
 
-        >
-            <input id={'titleNewTask'} placeholder={'Title'}/>
-            <textarea id={'descriptionNewTask'} placeholder={'Description'}/>
-            <div id={'stageList'}>
-                Add stages
-                <ul id='stage_list'>
+            {/*<ModTextArea placeholder={'Description'} textareaRef={textareaRef}/>*/}
 
-                </ul>
+            {/*<div id={'stageList'}>*/}
+            {/*    Add stages*/}
+            {/*    <ul id='stage_list'>*/}
 
-                <input id="InputNewStageTitle" />
-                <button id="buttonAddNewStage" onClick={addNewStage}> Add </button>
-            </div>
-            <button onClick={()=> GetNewIdAndCreateNewTask(getObjFormVal())}>
-                Submit
-            </button>
-        </div>
+            {/*    </ul>*/}
+
+            {/*<input id="InputNewStageTitle" />*/}
+            {/*<button id="buttonAddNewStage" onClick={addNewStage}> Add </button>*/}
+            {/*</div>*/}
+
+            <ModSubmit title={"Submit"} clickHandler={()=> GetNewIdAndCreateNewTask(getObjFormVal())} />
+
+        </ModalWindow>
+
     )
+
 }
 
-const mapStateToProps = (state) =>{
-    return {
-
-    }
+CreateNewTaskForm.propTypes = {
+    GetNewIdAndCreateNewTask: PropTypes.func
 }
 
-export default WithService()(connect(mapStateToProps,actions)(CreateNewTaskForm));
+export default WithService()(connect(null,actions)(CreateNewTaskForm));
