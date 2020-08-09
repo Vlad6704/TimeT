@@ -33,6 +33,7 @@
 @media screen and (min-width: 500px) {
     .main-nav__link-icon {
         font-size: 30px;
+        
     }
     
     .logout-button {
